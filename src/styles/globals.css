@@ -17,11 +17,17 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+}
+
+@layer components {
+  .after {
+    @apply after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-[120%] after:h-1 after:z-1 after:opacity-0 after:transition-all after:border after:border-b after:scale-x-0 after:scale-y-1;
+  }
 }

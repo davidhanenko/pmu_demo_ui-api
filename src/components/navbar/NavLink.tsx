@@ -21,14 +21,20 @@ const LinkBtn = React.forwardRef(
     { href, title }: LinkBtnProps,
     ref: React.LegacyRef<HTMLAnchorElement> | undefined
   ) => {
-    const { setActive } = useNav();
+    const { setActive, isOpen, setOpen } = useNav();
 
     const handleClick = () => {
       setActive(title);
+      isOpen && setOpen(false);
     };
 
     return (
-      <a href={href} ref={ref} onClick={handleClick}>
+      <a
+        href={href}
+        ref={ref}
+        onClick={handleClick}
+        className='tracking-wider sm:tracking-wide'
+      >
         {title}
       </a>
     );
@@ -54,7 +60,7 @@ export const NavLink: React.FC<LinkProps> = ({ link }) => {
           active === link.title
             ? 'scale-x-125'
             : 'scale-x-0'
-        } text-center border-b-2 border-indigo-900 transition-transform  scale-y-1 }`}
+        } text-center select-none border-b-2 border-indigo-600 transition-transform scale-y-1}`}
       ></div>
     </li>
   );

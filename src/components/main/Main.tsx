@@ -8,12 +8,11 @@ export const Main = () => {
   const { ref, inView } = useInView({
     threshold: 0.51,
   });
-  const { active, setActive } = useNav();
+  const { setActive } = useNav();
 
   useEffect(() => {
     setActive('');
   }, [inView, setActive]);
-  console.log(active);
 
   return (
     <section className='h-screen bg-stone-300' ref={ref}>

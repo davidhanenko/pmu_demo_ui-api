@@ -28,7 +28,6 @@ export const Navbar = () => {
     window.addEventListener('scroll', handleScroll, {
       passive: true,
     });
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -43,8 +42,12 @@ export const Navbar = () => {
     setActive('');
   };
 
+  useEffect(() => {
+    scroll < 300 && setActive('');
+  }, [scroll, setActive]);
+
   return (
-    <nav className='bg-slate-950 fixed top-0 py-2 w-full flex items-center '>
+    <nav className='bg-slate-950 fixed top-0 py-2 w-full flex items-center z-20'>
       <div className='w-full items-center mx-auto px-4 grid grid-cols-12'>
         <div className='flex items-center col-span-3'>
           <div
@@ -99,7 +102,7 @@ export const Navbar = () => {
         {isOpen && (
           <div
             className={`${
-              scroll > 100 ? 'top-12' : 'top-24'
+              scroll > 100 ? 'top-12' : 'top-16'
             } transition-all absolute right-0 select-none bg-gradient-to-b from-slate-950 to-cyan-800 py-8 min-w-[160px] sm:hidden`}
           >
             <ul

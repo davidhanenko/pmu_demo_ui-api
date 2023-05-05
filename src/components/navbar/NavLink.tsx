@@ -47,7 +47,7 @@ export const NavLink: React.FC<LinkProps> = ({ link }) => {
   return (
     <li
       className={`${
-        active === link.title
+        active == link.title
           ? 'text-white'
           : `text-slate-500`
       } hover:text-white text-lg cursor-pointer`}

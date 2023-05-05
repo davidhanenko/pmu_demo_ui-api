@@ -1,7 +1,9 @@
+import { GetStaticProps, NextPage } from 'next';
+
 import { About } from '@/components/about';
 import { Brows } from '@/components/brows';
-import { Contact } from '@/components/contact';
-import { Home } from '@/components/home';
+import { Contacts } from '@/components/contacts';
+import { Main } from '@/components/main';
 import { Lips } from '@/components/lips';
 import { Navbar } from '@/components/navbar';
 
@@ -13,11 +15,19 @@ export default function MainPage() {
   return (
     <main>
       <Navbar />
-      <Home />
+      <Main />
       <Brows />
       <Lips />
       <About />
-      <Contact />
+      <Contacts />
     </main>
   );
 }
+
+// export const getStaticProps = async (
+//   ctx: GetStaticProps
+// ) => {
+//   return {
+//     props: {},
+//   };
+// };

@@ -5,5 +5,17 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  theme: {},
+  theme: {
+    extend: {
+      colors: {
+        purple1: '#420261',
+        purple2: '#24043e',
+        purple3: '#2b2266',
+        teal1: '#41dce6',
+      },
+      backgroundImage: {
+        'about-section': "url('../assets/images/bg_1.png')",
+      },
+    },
+  },
 };

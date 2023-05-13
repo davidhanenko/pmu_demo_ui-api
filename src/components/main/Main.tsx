@@ -14,7 +14,10 @@ export const Main = () => {
   // }, [inView, setActive]);
 
   return (
-    <section className='h-screen bg-[#000]' ref={ref}>
+    <section
+      className='h-screen bg-[#000] fixed w-full'
+      ref={ref}
+    >
       <MainCanvas />
     </section>
   );

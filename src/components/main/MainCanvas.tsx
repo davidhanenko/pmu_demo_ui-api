@@ -35,7 +35,7 @@ const Model = () => {
       object={scene}
       scale={0.03}
       position={[2, 0, -3]}
-      rotation={[-5, -1, 3]}
+      rotation={[-5, -0.9, 3]}
     />
   );
 };
@@ -134,7 +134,7 @@ const Machine = () => {
           groundColor='black'
         />
         <spotLight
-          position={[0, 50, 10]}
+          position={[0, 50, 25]}
           angle={0.9}
           penumbra={1}
           intensity={10}

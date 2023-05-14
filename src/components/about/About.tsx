@@ -20,7 +20,7 @@ export const About = ({ ref }) => {
     <section>
       <div
         id='about'
-        className='relative before:content-[""] before:bg-about-section before:opacity-70 before:bg-cover before:bg-center before:absolute before:top-0 before:left-0 before:w-full before:h-full px-6 mt-24 '
+        className='relative before:content-[""] before:bg-about-section before:opacity-70 before:bg-cover before:bg-center before:absolute before:top-0 before:left-0 before:w-full before:h-full px-6 mt-24'
         ref={ref}
       >
         <div className='grid grid-cols-12 gap-4 py-24'>

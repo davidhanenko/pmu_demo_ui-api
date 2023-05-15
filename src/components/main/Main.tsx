@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { useNav } from '@/context/navContext';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -10,14 +9,12 @@ export const Main = () => {
   });
   const { setActive } = useNav();
 
-  useEffect(() => {
-    setActive('');
-  }, [inView, setActive]);
+  // useEffect(() => {
+  //   setActive('');
+  // }, [inView, setActive]);
 
   return (
-    <section className='h-screen bg-stone-300' ref={ref}>
-      <h2>Home</h2>
-      <div className=''></div>
+    <section className='h-screen bg-[#000]' ref={ref}>
       <MainCanvas />
     </section>
   );

@@ -16,7 +16,7 @@ module.exports = {
       backgroundImage: {
         'about-section': "url('../assets/images/bg_1.png')",
         'about-section_2':
-          "url('../assets/images/bg_2tr.png')",
+          "url('../assets/images/bg_3.png')",
         'about-section_3':
           "url('../assets/images/bg_2.png')",
       },

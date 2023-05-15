@@ -90,6 +90,7 @@ export const About = ({ ref }) => {
           </p>
         </div>
       </div>
+     
     </section>
   );
 };

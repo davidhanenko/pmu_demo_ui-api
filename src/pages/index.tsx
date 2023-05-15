@@ -16,6 +16,7 @@ export default function MainPage() {
     <main className=''>
       <Navbar />
       <Main />
+      <div className='bg-black h-[300px]'></div>
       <Brows />
       <Lips />
       <Contacts />

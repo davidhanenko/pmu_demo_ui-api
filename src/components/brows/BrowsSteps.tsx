@@ -1,6 +1,11 @@
 import { motion } from 'framer-motion';
 import { browsSteps } from '../../constants/index';
-import { useState } from 'react';
+import {
+  SyntheticEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 type StepCardProps = {
   title: string;
@@ -15,8 +20,42 @@ const StepCard = ({
   index,
 }: StepCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [i, setI] = useState(null);
+  const cardRef = useRef(null);
+
+  const handleClick = (e: SyntheticEvent) => {
+    e.preventDefault();
+    setIsOpen(!isOpen);
+    setI(e.target.dataset.id);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: Event): void => {
+      if (
+        isOpen &&
+        !cardRef?.current?.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    //  click outside nav listener
+    document.addEventListener(
+      'mousedown',
+      handleClickOutside
+    );
+
+    // cleanup the event listener
+    return () => {
+      document.removeEventListener(
+        'mousedown',
+        handleClickOutside
+      );
+    };
+  }, [isOpen]);
+
   return (
-    <div className='h-[130px] my-4 relative'>
+    <div className='h-[130px] my-4 relative' ref={cardRef}>
       <motion.div
         layout
         transition={{
@@ -24,11 +63,15 @@ const StepCard = ({
         }}
         className={`bg-gradient-to-l from-purple1 to-purple3 p-4 cursor-pointer select-none overflow-hidden rounded-md ${
           isOpen
-            ? 'h-[300px] absolute left-[-150px] sm:left-[-175px] w-[300px] sm:w-[350px] z-20 border-[1px] border-teal1'
+            ? 'h-[300px] absolute left-[-150px] sm:left-[-175px] w-[300px] sm:w-[350px] border-[1px] border-teal1'
             : 'h-[130px] w-[300px]'
-        }`}
-        onClick={() => setIsOpen(!isOpen)}
+        } ${index == i ? 'z-20' : ''}`}
       >
+        <div
+          data-id={index}
+          onClick={e => handleClick(e)}
+          className='absolute top-0 left-0 h-full w-full'
+        />
         <motion.h4
           layout={'position'}
           className='m-0 text-xl text-teal1'

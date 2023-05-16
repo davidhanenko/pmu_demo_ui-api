@@ -17,7 +17,7 @@ export const BrowsDescription = () => {
         </h2>
       </div>
       <div className='relative'>
-        <div className='absolute bg-black top-0 left-0 opacity-70 z-10 w-full h-full' />
+        <div className='absolute bg-[#000] top-0 left-0 opacity-70 z-10 w-full h-full' />
         <div className='absolute text-white top-0 h-full flex flex-col sm:justify-center z-20 p-8  tracking-wider overflow-y-scroll'>
           {/* <h3 className='text-3xl text-teal1 mb-4'>
                 Powder brows

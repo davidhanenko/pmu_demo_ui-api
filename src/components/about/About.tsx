@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { fadeIn } from '@/utils/motions';
-import me from '../../assets/images/me.jpg';
+import me from '../../assets/images/me_1.jpg';
 
 export const About = ({ ref }) => {
   // const { ref, inView } = useInView({
@@ -20,7 +20,7 @@ export const About = ({ ref }) => {
     <section>
       <div
         id='about'
-        className='relative before:content-[""] before:bg-about-section before:opacity-70 before:bg-cover before:bg-center before:absolute before:top-0 before:left-0 before:w-full before:h-full px-6 mt-24'
+        className='relative before:content-[""] before:opacity-70 before:bg-cover before:bg-center before:absolute before:top-0 before:left-0 before:w-full before:h-full px-6 mt-24'
         ref={ref}
       >
         <div className='grid grid-cols-12 gap-4 py-24'>
@@ -79,14 +79,14 @@ export const About = ({ ref }) => {
         <div className='bg-slate-300 h-full flex items-center col-start-6 col-end-12 mt-16 p-6'>
           <p className='relative text-black z-10 py-4 leading-8 tracking-wider border-b-[1px] border-solid border-teal1'>
             I rely on the best tools in the industry to
-            deliver exceptional results. That's why I choose
-            the Cheyenne Luna tattoo machine. Its innovative
-            design and advanced technology provide
-            unparalleled precision, control, and comfort.
-            With the Luna, I can create flawless permanent
-            makeup that enhances your natural beauty and
-            boosts your confidence. Experience the
-            difference with the Cheyenne Luna.
+            deliver exceptional results. That&apos;s why I
+            choose the Cheyenne Luna tattoo machine. Its
+            innovative design and advanced technology
+            provide unparalleled precision, control, and
+            comfort. With the Luna, I can create flawless
+            permanent makeup that enhances your natural
+            beauty and boosts your confidence. Experience
+            the difference with the Cheyenne Luna.
           </p>
         </div>
       </div>

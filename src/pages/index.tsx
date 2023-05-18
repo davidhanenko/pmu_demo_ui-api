@@ -16,6 +16,7 @@ export default function MainPage() {
     <main className=''>
       <Navbar />
       <Main />
+      <div className='bg-gradient-to-b from-black to-slate-900 h-[200px]'></div>
       <Brows />
       <Lips />
       <Contacts />

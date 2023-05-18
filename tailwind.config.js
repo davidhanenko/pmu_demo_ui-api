@@ -14,11 +14,12 @@ module.exports = {
         teal1: '#41dce6',
       },
       backgroundImage: {
-        'about-section': "url('../assets/images/bg_1.png')",
+        'about-section': "url('../assets/images/ny_1.jpg')",
         'about-section_2':
           "url('../assets/images/bg_3.png')",
-        'about-section_3':
-          "url('../assets/images/bg_2.png')",
+
+        'red-lips_1':
+          "url('../assets/images/red_lips.png')",
       },
     },
   },

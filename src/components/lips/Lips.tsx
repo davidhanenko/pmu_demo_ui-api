@@ -1,6 +1,9 @@
 import { useNav } from '@/context/navContext';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { BgVideo } from './BgVideo';
+import { LipsProcess } from './LipsProcess';
+import { LipsTips } from './LipsTips';
 
 export const Lips = () => {
   const { ref, inView } = useInView({
@@ -13,8 +16,15 @@ export const Lips = () => {
   }, [inView, setActive]);
 
   return (
-    <section id='lips' className='h-screen' ref={ref}>
-      <h1>Lips</h1>
+    <section id='lips' className='relative' ref={ref}>
+      <div className='bg-about-section bg-cover bg-bottom bg-no-repeat h-[300px] flex items-center z-20'>
+        <h2 className='text-red-600 text-6xl font-semibold ml-[30%]'>
+          Lips
+        </h2>
+      </div>
+
+      <BgVideo />
+      <LipsProcess />
     </section>
   );
 };

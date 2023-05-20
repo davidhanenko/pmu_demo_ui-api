@@ -1,27 +1,27 @@
-import { useNav } from '@/context/navContext';
 import { useEffect } from 'react';
+import { useNav } from '@/context/navContext';
 import { useInView } from 'react-intersection-observer';
 import { BgVideo } from './BgVideo';
 import { LipsProcess } from './LipsProcess';
-import { LipsTips } from './LipsTips';
+import SectionHeader from '../shared/SectionHeader';
 
 export const Lips = () => {
   const { ref, inView } = useInView({
-    threshold: 0.51,
+    threshold: 0.2,
   });
   const { setActive } = useNav();
 
   useEffect(() => {
-    setActive('Lips');
+    inView && setActive('Lips');
   }, [inView, setActive]);
 
   return (
-    <section id='lips' className='relative' ref={ref}>
-      <div className='bg-about-section bg-cover bg-bottom bg-no-repeat h-[300px] flex items-center z-20'>
-        <h2 className='text-red-600 text-6xl font-semibold ml-[30%]'>
-          Lips
-        </h2>
-      </div>
+    <section id='lips' className='relative min-h-screen'>
+      <div
+        className='absolute top-0 left-0 h-full w-full z-10'
+        ref={ref}
+      />
+      <SectionHeader title='Lips' color='red-600' />
 
       <BgVideo />
       <LipsProcess />

@@ -57,7 +57,7 @@ export const MainOverlay = () => {
           initial={{ opacity: 0, scale: 0.5, y: 100 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: false }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.75 }}
           className='col-span-10 col-start-2 lg:col-start-6 lg:col-end-12 text-center'
         >
           <div>

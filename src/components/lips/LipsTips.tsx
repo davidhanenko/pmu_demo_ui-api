@@ -4,7 +4,7 @@ export const LipsTips = () => {
   return (
     <div className='w-full px-4 md:px-8 py-12'>
       <h4 className='text-black text-3xl font-semibold pb-4'>
-        Some <span className='text-red-600'>tips</span> to
+        <span className='text-red-600'>Tips</span> to
         make your experience exceptional
       </h4>
       <ul className='leading-6'>

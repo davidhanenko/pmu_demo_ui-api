@@ -2,12 +2,22 @@ import { CldVideoPlayer } from 'next-cloudinary';
 
 export const BgVideo = () => {
   return (
-    <div className='relative md:-top-24 z-[-1]'>
+    <div className='relative z-[-1]'>
       <div className='absolute top-0 left-0 bg-[#0000000] h-full w-full z-10'>
+        <ul className='hidden md:block absolute bottom-16 left-16 z-10 list-none text-2xl font-semibold'>
+          <li className='text-pink-400'>
+            Lip blush/Aquarelle
+          </li>
+          <li className='text-pink-600'>Lipstick effect</li>
+          <li className='text-pink-800'>
+            Dark lips neutralization
+          </li>
+        </ul>
+
         <div className='absolute flex justify-center md:right-16 top-8 md:top-1/3 z-20'>
           <div className='relative'>
-            <div className='hidden md:block h-full md:h-[300px] w-full md:w-[700px] bg-[#421414a6] md:absolute top-0 right-0'></div>
-            <div className='h-full md:h-[300px] w-full md:w-[700px] bg-[#da31315f] md:absolute top-0  md:top-6 right-0 md:right-6 flex items-center justify-center md:px-12'>
+            <div className='hidden md:block h-full md:h-[270px] w-full md:w-[700px] bg-[#421414a6] md:absolute top-0 right-0'></div>
+            <div className='h-full md:h-[270px] w-full md:w-[700px] bg-[#da31315f] md:absolute top-0  md:top-6 right-0 md:right-6 flex items-center justify-center md:px-12'>
               <p className='text-white p-4 sm:p-8 md:p-4 text-sm md:text-lg tracking-wide'>
                 Enhance Your Natural Beauty with Lips
                 Permanent Makeup Introduction: Welcome to my
@@ -15,7 +25,8 @@ export const BgVideo = () => {
                 natural beauty through the art of permanent
                 makeup. In this section, we&apos;ll guide
                 you through the lips permanent makeup
-                process, available techniques and provide helpful tips.
+                process, available techniques and provide
+                helpful tips.
               </p>
             </div>
           </div>

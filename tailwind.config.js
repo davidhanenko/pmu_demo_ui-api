@@ -21,6 +21,19 @@ module.exports = {
         'red-lips_1':
           "url('../assets/images/red_lips.png')",
       },
+      gridTemplateColumns: {
+        'fill-250': 'repeat(auto-fill, minmax(250px, 1fr))',
+      },
+
+      keyframes: {
+        move_bg: {
+          from: { 'background-position': '0 0' },
+          to: { 'background-position': '400% 0' },
+        },
+      },
+      animation: {
+        move_bg: 'move_bg 12s linear infinite',
+      },
     },
   },
 };

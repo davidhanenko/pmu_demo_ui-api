@@ -59,7 +59,7 @@ const StepCard = ({
       <motion.div
         layout
         transition={{
-          layout: { duration: 1, type: 'spring' },
+          layout: { duration: 0.5, ease: 'circOut' },
         }}
         className={`bg-gradient-to-l from-purple1 to-purple3 p-4 cursor-pointer select-none overflow-hidden rounded-md ${
           isOpen
@@ -107,9 +107,9 @@ const StepCard = ({
 
 export const BrowsSteps = () => {
   return (
-    <div className='col-span-12 lg:col-span-5 bg-about-section_2 h-full w-full px-4 py-16 sm:py-0'>
+    <div className='col-span-12 lg:col-span-5  h-full w-full px-4 py-16'>
       <h3 className='text-white text-3xl p-4 text-center'>
-        4 Steps to Perfect Powder Brows:
+        4 Steps to Perfect Powder Brows
       </h3>
 
       <div className='flex flex-col justify-center items-center w-full'>

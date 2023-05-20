@@ -48,9 +48,9 @@ export const NavLink: React.FC<LinkProps> = ({ link }) => {
     <li
       className={`${
         active == link.title
-          ? 'text-white'
-          : `text-slate-500`
-      } hover:text-white text-lg cursor-pointer`}
+          ? 'text-red-800'
+          : `text-red-600`
+      } transition-colors hover:text-red-800 text-lg cursor-pointer`}
     >
       <Link href={`#${link.id}`} passHref legacyBehavior>
         <LinkBtn title={link.title} />

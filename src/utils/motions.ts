@@ -40,3 +40,14 @@ export const fadeIn = ({
     },
   };
 };
+
+export const appear = () => {
+  return {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 0.1,
+      viewport: { once: false },
+      transition: { duration: 1.5, delay: 5 },
+    },
+  };
+};

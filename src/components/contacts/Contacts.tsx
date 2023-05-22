@@ -1,7 +1,7 @@
 import { useNav } from '@/context/navContext';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import SectionHeader from '../shared/SectionHeader';
+import { SectionHeader } from '../shared';
 
 export const Contacts = () => {
   const { ref, inView } = useInView({
@@ -16,7 +16,6 @@ export const Contacts = () => {
   return (
     <section id='contacts' className='' ref={ref}>
       <SectionHeader title='Contacts' color='teal1' />
-
 
       <h1>Contacts</h1>
       <h1>Contacts</h1>

@@ -3,24 +3,18 @@ import { CldVideoPlayer } from 'next-cloudinary';
 export const BrowsDescription = () => {
   return (
     <div className='col-span-12 lg:col-span-7 flex flex-col justify-between gap-8'>
-      <div className='list-none relative m-12 md:m-16 bg-overlay-light md:w-2/4 p-8  text-3xl font-bold z-10 h-full w-full bg-gradient-to-r from-violet-400 from-10% via-black via-40% to-violet-400 to-90% text-transparent bg-clip-text bg-[length:400%_30px] animate-move_bg flex flex-col justify-center'>
+      <ul className='list-none relative md:ml-16 bg-overlay-light md:w-2/4 p-8 text-3xl font-bold z-10 flex flex-col justify-center tracking-wide'>
         {' '}
-        <p className=''>Powder brows</p>
-        <p className=''>Ombre brows</p>
-        <p className=''>Combo brows</p>
-      </div>
-
-      {/* <ul className='list-none relative m-12 md:m-16 bg-overlay-light md:w-2/4 p-8'>
-        <li className='relative text-violet-400 text-xl z-10'>
+        <li className='bg-gradient-to-r from-violet-400 from-10% via-black via-40% to-violet-400 to-90% text-transparent bg-clip-text bg-[length:400%_30px] animate-move_bg '>
           Powder brows
         </li>
-        <li className='relative text-violet-600 text-xl z-10'>
+        <li className='bg-gradient-to-r from-violet-500 from-10% via-black via-40% to-violet-500 to-90% text-transparent bg-clip-text bg-[length:400%_30px] animate-move_bg animation-delay-[100ms]'>
           Ombre brows
         </li>
-        <li className='relative text-violet-800 text-xl z-10'>
+        <li className='bg-gradient-to-r from-violet-600 from-10% via-black via-40% to-violet-600 to-90% text-transparent bg-clip-text bg-[length:400%_10px] animate-move_bg animation-delay-[200ms]'>
           Combo brows
         </li>
-      </ul> */}
+      </ul>
 
       <div className='relative'>
         <div className='absolute bg-[#000] top-0 left-0 opacity-70 z-10 w-full h-full' />

@@ -26,7 +26,7 @@ const StepCard = ({
   const handleClick = (e: SyntheticEvent) => {
     e.preventDefault();
     setIsOpen(!isOpen);
-    setI(e.target.dataset.id);
+    setI(e.currentTarget.dataset.id);
   };
 
   useEffect(() => {
@@ -55,7 +55,12 @@ const StepCard = ({
   }, [isOpen]);
 
   return (
-    <div className='h-[130px] my-4 relative' ref={cardRef}>
+    <div
+      className='h-[130px] my-4 relative'
+      ref={cardRef}
+      data-id={index}
+      onClick={e => handleClick(e)}
+    >
       <motion.div
         layout
         transition={{
@@ -63,15 +68,10 @@ const StepCard = ({
         }}
         className={`bg-gradient-to-l from-purple1 to-purple3 p-4 cursor-pointer select-none overflow-hidden rounded-md ${
           isOpen
-            ? 'h-[300px] absolute left-[-150px] sm:left-[-175px] w-[300px] sm:w-[350px] border-[1px] border-teal1'
-            : 'h-[130px] w-[300px]'
-        } ${index == i ? 'z-20' : ''}`}
+            ? 'h-[300px] absolute left-[-135px] sm:left-[-175px] w-[270px] sm:w-[350px] border-[1px] border-teal1'
+            : 'h-[130px] w-[250px] sm:w-[300px]'
+        } ${isOpen && index == i ? 'z-20' : ''}`}
       >
-        <div
-          data-id={index}
-          onClick={e => handleClick(e)}
-          className='absolute top-0 left-0 h-full w-full'
-        />
         <motion.h4
           layout={'position'}
           className='m-0 text-xl text-teal1'
@@ -97,7 +97,9 @@ const StepCard = ({
             transition={{ duration: 0.5 }}
             className={`h-full pt-2 overflow-scroll`}
           >
-            <p className='pb-8 text-white'>{description}</p>
+            <p className='pb-16 text-white'>
+              {description}
+            </p>
           </motion.div>
         )}
       </motion.div>
@@ -107,9 +109,9 @@ const StepCard = ({
 
 export const BrowsSteps = () => {
   return (
-    <div className='col-span-12 lg:col-span-5  h-full w-full px-4 py-16'>
+    <div className='col-span-12 lg:col-span-5  h-full w-full px-4 py-24'>
       <h3 className='text-white text-3xl p-4 text-center'>
-        4 Steps to Perfect Powder Brows
+        4 Simple Steps to Perfect Brows
       </h3>
 
       <div className='flex flex-col justify-center items-center w-full'>

@@ -2,7 +2,7 @@ import { lipsTips } from '@/constants';
 
 export const LipsTips = () => {
   return (
-    <div className='w-full px-4 md:px-8 py-12'>
+    <div className='w-full px-4 md:px-8 py-16'>
       <h4 className='text-black text-3xl font-semibold pb-4'>
         <span className='text-red-600'>Tips</span> to
         make your experience exceptional

@@ -3,7 +3,7 @@ import { useNav } from '@/context/navContext';
 import { useInView } from 'react-intersection-observer';
 import { BgVideo } from './BgVideo';
 import { LipsProcess } from './LipsProcess';
-import SectionHeader from '../shared/SectionHeader';
+import { SectionHeader } from '../shared';
 
 export const Lips = () => {
   const { ref, inView } = useInView({

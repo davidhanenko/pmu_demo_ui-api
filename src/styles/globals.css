@@ -38,4 +38,6 @@ body {
   .bg-glass {
     @apply bg-gradient-to-r from-[#ffffff1] to-[#ffffff0] backdrop-blur-md shadow-lg border-[1px] border-white/10;
   }
+
+ 
 }

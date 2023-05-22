@@ -97,7 +97,7 @@ export const About = ({ ref }) => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: false }}
               transition={{ duration: 1.5 }}
-              className='relative text-white z-10 py-4 leading-8 tracking-wider border-b-[1px] border-solid border-black '
+              className='relative text-white z-10 py-4 leading-8 tracking-wider border-b-[1px] border-solid border-black'
             >
               I rely on the best tools in the industry to
               deliver exceptional results. That&apos;s why I

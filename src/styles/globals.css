@@ -31,13 +31,11 @@ body {
     @apply before:content-[""] before:bg-gradient-to-l from-black to-transparent before:opacity-80 before:absolute before:top-0 before:left-0 before:w-full before:h-full;
   }
 
-   .bg-overlay-light {
+  .bg-overlay-light {
     @apply before:content-[""] before:bg-purple-100 before:opacity-10 before:absolute before:top-0 before:left-0 before:w-full before:h-full;
   }
 
   .bg-glass {
     @apply bg-gradient-to-r from-[#ffffff1] to-[#ffffff0] backdrop-blur-md shadow-lg border-[1px] border-white/10;
   }
-
- 
 }

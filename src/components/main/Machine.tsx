@@ -35,25 +35,22 @@ export const Machine = () => {
 
   const scroll = useScroll();
 
+  // console.log(scroll)
+
   useFrame(() => {
     tl.current.progress(scroll.offset);
   });
 
   useLayoutEffect(() => {
-    tl.current = gsap.timeline();
+    tl.current = gsap.timeline({
+      // onComplete: () =>
+      //   (document.body.style.overflow = 'auto'),
+    });
 
     tl.current
       .to(
         ref.current.position,
         {
-          // scrollTrigger: {
-          //   trigger: '#main',
-          //   start: 'bottom bottom',
-          //   endTrigger: '#about',
-          //   end: 'bottom bottom',
-          //   markers: true,
-          //   scrub: 1,
-          // },
           duration: 2,
           x: -4,
           y: -SECTION_HEIGHT * (SECTIONS + 1),
@@ -69,14 +66,6 @@ export const Machine = () => {
     tl.current.to(
       ref.current.position,
       {
-        // scrollTrigger: {
-        //   trigger: '#main',
-        //   start: 'bottom bottom',
-        //   endTrigger: '#about',
-        //   end: 'bottom bottom',
-        //   markers: true,
-        //   scrub: 1,
-        // },
         duration: 2,
         x: 3,
         y: -SECTION_HEIGHT + 2,
@@ -88,9 +77,6 @@ export const Machine = () => {
     tl.current.to(
       ref.current.rotation,
       {
-        // scrollTrigger: {
-        //   trigger: '#main',
-        // },
         duration: 2,
         x: 0,
         y: Math.PI / 2,
@@ -102,9 +88,6 @@ export const Machine = () => {
     tl.current.to(
       ref.current.rotation,
       {
-        // scrollTrigger: {
-        //   trigger: '#main',
-        // },
         duration: 2,
         x: 3,
         y: Math.PI / 6,

@@ -30,7 +30,7 @@ export const MainOverlay = () => {
       <section
         ref={mainRef}
         id='main'
-        className='pt-40 h-screen grid grid-cols-12  '
+        className='pt-40 h-screen grid grid-cols-12'
       >
         <div className='col-span-4'>
           <Image

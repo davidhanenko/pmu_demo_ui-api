@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 
 import { ScrollControls, Preload } from '@react-three/drei';
 
@@ -9,16 +9,8 @@ import { Machine } from './Machine';
 
 export const MainCanvas = () => {
   const { ref, inView } = useInView({
-    threshold: 0.5,
+    threshold: 0.8,
   });
-
-  // useEffect(() => {
-  //   if (inView) {
-  //     PreventScrolling();
-  //   } else {
-  //     ReEnableScrolling();
-  //   }
-  // }, [inView]);
 
   return (
     <Canvas
@@ -29,7 +21,12 @@ export const MainCanvas = () => {
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={null}>
-        <ScrollControls pages={3} damping={0.5}>
+        <ScrollControls
+          pages={3}
+          damping={0.5}
+          enabled={inView ? true : false}
+          // style={{ overscrollBehavior: 'contain' }}
+        >
           <Machine />
           <MainOverlay />
         </ScrollControls>

@@ -9,9 +9,9 @@ export const Main = () => {
   });
   const { setActive } = useNav();
 
-  // useEffect(() => {
-  //   if (inView) document.body.style.overflow = 'hidden';
-  // }, [inView]);
+  useEffect(() => {
+    if (inView) document.body.style.overflow = 'hidden';
+  }, [inView]);
 
   return (
     <section

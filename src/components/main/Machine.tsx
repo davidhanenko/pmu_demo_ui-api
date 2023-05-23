@@ -35,16 +35,14 @@ export const Machine = () => {
 
   const scroll = useScroll();
 
-  // console.log(scroll)
-
   useFrame(() => {
     tl.current.progress(scroll.offset);
   });
 
   useLayoutEffect(() => {
     tl.current = gsap.timeline({
-      // onComplete: () =>
-      //   (document.body.style.overflow = 'auto'),
+      onComplete: () =>
+        (document.body.style.overflow = 'auto'),
     });
 
     tl.current

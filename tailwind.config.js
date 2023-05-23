@@ -33,11 +33,15 @@ module.exports = {
       },
       backgroundImage: {
         'about-section': "url('../assets/images/ny_1.jpg')",
+
         'about-section_2':
           "url('../assets/images/bg_3.png')",
 
         'red-lips_1':
           "url('../assets/images/red_lips.png')",
+
+        'contact-bg':
+          "url('../assets/images/bg_c_1.png')",
       },
       gridTemplateColumns: {
         'fill-250': 'repeat(auto-fill, minmax(250px, 1fr))',

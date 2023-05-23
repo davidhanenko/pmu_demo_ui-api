@@ -2,7 +2,7 @@ import { GetStaticProps, NextPage } from 'next';
 
 import { About } from '@/components/about';
 import { Brows } from '@/components/brows';
-import { Contacts } from '@/components/contacts';
+import { Contact } from '@/components/contact';
 import { Main } from '@/components/main';
 import { Lips } from '@/components/lips';
 import { Navbar } from '@/components/navbar';
@@ -19,7 +19,7 @@ export default function MainPage() {
       {/* <div className='bg-gradient-to-b from-black to-slate-900 h-[200px]'></div> */}
       <Brows />
       <Lips />
-      <Contacts />
+      <Contact />
     </main>
   );
 }

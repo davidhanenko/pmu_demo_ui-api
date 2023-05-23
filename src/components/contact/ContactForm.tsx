@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { contactReasons } from '@/constants';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
@@ -14,6 +15,10 @@ type FormData = {
 };
 
 export const ContactForm = () => {
+  const [statusMessage, setStatusMessage] = useState({
+    status: '',
+    message: '',
+  });
   const {
     register,
     handleSubmit,
@@ -33,8 +38,30 @@ export const ContactForm = () => {
   const onSubmitForm: SubmitHandler<
     FormData
   > = async values => {
-    console.log(values);
-    reset();
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      const messageStatus = await response.json();
+
+      if (messageStatus.status === 'success') {
+        setStatusMessage(messageStatus);
+        reset();
+      } else {
+        setStatusMessage(messageStatus);
+      }
+    } catch (err) {
+      setStatusMessage({
+        status: 'fail',
+        message: err.message,
+      });
+    }
   };
 
   return (
@@ -45,8 +72,19 @@ export const ContactForm = () => {
 
       <form
         onSubmit={handleSubmit(onSubmitForm)}
-        className='bg-glass w-5/6 sm:w-3/4 px-4 lg:px-8 py-12'
+        className='relative bg-glass w-5/6 sm:w-3/4 px-4 lg:px-8 py-16'
       >
+        {statusMessage.message && (
+          <p
+            className={`absolute top-1 left-4 lg:left-8 right-4 lg:right-8 py-3 pl-2 text-sm ${
+              statusMessage.status === 'success'
+                ? 'bg-green-100 text-green-600'
+                : 'bg-red-100 text-red-600'
+            }`}
+          >
+            {statusMessage.message}
+          </p>
+        )}
         {/* name */}
         <fieldset className='relative mb-6'>
           <input
@@ -66,7 +104,6 @@ export const ContactForm = () => {
             </span>
           )}
         </fieldset>
-
         {/* phone */}
         <fieldset className='relative mb-6'>
           <input
@@ -102,7 +139,6 @@ export const ContactForm = () => {
             </span>
           )}
         </fieldset>
-
         {/* email */}
         <fieldset className='relative mb-6'>
           <input
@@ -124,7 +160,6 @@ export const ContactForm = () => {
             {errors?.email?.message}
           </span>
         </fieldset>
-
         {/* message */}
         <fieldset className='relative mb-6'>
           <textarea

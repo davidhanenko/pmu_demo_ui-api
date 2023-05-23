@@ -15,6 +15,7 @@ interface LinkProps {
   };
 }
 
+
 //  link functional component - button
 const LinkBtn = React.forwardRef(
   (
@@ -23,9 +24,21 @@ const LinkBtn = React.forwardRef(
   ) => {
     const { setActive, isOpen, setOpen } = useNav();
 
-    const handleClick = () => {
+    const handleClick = (
+      e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    ) => {
+      e.preventDefault();
+
       setActive(title);
       isOpen && setOpen(false);
+
+      const href = e.currentTarget.href;
+      const targetId = href.replace(/.*\#/, '');
+
+      const elem = document.getElementById(targetId);
+      elem?.scrollIntoView({
+        behavior: 'smooth',
+      });
     };
 
     return (

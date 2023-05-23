@@ -17,6 +17,21 @@ export const navLinks = [
   },
 ];
 
+export const contactReasons = [
+  {
+    id: 1,
+    value: 'Call me back',
+  },
+  {
+    id: 2,
+    value: 'Schedule an appointment',
+  },
+  {
+    id: 3,
+    value: 'Get info',
+  },
+];
+
 export const browsSteps = [
   {
     title: 'Consultation and Design',

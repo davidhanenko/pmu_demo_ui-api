@@ -21,7 +21,7 @@ export const Contact = () => {
     <section id='contacts' ref={ref}>
       <SectionHeader title='Contacts' color='teal1' />
 
-      <div className='bg-pink-50 p-12 pb-28 flex flex-col lg:grid grid-cols-2'>
+      <div className='bg-pink-50 min-h-screen lg:p-24 pb-[400px] flex flex-col lg:grid grid-cols-2'>
         <Contacts />
         <ContactForm />
       </div>

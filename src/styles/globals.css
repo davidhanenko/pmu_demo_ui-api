@@ -40,6 +40,10 @@ body {
   }
 
   .input-field {
-    @apply bg-transparent w-full border-2 border-purple-200 py-3 pl-2 placeholder:text-sm appearance-none rounded-none focus:border-purple-500 focus:outline-none focus:rounded-none;
+    @apply bg-transparent w-full border-2 border-purple-200 py-3 pl-2 placeholder:text-sm appearance-none rounded-none focus:border-purple-500 focus:outline-none focus:rounded-none shadow-[inset_0_0_2px_1px_#f5d0fe];
+  }
+
+  .input-error {
+    @apply absolute top-full left-0 text-xs text-red-400;
   }
 }

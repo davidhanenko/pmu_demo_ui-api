@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { contactReasons } from '@/constants';
+import { motion } from 'framer-motion';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 const PHONE_REGEX = new RegExp(
@@ -67,7 +68,13 @@ export const ContactForm = () => {
 
   return (
     <div className='flex flex-col items-center'>
-      <h4 className='text-purple3 text-2xl sm:text-3xl font-semibold mb-12 px-2 sm:px-8 lg:p-0'>
+      <motion.h4
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+        transition={{ duration: 1.5 }}
+        className='text-purple3 text-2xl sm:text-3xl font-semibold mb-12 px-2 sm:px-8 lg:p-0'
+      >
         Would you like me to
         <span className='text-gradient-animated-red'>
           &nbsp;call you back&nbsp;
@@ -76,9 +83,13 @@ export const ContactForm = () => {
         <span className='text-gradient-animated-red'>
           &nbsp;schedule an appointment&nbsp;
         </span>
-      </h4>
+      </motion.h4>
 
-      <form
+      <motion.form
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+        transition={{ duration: 1.5 }}
         onSubmit={handleSubmit(onSubmitForm)}
         className='relative bg-glass w-5/6 sm:w-3/4 px-4 lg:px-8 py-16'
       >
@@ -226,7 +237,7 @@ export const ContactForm = () => {
             )}
           </button>
         </div>
-      </form>
+      </motion.form>
     </div>
   );
 };

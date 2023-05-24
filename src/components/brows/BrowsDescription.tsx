@@ -1,19 +1,38 @@
 import { CldVideoPlayer } from 'next-cloudinary';
+import { motion } from 'framer-motion';
 
 export const BrowsDescription = () => {
   return (
-    <div className='col-span-12 lg:col-span-7 flex flex-col justify-between gap-8'>
-      <ul className='list-none relative md:ml-16 bg-overlay-light md:w-2/4 p-8 text-3xl font-bold z-10 flex flex-col justify-center tracking-wide'>
+    <div className='col-span-12 lg:col-span-7 flex flex-col justify-between'>
+      <ul className='list-none relative  w-full h-full px-8 py-24 text-3xl font-bold z-10 flex flex-col justify-center tracking-wide'>
         {' '}
-        <li className='text-gradient-animated-purple'>
+        <motion.li
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.65 }}
+          className='text-violet-400'
+        >
           Powder brows
-        </li>
-        <li className='text-gradient-animated-purple animation-delay-[100ms]'>
+        </motion.li>
+        <motion.li
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.75 }}
+          className='text-violet-600 animation-delay-[100ms] mt-3'
+        >
           Ombre brows
-        </li>
-        <li className='text-gradient-animated-purple animation-delay-[200ms]'>
+        </motion.li>
+        <motion.li
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.85 }}
+          className='text-violet-800 animation-delay-[200ms] mt-3'
+        >
           Combo brows
-        </li>
+        </motion.li>
       </ul>
 
       <div className='relative'>

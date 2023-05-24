@@ -24,7 +24,7 @@ export const Brows = () => {
         color='purple3'
         src={browImg}
       />
-      <div className='grid grid-cols-12 bg-about-section_2 bg-bottom bg-cover bg-no-repeat pt-24'>
+      <div className='grid grid-cols-12 bg-about-section_2 bg-bottom bg-cover bg-no-repeat'>
         <BrowsDescription />
         <BrowsSteps />
       </div>

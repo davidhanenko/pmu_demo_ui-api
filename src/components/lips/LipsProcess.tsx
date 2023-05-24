@@ -4,13 +4,13 @@ import { lipsProcess, lipsTechniques } from '@/constants';
 
 export const LipsProcess = () => {
   return (
-    <div className='bg-red-lips_1 bg-right-top bg-contain bg-no-repeat relative bg-overlay-gradient'>
+    <div className='bg-red-lips_1 bg-local bg-[center_top_15rem] lg:bg-[right_top_5rem] bg-contain bg-no-repeat relative bg-overlay-gradient'>
       <div className='relative p-4 py-8 md:p-16 h-full'>
         <div className='h-full md:p-8 flex flex-wrap gap-12 items-center md:justify-around flex-col md:flex-row bg-glass'>
           {/* left */}
           <div className='max-w-[550px] p-2 py-8 md:p-8 bg-glass'>
-            <h4 className='text-red-500 text-3xl font-semibold pb-4'>
-              Lips Permanent Makeup Process:
+            <h4 className='text-red-500 bg-white text-3xl text-center font-semibold mb-4 py-3'>
+              Lips Permanent Makeup Process
             </h4>
             <ul className='leading-6'>
               {lipsProcess.map(item => (

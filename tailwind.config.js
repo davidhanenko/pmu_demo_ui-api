@@ -40,8 +40,11 @@ module.exports = {
         'red-lips_1':
           "url('../assets/images/red_lips.png')",
 
+        'pink_lips':
+          "url('../assets/images/pink_lips.png')",
+
         'contact-bg':
-          "url('../assets/images/bg_c_1.png')",
+          "url('../assets/images/pink_bg_1.png')",
       },
       gridTemplateColumns: {
         'fill-250': 'repeat(auto-fill, minmax(250px, 1fr))',

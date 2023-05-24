@@ -4,12 +4,12 @@ export const BgVideo = () => {
   return (
     <div className='relative z-[-1] mb-36 lg:mb-0'>
       <div className='absolute top-0 left-0 bg-[#0000000] h-full w-full z-10'>
-        <ul className='absolute top-full lg:top-auto lg:bottom-16 lg:left-16 z-10 list-none text-2xl font-semibold p-4 lg:p-0 tracking-wide'>
+        <ul className='absolute top-full lg:top-auto lg:bottom-16 lg:left-16 2xl:bottom-48 z-10 list-none text-2xl lg:text-3xl font-semibold p-4 lg:p-0 tracking-wide'>
           <li className='text-pink-400'>
             Lip blush/Aquarelle
           </li>
-          <li className='text-pink-600'>Lipstick effect</li>
-          <li className='text-pink-800'>
+          <li className='text-pink-600 lg:mt-3'>Lipstick effect</li>
+          <li className='text-pink-800 lg:mt-3'>
             Dark lips neutralization
           </li>
         </ul>

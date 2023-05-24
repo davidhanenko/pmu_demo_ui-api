@@ -5,13 +5,13 @@ export const BrowsDescription = () => {
     <div className='col-span-12 lg:col-span-7 flex flex-col justify-between gap-8'>
       <ul className='list-none relative md:ml-16 bg-overlay-light md:w-2/4 p-8 text-3xl font-bold z-10 flex flex-col justify-center tracking-wide'>
         {' '}
-        <li className='bg-gradient-to-r from-violet-400 from-10% via-black via-40% to-violet-400 to-90% text-transparent bg-clip-text bg-[length:400%_30px] animate-move_bg '>
+        <li className='text-gradient-animated-purple'>
           Powder brows
         </li>
-        <li className='bg-gradient-to-r from-violet-500 from-10% via-black via-40% to-violet-500 to-90% text-transparent bg-clip-text bg-[length:400%_30px] animate-move_bg animation-delay-[100ms]'>
+        <li className='text-gradient-animated-purple animation-delay-[100ms]'>
           Ombre brows
         </li>
-        <li className='bg-gradient-to-r from-violet-600 from-10% via-black via-40% to-violet-600 to-90% text-transparent bg-clip-text bg-[length:400%_10px] animate-move_bg animation-delay-[200ms]'>
+        <li className='text-gradient-animated-purple animation-delay-[200ms]'>
           Combo brows
         </li>
       </ul>

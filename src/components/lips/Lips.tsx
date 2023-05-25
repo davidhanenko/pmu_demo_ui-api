@@ -5,6 +5,8 @@ import { BgVideo } from './BgVideo';
 import { LipsProcess } from './LipsProcess';
 import { SectionHeader } from '../shared';
 
+import lipsImg from '../../assets/images/pink_lips.png';
+
 export const Lips = () => {
   const { ref, inView } = useInView({
     threshold: 0.2,
@@ -21,7 +23,11 @@ export const Lips = () => {
         className='absolute top-0 left-0 h-full w-full z-10'
         ref={ref}
       />
-      <SectionHeader title='Lips' color='red-600' />
+      <SectionHeader
+        title='Lips'
+        color='red-600'
+        src={lipsImg}
+      />
 
       <BgVideo />
       <LipsProcess />

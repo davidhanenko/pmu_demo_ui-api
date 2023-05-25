@@ -45,9 +45,9 @@ export const appear = () => {
   return {
     hidden: { opacity: 0 },
     show: {
-      opacity: 0.1,
+      opacity: 1,
       viewport: { once: false },
-      transition: { duration: 1.5, delay: 5 },
+      transition: { duration: 0.5 },
     },
   };
 };

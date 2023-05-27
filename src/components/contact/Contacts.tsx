@@ -11,7 +11,7 @@ import { appear } from '@/utils/motions';
 
 export const Contacts = () => {
   return (
-    <div className='text-4xl font-semibold flex flex-col items-center justify-center'>
+    <div className='text-3xl xs:text-4xl font-semibold flex flex-col items-center justify-center'>
       <div>
         <motion.div
           initial={{ opacity: 0, y: 50 }}

@@ -38,7 +38,7 @@ export const BgVideo = () => {
         <div className='absolute flex justify-center md:right-16 top-0 md:top-1/3 z-20 max-h-full md:max-f-auto overflow-scroll md:overflow-visible'>
           <div className='relative'>
             <div className='hidden md:block h-full md:h-[270px] w-full md:w-[700px] bg-[#421414a6] md:absolute top-0 right-0'></div>
-            <div className='h-full md:h-[270px] w-full md:w-[700px] bg-[#da31315f] md:absolute top-0  md:top-6 right-0 md:right-6 flex items-center justify-center md:px-12'>
+            <div className='h-full md:h-[270px] w-full md:w-[700px] bg-[#da31315f] md:absolute top-0  md:top-6 right-0 md:right-6 flex items-center justify-center md:px-12 '>
               <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}

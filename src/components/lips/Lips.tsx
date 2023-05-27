@@ -18,14 +18,14 @@ export const Lips = () => {
   }, [inView, setActive]);
 
   return (
-    <section id='lips' className='relative min-h-screen'>
+    <section id='lips' className='relative min-h-screen z-10'>
       <div
         className='absolute top-0 left-0 h-full w-full z-10'
         ref={ref}
       />
       <SectionHeader
         title='Lips'
-        color='red-600'
+        textColorClass={'text-red-600'}
         src={lipsImg}
       />
 

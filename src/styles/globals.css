@@ -24,6 +24,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
+    max-width: 1700px;
+    margin: 0 auto;
 }
 
 @layer components {
@@ -50,7 +52,17 @@ body {
   .text-gradient-animated-purple {
     @apply bg-gradient-to-r from-violet-600 from-10% via-violet-950 via-40% to-violet-600 to-90% text-transparent bg-clip-text bg-[length:400%_10px] animate-move_bg;
   }
-   .text-gradient-animated-red {
+  .text-gradient-animated-red {
     @apply bg-gradient-to-r from-red-600 from-10% via-red-300 via-40% to-red-600 to-90% text-transparent bg-clip-text bg-[length:400%_10px] animate-move_bg;
+  }
+}
+
+@layer utilities {
+  .clip-bg-brows-1 {
+    clip-path: polygon(0 85%, 100% 7%, 100% 100%, 0% 100%);
+  }
+
+  .clip-bg-brows-2 {
+    clip-path: polygon(0 37%, 100% 0, 100% 100%, 0% 100%);
   }
 }

@@ -23,7 +23,7 @@ export const Contact = () => {
     <section id='contacts' ref={ref}>
       <SectionHeader
         title='Contacts'
-        color='pink-400'
+        textColorClass='text-pink-400'
         src={contactImg}
       />
 

@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-   const plugin = require('tailwindcss/plugin');
+const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   content: [
@@ -8,6 +8,8 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   plugins: [
+    require('tailwind-clip-path'),
+
     plugin(({ matchUtilities, theme }) => {
       matchUtilities(
         {
@@ -40,14 +42,15 @@ module.exports = {
         'red-lips_1':
           "url('../assets/images/red_lips.png')",
 
-        'pink_lips':
-          "url('../assets/images/pink_lips.png')",
-
         'contact-bg':
           "url('../assets/images/pink_bg_1.png')",
+
+        'brows-section':
+          "url('../assets/images/brows_bg_brown_1.png')",
       },
       gridTemplateColumns: {
         'fill-250': 'repeat(auto-fill, minmax(250px, 1fr))',
+        'fill-275': 'repeat(auto-fill, minmax(275px, 1fr))',
       },
 
       keyframes: {

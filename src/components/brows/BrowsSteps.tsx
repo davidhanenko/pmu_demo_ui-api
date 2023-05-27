@@ -56,7 +56,11 @@ const StepCard = ({
 
   return (
     <div
-      className='h-[130px] my-4 relative'
+      className={`relative h-[130px] flex justify-center ${
+        isOpen
+          ? 'sm:odd:left-2/4 sm:even:right-2/4 lg:odd:left-1/4 lg:even:left-1/4 [&:nth-child(3)]:bottom-full last:bottom-full'
+          : ''
+      }`}
       ref={cardRef}
       data-id={id}
       onClick={e => handleClick(e)}
@@ -64,23 +68,32 @@ const StepCard = ({
       <motion.div
         layout
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1}}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: false }}
         transition={{
           layout: { duration: 0.5, ease: 'circOut' },
         }}
-        className={`bg-gradient-to-l from-purple1 to-purple3 p-4 cursor-pointer select-none overflow-hidden rounded-md ${
+        className={`bg-gradient-to-l from-rose-500 to-rose-300 p-4 cursor-pointer select-none overflow-hidden rounded-md shadow-lg overflow-none ${
           isOpen
-            ? 'h-[275px] absolute left-[-135px] sm:left-[-225px] w-[270px] sm:w-[450px] border-[1px] border-teal1'
+            ? 'absolute h-[275px] w-[270px] sm:w-[450px]'
             : 'h-[130px] w-[250px] sm:w-[300px]'
         } ${isOpen && id == i ? 'z-20' : ''}`}
       >
         <motion.h4
           layout={'position'}
-          className='m-0 text-xl text-teal1'
+          className={`m-0 text-xl text-sky-300 ${
+            isOpen && 'flex justify-between'
+          }`}
         >
-          <span className='mr-2 text-3xl'>{id}.</span>
-          {title}
+          <span>
+            <span className={`mr-2 text-3xl `}>{id}.</span>
+            {title}
+          </span>
+          {isOpen && (
+            <span className='font-light text-white text-4xl'>
+              &times;
+            </span>
+          )}
         </motion.h4>
         <p
           className={`truncate text-white pt-4 text-sm font-extralight ${
@@ -109,14 +122,13 @@ const StepCard = ({
 };
 
 export const BrowsSteps = () => {
-  const [selectedId, setSelectedId] = useState('');
   return (
-    <div className='col-span-12 lg:col-span-5  h-full w-full px-4 py-24'>
-      <h3 className='text-white text-3xl p-4 text-center'>
+    <div className='relative order-2 lg:order-1 col-span-12 lg:col-span-4 flex flex-col justify-end lg:justify-start h-full w-full px-4 py-8 sm:py-20 lg:py-8 z-20'>
+      <h3 className='text-zinc-950 font-semibold text-2xl py-8 text-center'>
         4 Simple Steps to Perfect Brows
       </h3>
 
-      <div className='flex flex-col justify-center items-center w-full'>
+      <div className=' grid gap-8 sm:grid-cols-2 lg:grid-cols-1 w-full'>
         {browsSteps.map(step => (
           <StepCard
             title={step.title}

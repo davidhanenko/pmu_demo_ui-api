@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { LipsTips } from './LipsTips';
 import { lipsProcess, lipsTechniques } from '@/constants';

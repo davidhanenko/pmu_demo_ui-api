@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 import { useNav } from '@/context/navContext';
 import { useInView } from 'react-intersection-observer';
@@ -18,7 +20,10 @@ export const Lips = () => {
   }, [inView, setActive]);
 
   return (
-    <section id='lips' className='relative min-h-screen z-10'>
+    <section
+      id='lips'
+      className='relative min-h-screen z-10'
+    >
       <div
         className='absolute top-0 left-0 h-full w-full z-10'
         ref={ref}

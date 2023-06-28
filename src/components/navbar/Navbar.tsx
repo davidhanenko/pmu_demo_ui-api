@@ -1,10 +1,12 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { navLinks } from '@/constants';
 import { useNav } from '@/context/navContext';
 import { NavLink } from './NavLink';
 import logo from '../../assets/images/logo.svg';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
@@ -45,7 +47,6 @@ export const Navbar = () => {
   // useEffect(() => {
   //   scroll < 300 && setActive('');
   // }, [scroll, setActive]);
-
 
   return (
     <nav className='bg-slate-950 fixed top-0 py-2 w-full flex items-center z-40'>

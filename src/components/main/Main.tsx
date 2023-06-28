@@ -1,3 +1,5 @@
+'use client';
+
 import { useNav } from '@/context/navContext';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -14,10 +16,7 @@ export const Main = () => {
   }, [inView]);
 
   return (
-    <section
-      className='h-screen bg-[#000]'
-      ref={ref}
-    >
+    <section className='h-screen bg-[#000]' ref={ref}>
       <MainCanvas />
     </section>
   );

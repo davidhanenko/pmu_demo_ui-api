@@ -1,3 +1,5 @@
+'use client';
+
 import { Scroll } from '@react-three/drei';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -17,13 +19,13 @@ export const MainOverlay = () => {
   });
   const { setActive } = useNav();
 
-  useEffect(() => {
-    setActive('');
-  }, [mainInView, setActive]);
+  // useEffect(() => {
+  //   setActive('');
+  // }, [mainInView, setActive]);
 
-  useEffect(() => {
-    setActive('About');
-  }, [inView, setActive]);
+  // useEffect(() => {
+  //   setActive('About');
+  // }, [inView, setActive]);
 
   return (
     <Scroll html>

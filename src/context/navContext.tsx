@@ -1,3 +1,5 @@
+'use client';
+
 import { useContext, createContext, useState } from 'react';
 
 interface INavState {

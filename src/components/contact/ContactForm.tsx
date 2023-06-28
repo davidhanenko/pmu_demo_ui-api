@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { contactReasons } from '@/constants';
 import { motion } from 'framer-motion';

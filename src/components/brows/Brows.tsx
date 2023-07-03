@@ -25,7 +25,7 @@ export const Brows = () => {
   }, [inView, setActive]);
 
   return (
-    <section id='brows' className='min-h-screen' ref={ref}>
+    <section id='brows' className='min-h-screen relative' ref={ref}>
       <SectionHeader
         title='Brows'
         textColorClass='text-amber-600'

@@ -49,7 +49,7 @@ export const Navbar = () => {
   // }, [scroll, setActive]);
 
   return (
-    <nav className='bg-slate-950 fixed top-0 py-2 w-full flex items-center z-40'>
+    <nav className='bg-slate-950 fixed top-0 py-2 w-full flex items-center z-40 max-w-[1700px]'>
       <div className='w-full items-center mx-auto px-4 grid grid-cols-12'>
         <div className='flex items-center col-span-3'>
           <div

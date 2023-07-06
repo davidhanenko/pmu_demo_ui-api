@@ -5,9 +5,7 @@ import { contactReasons } from '@/constants';
 import { motion } from 'framer-motion';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-const PHONE_REGEX = new RegExp(
-  /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/gim
-);
+import { phoneRegex } from '../../constants/index';
 
 type FormData = {
   name: string;
@@ -150,7 +148,7 @@ export const ContactForm = () => {
             {...register('phoneNumber', {
               required: 'Phone number is required',
               pattern: {
-                value: PHONE_REGEX,
+                value: phoneRegex,
                 message:
                   'Please enter a valid phone number, ex. 1112223333 or 111-222-3333',
               },

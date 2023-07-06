@@ -76,7 +76,8 @@ const handler = async (
   } catch (error) {
     res.status(500).json({
       status: 'fail',
-      message: `${error}`,
+      message:
+        'Something went wrong, please refresh the page and try again',
     });
   }
 };

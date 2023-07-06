@@ -32,6 +32,10 @@ export const contactReasons = [
   },
 ];
 
+export const phoneRegex = new RegExp(
+  /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/gim
+);
+
 export const browsSteps = [
   {
     id: '1',

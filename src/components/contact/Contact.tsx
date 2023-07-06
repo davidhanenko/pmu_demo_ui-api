@@ -22,7 +22,11 @@ export const Contact = () => {
   }, [inView, setActive]);
 
   return (
-    <section id='contacts' ref={ref}>
+    <section
+      id='contacts'
+      className='relative'
+      ref={ref}
+    >
       <SectionHeader
         title='Contacts'
         textColorClass='text-pink-400'

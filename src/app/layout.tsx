@@ -1,10 +1,11 @@
 import '@/styles/globals.css';
+
 import { Navbar } from '@/components/navbar';
 import { NavStateProvider } from '@/context/navContext';
 
 export const metadata = {
   title: 'IH pmu',
-  description: 'pmu artist in NYC',
+  description: 'pmu artist, NYC',
 };
 
 export default function RootLayout({

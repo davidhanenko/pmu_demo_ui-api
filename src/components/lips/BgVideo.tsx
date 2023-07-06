@@ -1,7 +1,9 @@
 'use client';
 
-import { CldVideoPlayer } from 'next-cloudinary';
 import { motion } from 'framer-motion';
+
+const videoSrc =
+  'https://res.cloudinary.com/ddqehibx0/video/upload/v1684362992/pmu/pexels-engin-akyurt-6067531-3840x2160-30fps_f5x5an.mp4';
 
 export const BgVideo = () => {
   return (
@@ -62,16 +64,17 @@ export const BgVideo = () => {
         </div>
       </div>
       <div>
-        <CldVideoPlayer
-          width='1460'
-          height='822'
-          autoPlay='on-scroll'
-          quality='auto'
-          loop={true}
-          muted={true}
-          controls={false}
-          src='pmu/pexels-engin-akyurt-6067531-3840x2160-30fps_f5x5an'
-        />
+        <video
+          width='1400'
+          height='720'
+          muted
+          loop
+          autoPlay
+          className='h-full w-full'
+        >
+          <source src={videoSrc} type='video/mp4' />
+        </video>
+
       </div>
     </div>
   );

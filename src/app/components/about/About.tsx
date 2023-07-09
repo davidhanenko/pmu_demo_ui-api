@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { fadeIn } from '@/utils/motions';
-import me from '../../assets/images/me_1.jpg';
+import me from '../../../assets/images/me_1.jpg';
 
 export const About = ({ ref }) => {
   // const { ref, inView } = useInView({

@@ -5,7 +5,7 @@ import { contactReasons } from '@/constants';
 import { motion } from 'framer-motion';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { phoneRegex } from '../../constants/index';
+import { phoneRegex } from '../../../constants/index';
 
 type FormData = {
   name: string;

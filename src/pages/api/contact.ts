@@ -22,7 +22,8 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USERNAME,
     pass: process.env.EMAIL_PASSWORD,
   },
-  // secure: true,
+  secure:
+    process.env.NODE_ENV == 'production' ? true : false,
 });
 
 const handler = async (

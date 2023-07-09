@@ -9,7 +9,7 @@ import { SectionHeader } from '../shared';
 import { Contacts } from './Contacts';
 import { ContactForm } from './ContactForm';
 
-import contactImg from '../../assets/images/pink_email.png';
+import contactImg from '../../../assets/images/pink_email.png';
 
 export const Contact = () => {
   const { ref, inView } = useInView({

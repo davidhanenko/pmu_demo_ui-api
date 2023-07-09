@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
 
-import { Navbar } from '@/components/navbar';
+import { Navbar } from '@/app/components/navbar';
 import { NavStateProvider } from '@/context/navContext';
 
 export const metadata = {

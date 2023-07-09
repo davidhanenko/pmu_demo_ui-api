@@ -7,7 +7,7 @@ import { BgVideo } from './BgVideo';
 import { LipsProcess } from './LipsProcess';
 import { SectionHeader } from '../shared';
 
-import lipsImg from '../../assets/images/pink_lips.png';
+import lipsImg from '../../../assets/images/pink_lips.png';
 
 export const Lips = () => {
   const { ref, inView } = useInView({

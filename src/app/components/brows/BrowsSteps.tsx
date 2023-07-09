@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { browsSteps } from '../../constants/index';
+import { browsSteps } from '../../../constants/index';
 import {
   SyntheticEvent,
   useEffect,

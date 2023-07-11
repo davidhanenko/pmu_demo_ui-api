@@ -2,23 +2,25 @@ import '@/styles/globals.css';
 
 import { Navbar } from '@/app/components/navbar';
 import { NavStateProvider } from '@/context/navContext';
+import React from 'react';
 
 export const metadata = {
   title: 'IH pmu',
   description: 'pmu artist, NYC',
 };
 
-export default function RootLayout({
-  children,
-}: {
+export default function RootLayout(props: {
   children: React.ReactNode;
+  brows: React.ReactNode;
 }) {
   return (
     <html lang='en'>
       <body>
         <NavStateProvider>
           <Navbar />
-          <div>{children}</div>
+          <div>
+            {props.children} {props.brows}
+          </div>
         </NavStateProvider>
       </body>
     </html>

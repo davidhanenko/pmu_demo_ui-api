@@ -5,7 +5,7 @@ import { useNav } from '@/context/navContext';
 import { useInView } from 'react-intersection-observer';
 import { BrowsTypes } from './BrowsTypes';
 import { BrowsSteps } from './BrowsSteps';
-import { SectionHeader } from '../shared';
+import { SectionHeader } from '../../components/shared';
 
 import browImg from '@/assets/images/brow_1.png';
 
@@ -25,7 +25,11 @@ export const Brows = () => {
   }, [inView, setActive]);
 
   return (
-    <section id='brows' className='min-h-screen relative' ref={ref}>
+    <section
+      id='brows'
+      className='min-h-screen relative'
+      ref={ref}
+    >
       <SectionHeader
         title='Brows'
         textColorClass='text-amber-600'

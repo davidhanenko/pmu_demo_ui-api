@@ -5,7 +5,7 @@ import { useNav } from '@/context/navContext';
 import { useInView } from 'react-intersection-observer';
 import { BgVideo } from './BgVideo';
 import { LipsProcess } from './LipsProcess';
-import { SectionHeader } from '../shared';
+import { SectionHeader } from '../../components/shared';
 
 import lipsImg from '../../../assets/images/pink_lips.png';
 

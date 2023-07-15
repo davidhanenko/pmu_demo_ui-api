@@ -82,7 +82,7 @@ const StepCard = ({
       >
         <motion.h4
           layout={'position'}
-          className={`m-0 text-xl text-sky-300 ${
+          className={`m-0 text-xl text-stone-700 ${
             isOpen && 'flex justify-between'
           }`}
         >

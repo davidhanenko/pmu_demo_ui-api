@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 
 import { useNav } from '@/context/navContext';
 
-import { SectionHeader } from '../shared';
+import { SectionHeader } from '../../components/shared';
 import { Contacts } from './Contacts';
 import { ContactForm } from './ContactForm';
 

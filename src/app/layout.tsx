@@ -12,6 +12,8 @@ export const metadata = {
 export default function RootLayout(props: {
   children: React.ReactNode;
   brows: React.ReactNode;
+  lips: React.ReactNode;
+  contact: React.ReactNode;
 }) {
   return (
     <html lang='en'>
@@ -19,7 +21,8 @@ export default function RootLayout(props: {
         <NavStateProvider>
           <Navbar />
           <div>
-            {props.children} {props.brows}
+            {props.children} {props.brows} {props.lips}
+            {props.contact}
           </div>
         </NavStateProvider>
       </body>

@@ -19,18 +19,18 @@ export const LipsProcess = () => {
             transition={{ duration: 1.5 }}
             className='max-w-[550px] p-2 py-8 md:p-8 bg-glass'
           >
-            <h4 className='text-red-500 bg-white text-3xl text-center font-semibold mb-4 py-3'>
+            <h4 className='text-red-500 bg-white text-3xl text-center font-semibold mb-8 py-4'>
               Lips Permanent Makeup Process
             </h4>
             <ul className='leading-6'>
               {lipsProcess.map(item => (
                 <li
-                  className='my-2 text-slate-800'
+                  className='my-4 text-slate-800'
                   key={item.id}
                 >
-                  <span className='mr-1 text-xl font-medium text-indigo-900 '>
+                  <p className='mr-1 text-xl font-bold text-gradient-animated-purple'>
                     {item.title}
-                  </span>
+                  </p>
                   <p className='inline'>{item.step}</p>
                 </li>
               ))}

@@ -35,20 +35,24 @@ export const Brows = () => {
         textColorClass='text-amber-600'
         src={browImg}
       />
+      <div className='md:hidden bg-slate-100'>
+        <BrowsTypes />
+      </div>
 
       <div className='relative h-[1100px] sm:h-[1000px] w-full bg-brows-section bg-bottom bg-cover bg-no-repeat'>
         <div className='absolute top-0 left-0 grid grid-cols-12 h-full w-full'>
-          <BrowsTypes />
+          <div className='hidden order-1 lg:order-2 relative col-span-12 lg:col-span-7 md:flex lg:justify-end h-full'>
+            <BrowsTypes />
+          </div>
           <BrowsSteps />
         </div>
         <div className='relative'>
           <div className='relative md:clip-bg-brows-2 lg:clip-bg-brows-1 h-full w-full'>
             <video
-              width='1400'
-              height='720'
               muted
               loop
               autoPlay
+              playsInline
               className='h-full w-full'
             >
               <source src={videoSrc} type='video/mp4' />

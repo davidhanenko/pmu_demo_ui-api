@@ -1,8 +1,8 @@
 export const BrowsDescription = () => {
   return (
-    <div className='absolute text-white top-0 sm:top-auto sm:bottom-0 right-0 md:w-[60%] h-full md:h-[300px] lg:h-[350px] flex flex-col justify-end z-20 p-8 tracking-wider overflow-scroll sm:overflow-visible'>
+    <div className='absolute text-white top-0 sm:top-auto sm:bottom-0 right-0 md:w-[55%] h-full md:h-[300px] lg:h-[350px] flex flex-col justify-end z-20 p-8 tracking-wider overflow-scroll sm:overflow-visible'>
       <div className='h-full w-full'>
-        <p className='text-sm md:text-base lg:text-lg'>
+        <p className='text-sm md:text-base '>
           At our studio, we specialize in the transformative
           art of permanent makeup, and one of our most
           popular techniques is the Powder Brows. Powder
@@ -12,7 +12,7 @@ export const BrowsDescription = () => {
           desire a defined, filled-in brow look without the
           need for daily makeup application.
         </p>
-        <p className='pt-4 text-sm md:text-base lg:text-lg'>
+        <p className='pt-4 text-sm md:text-base'>
           Our highly skilled and experienced artists utilize
           advanced microblading and shading techniques to
           create beautifully shaped and customized brows

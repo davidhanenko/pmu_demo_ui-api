@@ -76,7 +76,7 @@ const StepCard = ({
         }}
         className={`bg-gradient-to-l from-rose-500 to-rose-300 p-4 cursor-pointer select-none overflow-hidden rounded-md shadow-lg overflow-none ${
           isOpen
-            ? 'absolute h-[275px] w-[270px] sm:w-[450px]'
+            ? 'absolute h-[275px] w-11/12 sm:w-[450px]'
             : 'h-[130px] w-[250px] sm:w-[300px]'
         } ${isOpen && id == i ? 'z-20' : ''}`}
       >

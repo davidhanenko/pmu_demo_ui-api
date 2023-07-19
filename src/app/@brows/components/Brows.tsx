@@ -35,7 +35,7 @@ export const Brows = () => {
         textColorClass='text-amber-600'
         src={browImg}
       />
-      <div className='md:hidden bg-slate-100'>
+      <div className='md:hidden bg-amber-50'>
         <BrowsTypes />
       </div>
 

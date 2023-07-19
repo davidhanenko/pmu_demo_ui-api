@@ -1,28 +1,14 @@
-import { useNav } from '@/context/navContext';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { fadeIn } from '@/utils/motions';
+import Image from 'next/image';
+
+import { motion } from 'framer-motion';
+
 import me from '../../../assets/images/me_1.jpg';
 
-export const About = ({ ref }) => {
-  // const { ref, inView } = useInView({
-  //   threshold: 0.51,
-  // });
-  // const { setActive } = useNav();
-
-  // useEffect(() => {
-  //   setActive('About');
-  // }, [inView, setActive]);
-
+export const About = () => {
   return (
     <section>
-      <div
-        id='about'
-        className='relative before:content-[""] before:opacity-70 before:bg-cover before:bg-center before:absolute before:top-0 before:left-0 before:w-full before:h-full px-6 mt-24'
-        ref={ref}
-      >
+      <div className='relative before:content-[""] before:opacity-70 before:bg-cover before:bg-center before:absolute before:top-0 before:left-0 before:w-full before:h-full px-6 mt-24'>
         <div className='grid grid-cols-12 gap-4 py-24'>
           <div className='col-span-7 flex flex-col items-center justify-center px-4 bg-glass'>
             <div className='text-white font-light tracking-wider p-8 relative leading-7'>

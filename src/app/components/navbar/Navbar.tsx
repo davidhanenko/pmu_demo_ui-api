@@ -44,9 +44,6 @@ export const Navbar = () => {
     setActive('');
   };
 
-  // useEffect(() => {
-  //   scroll < 300 && setActive('');
-  // }, [scroll, setActive]);
 
   return (
     <nav className='bg-slate-950 fixed top-0 py-2 w-full flex items-center z-40 max-w-[1700px]'>

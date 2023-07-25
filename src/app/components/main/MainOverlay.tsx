@@ -1,4 +1,5 @@
 'use client';
+import { useEffect } from 'react';
 
 import { Scroll } from '@react-three/drei';
 import Image from 'next/image';
@@ -7,32 +8,25 @@ import { motion } from 'framer-motion';
 import faceImg from '../../../assets/images/faceAI1.png';
 import { useInView } from 'react-intersection-observer';
 import { useNav } from '@/context/navContext';
-import { useEffect } from 'react';
 import { About } from '../about';
 
 export const MainOverlay = () => {
   const { ref, inView } = useInView({
-    threshold: 0.8,
-  });
-  const { ref: mainRef, inView: mainInView } = useInView({
     threshold: 0.4,
   });
   const { setActive } = useNav();
 
-  // useEffect(() => {
-  //   setActive('');
-  // }, [mainInView, setActive]);
 
-  // useEffect(() => {
-  //   setActive('About');
-  // }, [inView, setActive]);
+  useEffect(() => {
+    setActive('About');
+  }, [inView, setActive]);
 
   return (
     <Scroll html>
       <section
-        ref={mainRef}
-        id='main'
+        id='about'
         className='pt-40 h-screen grid grid-cols-12'
+        ref={ref}
       >
         <div className='col-span-4'>
           <Image

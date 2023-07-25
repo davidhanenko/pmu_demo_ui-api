@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { Canvas } from '@react-three/fiber';
 import { Suspense, useEffect } from 'react';
@@ -24,7 +24,7 @@ export const MainCanvas = () => {
     >
       <Suspense fallback={null}>
         <ScrollControls
-          pages={3}
+          pages={3.4}
           damping={0.5}
           enabled={inView ? true : false}
           // style={{ overscrollBehavior: 'contain' }}

@@ -53,7 +53,7 @@ export const LipsProcess = () => {
                 className='relative w-[250px] h-[250px]'
               >
                 <Image
-                  src={`/../public/images/${item.image}`}
+                  src={`/images/${item.image}`}
                   alt=''
                   fill
                 />

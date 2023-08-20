@@ -12,7 +12,7 @@ import browImg from 'assets/images/brow_1.png';
 import { BrowsDescription } from './BrowsDescription';
 import { useNav } from '../../../../context/navContext';
 
-const videoSrc = process.env.NEXT_PUBLIC_BROWS_VIDEO_SRC;
+const videoSrc = process.env.NEXT_PUBLIC_VIDEO_BROWS_SRC;
 
 export const Brows = () => {
   const { ref, inView } = useInView({

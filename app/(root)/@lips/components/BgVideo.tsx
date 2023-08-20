@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 
-const videoSrc = process.env.NEXT_PUBLIC_LIPS_VIDEO_SRC;
+const videoSrc = process.env.NEXT_PUBLIC_VIDEO_LIPS_SRC;
 
 export const BgVideo = () => {
   return (

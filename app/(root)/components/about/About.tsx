@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+
 import Image from 'next/image';
 
 import { motion } from 'framer-motion';
@@ -12,7 +12,7 @@ export const About = () => {
         <div className='grid grid-cols-12 gap-4 py-24'>
           <div className='col-span-7 flex flex-col items-center justify-center px-4 bg-glass'>
             <div className='text-white font-light tracking-wider p-8 relative leading-7'>
-              <div className='bg-[#421414a6] opacity-50 h-full w-full absolute top-0 left-0 z-0' />
+              <div className='bg-[#721f1fa6] opacity-50 h-full w-full absolute top-0 left-0 z-0' />
 
               <motion.p
                 initial={{ opacity: 0 }}

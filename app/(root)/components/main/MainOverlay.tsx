@@ -9,7 +9,7 @@ import { useInView } from 'react-intersection-observer';
 
 import { About } from '../about';
 
-import faceImg from '../../../../assets/images/faceAI1.png';
+import faceImg from '../../../../assets/images/faceAI2_red.png';
 import { useNav } from '../../../../context/navContext';
 
 export const MainOverlay = () => {

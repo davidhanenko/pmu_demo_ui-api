@@ -12,15 +12,12 @@ export const Main = () => {
   const { setActive } = useNav();
 
   useEffect(() => {
-    if ( inView ) document.body.style.overflow = 'hidden';
+    if (inView) document.body.style.overflow = 'hidden';
     // setActive('About')
   }, [inView, setActive]);
 
   return (
-    <section
-      className='h-screen bg-[#000]'
-      ref={ref}
-    >
+    <section className='h-screen bg-[#000]' ref={ref}>
       <MainCanvas />
     </section>
   );

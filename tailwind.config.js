@@ -92,9 +92,32 @@ module.exports = {
           to: { height: 0 },
         },
 
-        move_bg: {
-          from: { 'background-position': '0 0' },
-          to: { 'background-position': '400% 0' },
+        moveBg: {
+          from: { backgroundPosition: '0 0' },
+          to: { backgroundPosition: '400% 0' },
+        },
+
+        animateMouse: {
+          from: {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateY(6px)',
+          },
+        },
+
+        mouseScroll: {
+          from: {
+            opacity: '1',
+          },
+          via: {
+            opacity: '0.5',
+          },
+          to: {
+            opacity: '0',
+          },
         },
       },
 
@@ -107,7 +130,9 @@ module.exports = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
 
-        move_bg: 'move_bg 12s linear infinite',
+        moveBg: 'moveBg 12s linear infinite',
+        animatedMouse: 'animateMouse 1.2s ease infinite',
+        mouseScroll: 'mouseScroll 1s infinite',
       },
     },
   },

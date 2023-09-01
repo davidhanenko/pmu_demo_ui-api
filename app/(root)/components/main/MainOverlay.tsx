@@ -11,6 +11,7 @@ import { About } from '../about';
 
 import faceImg from '../../../../assets/images/faceAI2_red.png';
 import { useNav } from '../../../../context/navContext';
+import ScrollAnimated from '../../../../components/ScrollIndicator';
 
 export const MainOverlay = () => {
   const { ref, inView } = useInView({
@@ -50,6 +51,9 @@ export const MainOverlay = () => {
           </p>
         </div>
       </section>
+      <div className='relative top-[100%] left-1/2 w-full'>
+        <ScrollAnimated />
+      </div>
       <section className='mt-4 grid grid-cols-12'>
         <motion.div
           initial={{ opacity: 0, scale: 0.5, y: 100 }}

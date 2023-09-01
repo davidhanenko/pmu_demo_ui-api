@@ -19,7 +19,6 @@ export const MainOverlay = () => {
   });
   const { setActive } = useNav();
 
-
   useEffect(() => {
     setActive('About');
   }, [inView, setActive]);
@@ -51,9 +50,18 @@ export const MainOverlay = () => {
           </p>
         </div>
       </section>
-      <div className='relative top-[100%] left-1/2 w-full'>
+
+      {/* mouse-scroll */}
+      <motion.div
+        initial={{ opacity: 1 }}
+        whileInView={{ opacity: 0 }}
+        viewport={{ once: false }}
+        transition={{ duration: 1 }}
+        className='relative bottom-16 flex justify-center'
+      >
         <ScrollAnimated />
-      </div>
+      </motion.div>
+
       <section className='mt-4 grid grid-cols-12'>
         <motion.div
           initial={{ opacity: 0, scale: 0.5, y: 100 }}
@@ -77,6 +85,7 @@ export const MainOverlay = () => {
           </div>
         </motion.div>
       </section>
+
       <About ref={ref} />
     </Scroll>
   );

@@ -107,18 +107,6 @@ module.exports = {
             transform: 'translateY(6px)',
           },
         },
-
-        mouseScroll: {
-          from: {
-            opacity: '1',
-          },
-          via: {
-            opacity: '0.5',
-          },
-          to: {
-            opacity: '0',
-          },
-        },
       },
 
       gridTemplateColumns: {
@@ -132,7 +120,6 @@ module.exports = {
 
         moveBg: 'moveBg 12s linear infinite',
         animatedMouse: 'animateMouse 1.2s ease infinite',
-        mouseScroll: 'mouseScroll 1s infinite',
       },
     },
   },

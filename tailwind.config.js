@@ -26,6 +26,7 @@ module.exports = {
         purple2: '#24043e',
         purple3: '#2b2266',
         teal1: '#41dce6',
+        
 
         primary: {
           DEFAULT: 'hsl(var(--primary))',

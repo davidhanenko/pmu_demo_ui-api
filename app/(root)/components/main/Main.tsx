@@ -13,7 +13,6 @@ export const Main = () => {
 
   useEffect(() => {
     if (inView) document.body.style.overflow = 'hidden';
-    // setActive('About')
   }, [inView, setActive]);
 
   return (

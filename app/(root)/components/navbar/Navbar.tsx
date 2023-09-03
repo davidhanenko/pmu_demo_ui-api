@@ -2,14 +2,12 @@
 
 import { useEffect, useState } from 'react';
 
-
 import { NavLink } from './NavLink';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
-
 
 import logo from '../../../../assets/images/logo.svg';
 import { navLinks } from '../../../../constants';
@@ -48,9 +46,8 @@ export const Navbar = () => {
     setActive('');
   };
 
-
   return (
-    <nav className='bg-slate-950 fixed top-0 py-2 w-full flex items-center z-40 max-w-[1700px]'>
+    <nav className='bg-slate-950 fixed top-0 py-2 flex items-center z-40 w-full'>
       <div className='w-full items-center mx-auto px-4 grid grid-cols-12'>
         <div className='flex items-center col-span-3'>
           <div

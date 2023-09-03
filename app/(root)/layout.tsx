@@ -13,7 +13,7 @@ export default function RootLayout(props: {
   return (
     <NavStateProvider>
       <Navbar />
-      <div>
+      <div className='max-width'>
         {props.children} {props.brows} {props.lips}
         {props.contact}
       </div>

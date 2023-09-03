@@ -55,7 +55,7 @@ export const MainOverlay = () => {
         </div>
       </section>
 
-      {/* scroll advise(mouse) */}
+      {/* scroll tip(mouse) */}
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: inView1 ? 0 : 1 }}

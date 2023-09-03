@@ -8,10 +8,6 @@ import { useGLTF, useScroll } from '@react-three/drei';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-// import {
-//   PreventScrolling,
-//   ReEnableScrolling,
-// } from 'prevent-scrolling';
 
 export const SECTION_HEIGHT = 3;
 export const SECTIONS = 2;

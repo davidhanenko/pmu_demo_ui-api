@@ -1,22 +1,26 @@
 'use client';
 import { useEffect } from 'react';
-
-import { Scroll } from '@react-three/drei';
 import Image from 'next/image';
+import { Scroll } from '@react-three/drei';
 import { motion } from 'framer-motion';
-
 import { useInView } from 'react-intersection-observer';
 
 import { About } from '../about';
-
-import faceImg from '../../../../assets/images/faceAI2_red.png';
 import { useNav } from '../../../../context/navContext';
 import ScrollAnimated from '../../../../components/ScrollIndicator';
+
+import faceImg from '../../../../assets/images/faceAI2_red.png';
 
 export const MainOverlay = () => {
   const { ref, inView } = useInView({
     threshold: 0.4,
   });
+
+  const { ref: ref1, inView: inView1 } = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
+
   const { setActive } = useNav();
 
   useEffect(() => {
@@ -51,11 +55,10 @@ export const MainOverlay = () => {
         </div>
       </section>
 
-      {/* mouse-scroll */}
+      {/* scroll advise(mouse) */}
       <motion.div
         initial={{ opacity: 1 }}
-        whileInView={{ opacity: 0 }}
-        viewport={{ once: false }}
+        animate={{ opacity: inView1 ? 0 : 1 }}
         transition={{ duration: 1 }}
         className='relative bottom-16 flex justify-center'
       >
@@ -70,7 +73,7 @@ export const MainOverlay = () => {
           transition={{ duration: 0.75 }}
           className='col-span-10 col-start-2 lg:col-start-6 lg:col-end-12 text-center'
         >
-          <div>
+          <div ref={ref1}>
             <p className='text-purple3 text-2xl mb-4 font-medium'>
               Wake Up with Beautiful Brows Every Day
             </p>
@@ -86,7 +89,7 @@ export const MainOverlay = () => {
         </motion.div>
       </section>
 
-      <About ref={ref} />
+      <About />
     </Scroll>
   );
 };

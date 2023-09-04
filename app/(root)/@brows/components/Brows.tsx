@@ -9,22 +9,24 @@ import { BrowsTypes } from './BrowsTypes';
 import { BrowsSteps } from './BrowsSteps';
 import { SectionHeader } from '../../components/shared';
 import { BrowsDescription } from './BrowsDescription';
+import ScrollAnimated from '../../../../components/ScrollIndicator';
 
 import browImg from 'assets/images/brow_1.png';
-import ScrollAnimated from '../../../../components/ScrollIndicator';
+import useScrollPosition from '../../../../lib/useScrollPosition';
 const videoSrc = process.env.NEXT_PUBLIC_VIDEO_BROWS_SRC;
 
 export const Brows = () => {
   const { ref, inView } = useInView({
     threshold: 0.4,
   });
+
   const { setActive } = useNav();
+  const scrollPosition = useScrollPosition();
 
   useEffect(() => {
     inView && setActive('Brows');
   }, [inView, setActive]);
 
- 
   return (
     <section
       id='brows'
@@ -39,15 +41,18 @@ export const Brows = () => {
       {/* scroll tip(mouse) */}
       <motion.div
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        animate={{
+          opacity:
+            scrollPosition < 25 || scrollPosition > 300
+              ? 0
+              : 1,
+        }}
         transition={{ duration: 1 }}
-        viewport={{ once: false }}
         className='absolute top-4 left-1/2 -translate-x-1/2'
       >
         <ScrollAnimated
           borderColor={'border-red-500'}
-          bgColor={'bg-red-400'}
+          bgColor={'bg-red-500'}
         />
       </motion.div>
 

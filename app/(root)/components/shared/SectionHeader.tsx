@@ -18,7 +18,7 @@ export const SectionHeader = ({
       >
         {title}
       </h2>
-      {src && (
+      {!!src && (
         <Image className='absolute right-2 lg:right-4  z-0' src={src} alt='' width={75} height={75} />
       )}
     </div>

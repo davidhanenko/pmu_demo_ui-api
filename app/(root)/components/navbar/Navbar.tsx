@@ -14,7 +14,6 @@ import { useNav } from '../../../../context/navContext';
 import logo from '../../../../assets/images/logo.svg';
 import { navLinks } from '../../../../constants';
 
-
 export const Navbar = () => {
   const router = useRouter();
   const { setActive, isOpen, setOpen } = useNav();

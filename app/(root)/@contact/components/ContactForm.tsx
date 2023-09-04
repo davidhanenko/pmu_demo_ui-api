@@ -5,7 +5,10 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { contactReasons, phoneRegex } from '../../../../constants/index';
+import {
+  contactReasons,
+  phoneRegex,
+} from '../../../../constants/index';
 
 type FormData = {
   name: string;
@@ -93,7 +96,7 @@ export const ContactForm = () => {
         onSubmit={handleSubmit(onSubmitForm)}
         className='relative bg-glass w-5/6 sm:w-3/4 px-4 lg:px-8 py-16'
       >
-        {statusMessage.message && (
+        {!!statusMessage.message && (
           <div
             className={`absolute top-1 left-4 lg:left-8 right-4 lg:right-8 py-3 text-sm flex justify-between items-center ${
               statusMessage.status === 'success'
@@ -128,7 +131,7 @@ export const ContactForm = () => {
               required: 'Name is required',
             })}
           />
-          {errors.name && (
+          {!!errors.name && (
             <span className='input-error'>
               {`${errors?.name?.message}*`}
             </span>
@@ -163,7 +166,7 @@ export const ContactForm = () => {
               },
             })}
           />
-          {errors.phoneNumber && (
+          {!!errors.phoneNumber && (
             <span className='input-error'>
               {`${errors?.phoneNumber?.message}*`}
             </span>

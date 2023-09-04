@@ -7,7 +7,6 @@ import { useInView } from 'react-intersection-observer';
 
 import { About } from '../about';
 import { useNav } from '../../../../context/navContext';
-import ScrollAnimated from '../../../../components/ScrollIndicator';
 
 import faceImg from '../../../../assets/images/faceAI2_red.png';
 
@@ -15,12 +14,6 @@ export const MainOverlay = () => {
   const { ref, inView } = useInView({
     threshold: 0.4,
   });
-
-  const { ref: refScrollTip, inView: inViewScrollTip } =
-    useInView({
-      threshold: 0.3,
-      triggerOnce: true,
-    });
 
   const { setActive } = useNav();
 
@@ -56,19 +49,6 @@ export const MainOverlay = () => {
         </div>
       </section>
 
-      {/* scroll tip(mouse) */}
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{ opacity: inViewScrollTip ? 0 : 1 }}
-        transition={{ duration: 1 }}
-        className='relative bottom-16 flex justify-center'
-      >
-        <ScrollAnimated
-          borderColor={'border-white'}
-          bgColor={'bg-white'}
-        />
-      </motion.div>
-
       <section className='mt-4 grid grid-cols-12'>
         <motion.div
           initial={{ opacity: 0, scale: 0.5, y: 100 }}
@@ -77,7 +57,7 @@ export const MainOverlay = () => {
           transition={{ duration: 0.75 }}
           className='col-span-10 col-start-2 lg:col-start-6 lg:col-end-12 text-center'
         >
-          <div ref={refScrollTip}>
+          <div>
             <p className='text-purple3 text-2xl mb-4 font-medium'>
               Wake Up with Beautiful Brows Every Day
             </p>

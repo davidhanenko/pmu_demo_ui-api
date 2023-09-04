@@ -38,17 +38,17 @@ export const Brows = () => {
         textColorClass='text-amber-600'
         src={browImg}
       />
-      {/* scroll tip(mouse) */}
+      {/* scroll availability tip(mouse) */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{
           opacity:
-            scrollPosition < 25 || scrollPosition > 300
-              ? 0
-              : 1,
+            scrollPosition > 50 && scrollPosition < 600
+              ? 1
+              : 0,
         }}
         transition={{ duration: 1 }}
-        className='absolute top-4 left-1/2 -translate-x-1/2'
+        className='absolute top-3 right-3'
       >
         <ScrollAnimated
           borderColor={'border-red-500'}

@@ -16,10 +16,11 @@ export const MainOverlay = () => {
     threshold: 0.4,
   });
 
-  const { ref: ref1, inView: inView1 } = useInView({
-    threshold: 0.3,
-    triggerOnce: true,
-  });
+  const { ref: refScrollTip, inView: inViewScrollTip } =
+    useInView({
+      threshold: 0.3,
+      triggerOnce: true,
+    });
 
   const { setActive } = useNav();
 
@@ -58,11 +59,14 @@ export const MainOverlay = () => {
       {/* scroll tip(mouse) */}
       <motion.div
         initial={{ opacity: 1 }}
-        animate={{ opacity: inView1 ? 0 : 1 }}
+        animate={{ opacity: inViewScrollTip ? 0 : 1 }}
         transition={{ duration: 1 }}
         className='relative bottom-16 flex justify-center'
       >
-        <ScrollAnimated />
+        <ScrollAnimated
+          borderColor={'border-white'}
+          bgColor={'bg-white'}
+        />
       </motion.div>
 
       <section className='mt-4 grid grid-cols-12'>
@@ -73,7 +77,7 @@ export const MainOverlay = () => {
           transition={{ duration: 0.75 }}
           className='col-span-10 col-start-2 lg:col-start-6 lg:col-end-12 text-center'
         >
-          <div ref={ref1}>
+          <div ref={refScrollTip}>
             <p className='text-purple3 text-2xl mb-4 font-medium'>
               Wake Up with Beautiful Brows Every Day
             </p>

@@ -1,17 +1,17 @@
 'use client';
 
 import { useEffect } from 'react';
-
 import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
+
+import { useNav } from '../../../../context/navContext';
 import { BrowsTypes } from './BrowsTypes';
 import { BrowsSteps } from './BrowsSteps';
 import { SectionHeader } from '../../components/shared';
+import { BrowsDescription } from './BrowsDescription';
 
 import browImg from 'assets/images/brow_1.png';
-
-import { BrowsDescription } from './BrowsDescription';
-import { useNav } from '../../../../context/navContext';
-
+import ScrollAnimated from '../../../../components/ScrollIndicator';
 const videoSrc = process.env.NEXT_PUBLIC_VIDEO_BROWS_SRC;
 
 export const Brows = () => {
@@ -24,6 +24,7 @@ export const Brows = () => {
     inView && setActive('Brows');
   }, [inView, setActive]);
 
+ 
   return (
     <section
       id='brows'
@@ -35,6 +36,21 @@ export const Brows = () => {
         textColorClass='text-amber-600'
         src={browImg}
       />
+      {/* scroll tip(mouse) */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: false }}
+        className='absolute top-4 left-1/2 -translate-x-1/2'
+      >
+        <ScrollAnimated
+          borderColor={'border-red-500'}
+          bgColor={'bg-red-400'}
+        />
+      </motion.div>
+
       <div className='md:hidden bg-amber-50'>
         <BrowsTypes />
       </div>

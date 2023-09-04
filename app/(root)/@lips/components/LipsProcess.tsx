@@ -11,7 +11,7 @@ import {
 
 export const LipsProcess = () => {
   return (
-    <div className='bg-red-lips_1 bg-local bg-[center_top_15rem] lg:bg-[right_top_5rem] bg-contain bg-no-repeat relative bg-overlay-gradient'>
+    <div className='bg-red-lips_1 bg-local bg-[center_top_15rem] lg:bg-[right_top_5rem] bg-contain bg-no-repeat relative bg-white bg-overlay-gradient'>
       <div className='relative p-4 py-8 md:p-16 h-full'>
         <div className='h-full md:p-8 flex flex-wrap gap-12 items-center md:justify-around flex-col md:flex-row bg-glass'>
           {/* left */}

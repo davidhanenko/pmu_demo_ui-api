@@ -1,41 +1,25 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
+import useScrollPosition from '../../../../lib/useScrollPosition';
 import { NavLink } from './NavLink';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
 
-import logo from '../../../../assets/images/logo.svg';
-import { navLinks } from '../../../../constants';
 import { useNav } from '../../../../context/navContext';
 
-type LinkType = {
-  id: string;
-  title: string;
-};
+import logo from '../../../../assets/images/logo.svg';
+import { navLinks } from '../../../../constants';
+
 
 export const Navbar = () => {
-  const [scroll, setScroll] = useState(0);
   const router = useRouter();
   const { setActive, isOpen, setOpen } = useNav();
 
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScroll(position);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, {
-      passive: true,
-    });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const scrollPosition = useScrollPosition();
 
   const handleLogoClick = () => {
     router.push('/');
@@ -58,10 +42,10 @@ export const Navbar = () => {
               className='transition-all'
               src={logo}
               alt='logo'
-              height={scroll > 100 ? 50 : 80}
-              width={scroll > 100 ? 50 : 80}
+              height={scrollPosition > 100 ? 50 : 80}
+              width={scrollPosition > 100 ? 50 : 80}
             />
-            {scroll < 100 && (
+            {scrollPosition < 100 && (
               <>
                 <p
                   className={`text-white text-center text-xs sm:block hidden `}
@@ -102,7 +86,7 @@ export const Navbar = () => {
         {isOpen && (
           <div
             className={`${
-              scroll > 100 ? 'top-12' : 'top-16'
+              scrollPosition > 100 ? 'top-12' : 'top-16'
             } transition-all absolute right-0 select-none bg-gradient-to-b from-slate-950 to-cyan-800 py-8 min-w-[160px] sm:hidden`}
           >
             <ul

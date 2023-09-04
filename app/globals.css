@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   background: black;
 }
@@ -12,7 +11,7 @@ body {
     @apply max-w-[1700px] mx-auto my-0;
   }
 
-  .bg-overlay-gradient {
+   .bg-overlay-gradient {
     @apply before:content-[""] before:bg-gradient-to-l from-red-600/40 to-transparent before:absolute before:top-0 before:left-0 before:w-full before:h-full;
   }
 

@@ -11,7 +11,7 @@ body {
     @apply max-w-[1700px] mx-auto my-0;
   }
 
-   .bg-overlay-gradient {
+  .bg-overlay-gradient {
     @apply before:content-[""] before:bg-gradient-to-l from-red-600/40 to-transparent before:absolute before:top-0 before:left-0 before:w-full before:h-full;
   }
 
@@ -21,6 +21,10 @@ body {
 
   .bg-glass {
     @apply bg-gradient-to-r from-[#ffffff1] to-[#ffffff0] backdrop-blur-md shadow-lg border-[1px] border-white/10;
+  }
+
+  .bg-glass-lighter {
+    @apply bg-gradient-to-r from-[#ffffff1] to-[#ffffff0] backdrop-blur-sm shadow-lg border-[1px] border-white/10;
   }
 
   .input-field {
@@ -37,6 +41,10 @@ body {
 
   .text-gradient-animated-red {
     @apply bg-gradient-to-r from-red-600 from-10% via-red-300 via-40% to-red-600 to-90% text-transparent bg-clip-text bg-[length:400%_10px] animate-moveBg;
+  }
+
+  .text-gradient-animated-red1 {
+    @apply bg-gradient-to-r from-slate-700 from-10% via-slate-500 via-40% to-slate-700 to-90% text-transparent bg-clip-text bg-[length:200%_10px] animate-moveBg1;
   }
 }
 

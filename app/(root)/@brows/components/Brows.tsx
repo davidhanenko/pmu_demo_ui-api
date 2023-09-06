@@ -35,7 +35,7 @@ export const Brows = () => {
     >
       <SectionHeader
         title='Brows'
-        textColorClass='text-amber-600'
+        textColorClass='text-rose-500'
         src={browImg}
       />
       {/* scroll availability tip(mouse) */}

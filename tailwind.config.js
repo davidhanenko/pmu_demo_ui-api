@@ -26,7 +26,6 @@ module.exports = {
         purple2: '#24043e',
         purple3: '#2b2266',
         teal1: '#41dce6',
-        
 
         primary: {
           DEFAULT: 'hsl(var(--primary))',
@@ -98,6 +97,11 @@ module.exports = {
           to: { backgroundPosition: '400% 0' },
         },
 
+        moveBg1: {
+          from: { backgroundPosition: '0 0' },
+          to: { backgroundPosition: '200% 0' },
+        },
+
         animateMouse: {
           from: {
             opacity: '1',
@@ -120,6 +124,8 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out',
 
         moveBg: 'moveBg 12s linear infinite',
+        moveBg1: 'moveBg 8s linear infinite',
+        
         animatedMouse: 'animateMouse 1.2s ease infinite',
       },
     },

@@ -9,11 +9,15 @@ import { MainOverlay } from './MainOverlay';
 import { useInView } from 'react-intersection-observer';
 import { Machine } from './Machine';
 import CanvasLoader from './Loader';
+import useMediaQuery from '../../../../lib/useMediaQuery';
 
 export const MainCanvas = () => {
   const { ref, inView } = useInView({
     threshold: 0.8,
   });
+
+  const isMobile = useMediaQuery(500);
+  const isTablet = useMediaQuery(768);
 
   return (
     <Canvas
@@ -29,7 +33,10 @@ export const MainCanvas = () => {
           damping={0.5}
           enabled={inView ? true : false}
         >
-          <Machine />
+          <Machine
+            isMobile={isMobile}
+            isTablet={isTablet}
+          />
           <MainOverlay />
         </ScrollControls>
       </Suspense>

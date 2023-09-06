@@ -28,7 +28,7 @@ export const MainOverlay = () => {
         className='pt-40 h-screen grid grid-cols-12'
         ref={ref}
       >
-        <div className='col-span-4'>
+        <div className='col-span-8 md:col-span-4'>
           <Image
             src={faceImg}
             alt='face image'
@@ -36,8 +36,8 @@ export const MainOverlay = () => {
             height={800}
           />
         </div>
-        <div className='col-span-4 mt-36 text-center'>
-          <h1 className='text-purple3 text-5xl font-bold'>
+        <div className='col-span-12 md:col-span-4 md:mt-36 text-center'>
+          <h1 className='text-purple3 text-5xl font-bold flex justify-end md:justify-center pr-4 md:pr-0'>
             Hi, I&apos;m Iryna
           </h1>
           <h3 className='text-white text-xl mt-4 tracking-wider '>
@@ -49,7 +49,7 @@ export const MainOverlay = () => {
         </div>
       </section>
 
-      <section className='mt-4 grid grid-cols-12'>
+      <section className='mt-40 md:mt-4 grid grid-cols-12'>
         <motion.div
           initial={{ opacity: 0, scale: 0.5, y: 100 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}

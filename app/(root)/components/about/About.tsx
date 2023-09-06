@@ -9,9 +9,9 @@ export const About = () => {
     <section>
       <div className='relative before:content-[""] before:opacity-70 before:bg-cover before:bg-center before:absolute before:top-0 before:left-0 before:w-full before:h-full px-6 mt-24'>
         <div className='grid grid-cols-12 gap-4 py-24'>
-          <div className='col-span-7 flex flex-col items-center justify-center px-4 bg-glass'>
+          <div className='col-span-12 md:col-span-7 flex flex-col items-center justify-center px-4 bg-glass-lighter'>
             <div className='text-white font-light tracking-wider p-8 relative leading-7'>
-              <div className='bg-[#721f1fa6] opacity-50 h-full w-full absolute top-0 left-0 z-0' />
+              <div className='opacity-30 h-full w-full absolute top-0 left-0 z-0' />
 
               <motion.p
                 initial={{ opacity: 0 }}
@@ -47,7 +47,7 @@ export const About = () => {
               </motion.p>
             </div>
           </div>
-          <div className='col-span-5 flex justify-center'>
+          <div className='col-span-12 md:col-span-5 flex justify-end md:justify-center'>
             <motion.div
               initial={{
                 opacity: 0,
@@ -73,16 +73,16 @@ export const About = () => {
           </div>
         </div>
       </div>
-      <div className='grid grid-cols-12 gap-4 pt-32'>
-        <div className='relative col-start-6 col-end-12 mt-16'>
-          <div className='absolute -top-6 -left-6 bg-[#421414a6] w-full h-[350px]'></div>
-          <div className='absolute top-0 left-0 bg-[#da31315f] w-full h-[350px] flex items-center  p-12'>
+      <div className='grid grid-cols-12 gap-4 md:pt-32'>
+        <div className='relative col-start-2 col-end-12 md:col-start-6 md:col-end-12 mt-16'>
+          {/* <div className='absolute -top-6 -left-6 bg-[#41dbe681] w-full h-[350px]'></div> */}
+          <div className='absolute top-0 left-0 bg-[#2b2266] w-full h-[350px] flex items-center  p-12'>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: false }}
               transition={{ duration: 1.5 }}
-              className='relative text-white z-10 py-4 leading-8 tracking-wider border-b-[1px] border-solid border-black'
+              className='relative text-white z-10 py-4 leading-8 tracking-wider border-b-[1px] border-solid border-red-500'
             >
               I rely on the best tools in the industry to
               deliver exceptional results. That&apos;s why I

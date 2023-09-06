@@ -8,25 +8,45 @@ import { useGLTF, useScroll } from '@react-three/drei';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-
 export const SECTION_HEIGHT = 3;
 export const SECTIONS = 2;
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Model = () => {
+type ModelProps = {
+  isMobile: boolean;
+  isTablet: boolean;
+};
+
+const Model = ({ isMobile, isTablet }: ModelProps) => {
   const { scene } = useGLTF('./m1/model.glb');
+
   return (
     <primitive
       object={scene}
-      scale={0.03}
-      position={[2, 0, -3]}
-      rotation={[-5, -0.9, 3]}
+      scale={isTablet ? (isMobile ? 0.015 : 0.02) : 0.03}
+      position={
+        isTablet
+          ? isMobile
+            ? [1, 1, -2]
+            : [0, 0, -3]
+          : [2, 0, -3]
+      }
+      rotation={
+        isTablet
+          ? isMobile
+            ? [-5.3, -1, 2.8]
+            : [-5, -0.9, 3]
+          : [-5, -0.9, 3]
+      }
     />
   );
 };
 
-export const Machine = () => {
+export const Machine = ({
+  isMobile,
+  isTablet,
+}: ModelProps) => {
   const ref = useRef();
   const tl = useRef();
   const { scene, camera } = useThree();
@@ -109,7 +129,7 @@ export const Machine = () => {
           shadow-mapSize-width={1024}
         />
         <pointLight intensity={20} />
-        <Model />
+        <Model isMobile={isMobile} isTablet={isTablet} />
       </mesh>
     </group>
   );

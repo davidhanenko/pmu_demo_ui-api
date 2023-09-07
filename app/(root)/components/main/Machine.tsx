@@ -18,6 +18,7 @@ type ModelProps = {
   isTablet: boolean;
 };
 
+// 3d model
 const Model = ({ isMobile, isTablet }: ModelProps) => {
   const { scene } = useGLTF('./m1/model.glb');
 
@@ -28,14 +29,14 @@ const Model = ({ isMobile, isTablet }: ModelProps) => {
       position={
         isTablet
           ? isMobile
-            ? [1, 1, -2]
+            ? [-0.5, 1, -1.4]
             : [0, 0, -3]
           : [2, 0, -3]
       }
       rotation={
         isTablet
           ? isMobile
-            ? [-5.3, -1, 2.8]
+            ? [-5.6, -1, 2.8]
             : [-5, -0.9, 3]
           : [-5, -0.9, 3]
       }
@@ -43,6 +44,7 @@ const Model = ({ isMobile, isTablet }: ModelProps) => {
   );
 };
 
+// model component
 export const Machine = ({
   isMobile,
   isTablet,

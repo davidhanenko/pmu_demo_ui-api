@@ -47,7 +47,7 @@ export const About = () => {
               </motion.p>
             </div>
           </div>
-          <div className='col-span-12 md:col-span-5 flex justify-end md:justify-center'>
+          <div className='col-span-12 md:col-span-5 flex justify-center mt-16 md:mt-0'>
             <motion.div
               initial={{
                 opacity: 0,
@@ -74,9 +74,8 @@ export const About = () => {
         </div>
       </div>
       <div className='grid grid-cols-12 gap-4 md:pt-32'>
-        <div className='relative col-start-2 col-end-12 md:col-start-6 md:col-end-12 mt-16'>
-          {/* <div className='absolute -top-6 -left-6 bg-[#41dbe681] w-full h-[350px]'></div> */}
-          <div className='absolute top-0 left-0 bg-[#2b2266] w-full h-[350px] flex items-center  p-12'>
+        <div className='relative col-start-2 col-end-12 lg:col-start-6 lg:col-end-12 mt-16 bg-[#2b2266e6]'>
+          <div className='flex items-center p-12'>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

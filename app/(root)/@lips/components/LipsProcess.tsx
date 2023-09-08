@@ -31,7 +31,7 @@ export const LipsProcess = () => {
                   className='my-4 text-slate-800'
                   key={item.id}
                 >
-                  <p className='mr-1 text-xl font-bold text-slate-800'>
+                  <p className='mr-1 text-xl font-bold text-slate-800 flex justify-end'>
                     {item.title}
                   </p>
                   <p className='inline'>{item.step}</p>

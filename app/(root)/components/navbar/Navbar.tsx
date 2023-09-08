@@ -86,7 +86,7 @@ export const Navbar = () => {
           <div
             className={`${
               scrollPosition > 100 ? 'top-12' : 'top-16'
-            } transition-all absolute right-0 select-none bg-gradient-to-b from-slate-950 to-cyan-800 py-8 min-w-[160px] sm:hidden`}
+            } transition-all absolute right-0 select-none bg-gradient-to-b from-slate-950 from-60% to-slate-800 py-8 min-w-[160px] sm:hidden`}
           >
             <ul
               className={`list-none px-6 w-full flex flex-col gap-y-2 items-start `}

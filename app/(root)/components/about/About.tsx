@@ -10,7 +10,7 @@ export const About = () => {
       <div className='relative before:content-[""] before:opacity-70 before:bg-cover before:bg-center before:absolute before:top-0 before:left-0 before:w-full before:h-full px-6 mt-24'>
         <div className='grid grid-cols-12 gap-4 py-24'>
           <div className='col-span-12 md:col-span-7 flex flex-col items-center justify-center px-4 bg-glass-lighter'>
-            <div className='text-white font-light tracking-wider p-8 relative leading-7'>
+            <div className='text-white font-light tracking-wider py-8 px-1 md:px-8 relative leading-7'>
               <div className='opacity-30 h-full w-full absolute top-0 left-0 z-0' />
 
               <motion.p
@@ -74,8 +74,8 @@ export const About = () => {
         </div>
       </div>
       <div className='grid grid-cols-12 gap-4 md:pt-32'>
-        <div className='relative col-start-2 col-end-12 lg:col-start-6 lg:col-end-12 mt-16 bg-[#2b2266e6]'>
-          <div className='flex items-center p-12'>
+        <div className='relative col-span-12 mx-4 sm:mx-0 sm:col-start-2 sm:col-end-12 lg:col-start-6 lg:col-end-12 mt-16 bg-[#2b2266e6]'>
+          <div className='flex items-center p-4 lg:p-12'>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

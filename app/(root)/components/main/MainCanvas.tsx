@@ -24,13 +24,16 @@ export const MainCanvas = () => {
       className=''
       ref={ref}
       shadows
-      camera={{ position: [10, 3, 0], fov: 50 }}
+      camera={{
+        position: isMobile ? [10, 10, 0] : [10, 3, 0],
+        fov: 50,
+      }}
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <ScrollControls
           pages={isTablet ? (isMobile ? 4.4 : 3.8) : 3.4}
-          damping={0.5}
+          damping={isMobile ? 1 : 0.5}
           enabled={inView ? true : false}
         >
           <Machine

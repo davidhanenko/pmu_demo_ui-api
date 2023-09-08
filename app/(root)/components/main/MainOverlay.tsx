@@ -25,7 +25,7 @@ export const MainOverlay = () => {
     <Scroll html>
       <section
         id='about'
-        className='pt-40 h-screen grid grid-cols-12'
+        className='pt-24 md:pt-40 h-screen grid grid-cols-12'
         ref={ref}
       >
         <div className='col-span-8 md:col-span-4'>

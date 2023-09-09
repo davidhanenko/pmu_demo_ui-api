@@ -33,7 +33,7 @@ export const MainCanvas = () => {
       <Suspense fallback={<CanvasLoader />}>
         <ScrollControls
           pages={isTablet ? (isMobile ? 4.4 : 3.8) : 3.4}
-          damping={isMobile ? 1 : 0.5}
+          damping={isMobile ? 0.5 : 0.5}
           enabled={inView ? true : false}
         >
           <Machine

@@ -125,7 +125,7 @@ module.exports = {
 
         moveBg: 'moveBg 12s linear infinite',
         moveBg1: 'moveBg 8s linear infinite',
-        
+
         animatedMouse: 'animateMouse 1.2s ease infinite',
       },
     },

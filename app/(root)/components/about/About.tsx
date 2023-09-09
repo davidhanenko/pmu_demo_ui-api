@@ -75,7 +75,7 @@ export const About = () => {
       </div>
       <div className='grid grid-cols-12 gap-4 md:pt-32'>
         <div className='relative col-span-12 mx-4 sm:mx-0 sm:col-start-2 sm:col-end-12 lg:col-start-6 lg:col-end-12 mt-16 bg-[#2b2266e6]'>
-          <div className='flex items-center p-4 lg:p-12'>
+          <div className='flex items-center px-4 py-8 lg:p-12'>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

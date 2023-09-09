@@ -193,11 +193,13 @@ export const ContactForm = () => {
             {errors?.email?.message}
           </span>
         </fieldset>
+
         {/* message */}
         <fieldset className='relative mb-6'>
           <textarea
             id='message'
             placeholder='Message'
+            rows={5}
             className={`input-field ${
               dirtyFields.message ? 'border-pink-400' : ''
             }`}

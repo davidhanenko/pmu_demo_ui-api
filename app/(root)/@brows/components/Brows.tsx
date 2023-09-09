@@ -56,7 +56,7 @@ export const Brows = () => {
         />
       </motion.div>
 
-      <div className='md:hidden bg-amber-50'>
+      <div className='md:hidden'>
         <BrowsTypes />
       </div>
 

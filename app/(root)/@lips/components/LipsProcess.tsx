@@ -22,9 +22,14 @@ export const LipsProcess = () => {
             transition={{ duration: 1.5 }}
             className='max-w-[550px] p-2 py-8 md:p-8 bg-glass'
           >
-            <h4 className='text-red-500 bg-white text-3xl text-center font-semibold mb-8 py-4'>
-              Lips Permanent Makeup Process
-            </h4>
+            <div className='flex justify-center items-center gap-1 text-3xl  mb-8 py-4'>
+              <p className='text-red-500 bg-white p-2 font-bold -skew-y-3'>
+                The
+              </p>
+              <p className=' text-slate-800  text-center font-semibold'>
+                Process
+              </p>
+            </div>
             <ul className='leading-6'>
               {lipsProcess.map(item => (
                 <li

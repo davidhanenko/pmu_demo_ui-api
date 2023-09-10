@@ -58,8 +58,6 @@ module.exports = {
       },
 
       backgroundImage: {
-        'about-section': "url('../assets/images/ny_1.jpg')",
-
         'about-section_2':
           "url('../assets/images/bg_3.png')",
 

@@ -205,7 +205,7 @@ export const ContactForm = () => {
             }`}
             {...register('message', {
               minLength: {
-                value: 5,
+                value: 4,
                 message: 'Tell me a bit more',
               },
             })}
@@ -218,7 +218,7 @@ export const ContactForm = () => {
           {/* select reason */}
           <div className='bg-red-50 p-4 rounded-none focus:border-purple-400 focus:outline-none focus:rounded-none shadow-[inset_0_0_2px_1px_#fbcfe8]'>
             <select
-              className='bg-red-50 w-full h-full focus:outline-none '
+              className='bg-red-50 w-full h-full focus:outline-none'
               {...register('reason')}
             >
               {contactReasons.map(reason => (

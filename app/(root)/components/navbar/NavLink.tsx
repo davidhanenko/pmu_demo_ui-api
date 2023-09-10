@@ -3,19 +3,19 @@ import React from 'react';
 import Link from 'next/link';
 import { useNav } from '../../../../context/navContext';
 
-
 type LinkBtnProps = {
   title: string;
   href?: string;
 };
 
 interface LinkProps {
+  key: string;
+  showActiveLink?: boolean;
   link: {
     id: string;
     title: string;
   };
 }
-
 
 //  link functional component - button
 const LinkBtn = React.forwardRef(
@@ -55,13 +55,16 @@ const LinkBtn = React.forwardRef(
   }
 );
 
-export const NavLink: React.FC<LinkProps> = ({ link }) => {
+export const NavLink: React.FC<LinkProps> = ({
+  link,
+  showActiveLink = true,
+}) => {
   const { active } = useNav();
 
   return (
     <li
       className={`${
-        active == link.title
+        showActiveLink && active == link.title
           ? 'text-red-800'
           : `text-red-600`
       } transition-colors hover:text-red-800 text-lg cursor-pointer`}
@@ -71,7 +74,7 @@ export const NavLink: React.FC<LinkProps> = ({ link }) => {
       </Link>
       <div
         className={`${
-          active === link.title
+          showActiveLink && active === link.title
             ? 'scale-x-125'
             : 'scale-x-0'
         } text-center select-none border-b-2 border-indigo-600 transition-transform scale-y-1}`}

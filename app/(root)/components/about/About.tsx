@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import { motion } from 'framer-motion';
 
-import me from '../../../../assets/images/me_1.jpg';
+import me from '../../../../assets/images/me_1_1.png';
 
 export const About = () => {
   return (

@@ -1,18 +1,18 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 import useScrollPosition from '../../../../lib/useScrollPosition';
-import { NavLink } from './NavLink';
-import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
 
 import { useNav } from '../../../../context/navContext';
+import { NavLink } from './NavLink';
+import { navLinks } from '../../../../constants';
 
 import logo from '../../../../assets/images/logo.svg';
-import { navLinks } from '../../../../constants';
 
 export const Navbar = () => {
   const router = useRouter();

@@ -214,11 +214,11 @@ export const ContactForm = () => {
             {errors?.message?.message}
           </span>
         </fieldset>
-        <div className='grid grid-cols-2 gap-4'>
+        <div className='grid grid-row md:grid-cols-2 gap-4'>
           {/* select reason */}
           <div className='bg-red-50 p-4 rounded-none focus:border-purple-400 focus:outline-none focus:rounded-none shadow-[inset_0_0_2px_1px_#fbcfe8]'>
             <select
-              className='bg-red-50 w-full h-full'
+              className='bg-red-50 w-full h-full focus:outline-none '
               {...register('reason')}
             >
               {contactReasons.map(reason => (

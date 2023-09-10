@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 
+import { lipsDescription } from '../../../../constants';
+
 const videoSrc = process.env.NEXT_PUBLIC_VIDEO_LIPS_SRC;
 
 export const BgVideo = () => {
@@ -49,14 +51,7 @@ export const BgVideo = () => {
                 transition={{ duration: 1.5 }}
                 className='text-white p-4 sm:p-8 md:p-4 text-sm sm:text-base md:text-lg tracking-wide'
               >
-                Enhance Your Natural Beauty with Lips
-                Permanent Makeup Introduction: Welcome to my
-                place, where we specialize in enhancing your
-                natural beauty through the art of permanent
-                makeup. In this section, we&apos;ll guide
-                you through the lips permanent makeup
-                process, available techniques and provide
-                helpful tips.
+                {lipsDescription}
               </motion.p>
             </div>
           </div>

@@ -36,6 +36,11 @@ export const phoneRegex = new RegExp(
   /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/gim
 );
 
+export const browsDescription = [
+  `One of the most popular kinds of permanent makeup is the Powder Brows — an eyebrow-boosting method that provides a soft and natural powdered effect. This technique is ideal for individuals with sparse, thin, or uneven brows, or those who desire more defined and symmetrical eyebrows.`,
+  `The pigment used is carefully selected to match your natural hair color, ensuring a harmonious and complementary result. It offers a semi-permanent solution, typically lasting 1-2 years, after which touch-up sessions may be required to maintain the desired look. It's a game-changer for those seeking a hassle-free, time-saving solution to achieving a flawless look daily.`,
+];
+
 export const browsSteps = [
   {
     id: '1',
@@ -95,6 +100,8 @@ export const lipsProcess = [
     step: `Once the procedure is complete, we'll provide you with detailed aftercare instructions to promote proper healing. It's essential to follow these instructions to maximize the longevity and appearance of your new lips`,
   },
 ];
+
+export const lipsDescription = `Get fuller, more defined lips with a subtle pop of color that lasts for years. This technique involves the application of pigments to the lips' outer layer, creating a semi-permanent makeup effect. The pigments used are carefully selected to match your desired lip color, ensuring a natural and flattering result. In this section, I'll guide you through the lip's permanent makeup process, and available techniques and provide helpful tips.`;
 
 export const lipsTips = [
   {

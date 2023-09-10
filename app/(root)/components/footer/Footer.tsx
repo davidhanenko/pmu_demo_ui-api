@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { navLinks } from '../../../../constants';
-import { useNav } from '../../../../context/navContext';
+
 import { NavLink } from '../navbar';
+
 
 export const Footer = () => {
   const [showActiveLink, setShowActiveLink] =

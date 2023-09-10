@@ -14,25 +14,30 @@ export const Footer = () => {
   }, [showActiveLink]);
 
   return (
-    <footer className='text-white p-4 md:p-8'>
+    <footer className='text-white px-4 md:px-12 py-12'>
       <div>
-        <p className='text-lg'>
+        <p className='tex-md md:text-lg'>
           Thank you for visiting us. We look forward to
           helping you discover your most beautiful self!
         </p>
       </div>
+      <div className='flex justify-center mt-12'>
+        <ul
+          className={`list-none w-fit py-2 px-6 flex gap-6 flex-row justify-center items-start [&>li]:text-sm border-t-2 border-purple3`}
+        >
+          {navLinks.map(link => (
+            <NavLink
+              key={link?.id}
+              link={link}
+              showActiveLink={showActiveLink}
+            />
+          ))}
+        </ul>
+      </div>
 
-      <ul
-        className={`list-none pt-8 pb-2 flex gap-6 flex-row justify-center items-start [&>li]:text-sm`}
-      >
-        {navLinks.map(link => (
-          <NavLink
-            key={link?.id}
-            link={link}
-            showActiveLink={showActiveLink}
-          />
-        ))}
-      </ul>
+      <p className='text-white text-xs w-full flex justify-end mt-6'>
+        © Copyright
+      </p>
     </footer>
   );
 };

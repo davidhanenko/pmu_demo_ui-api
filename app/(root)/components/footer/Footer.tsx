@@ -15,15 +15,15 @@ export const Footer = () => {
 
   return (
     <footer className='text-white p-4 md:p-8'>
-      <div className=''>
-        <p>
+      <div>
+        <p className='text-lg'>
           Thank you for visiting us. We look forward to
           helping you discover your most beautiful self!
         </p>
       </div>
 
       <ul
-        className={`list-none pt-8 pb-2 flex gap-6 flex-row justify-center items-start  `}
+        className={`list-none pt-8 pb-2 flex gap-6 flex-row justify-center items-start [&>li]:text-sm`}
       >
         {navLinks.map(link => (
           <NavLink

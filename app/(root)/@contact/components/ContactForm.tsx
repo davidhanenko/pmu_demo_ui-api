@@ -94,7 +94,7 @@ export const ContactForm = () => {
         viewport={{ once: false }}
         transition={{ duration: 1.5 }}
         onSubmit={handleSubmit(onSubmitForm)}
-        className='relative bg-glass w-5/6 sm:w-3/4 px-4 lg:px-8 py-16'
+        className='relative bg-glass w-5/6 lg:w-3/4 px-4 lg:px-8 py-16'
       >
         {!!statusMessage.message && (
           <div
@@ -199,13 +199,13 @@ export const ContactForm = () => {
           <textarea
             id='message'
             placeholder='Message'
-            rows={5}
+            rows={4}
             className={`input-field ${
               dirtyFields.message ? 'border-pink-400' : ''
             }`}
             {...register('message', {
               minLength: {
-                value: 4,
+                value: 5,
                 message: 'Tell me a bit more',
               },
             })}

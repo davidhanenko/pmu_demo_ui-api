@@ -94,7 +94,7 @@ export const ContactForm = () => {
         viewport={{ once: false }}
         transition={{ duration: 1.5 }}
         onSubmit={handleSubmit(onSubmitForm)}
-        className='relative bg-glass w-5/6 lg:w-3/4 px-4 lg:px-8 py-16'
+        className='relative bg-glass w-5/6 xl:w-3/4 px-4 lg:px-8 py-16'
       >
         {!!statusMessage.message && (
           <div

@@ -5,7 +5,6 @@ import { navLinks } from '../../../../constants';
 
 import { NavLink } from '../navbar';
 
-
 export const Footer = () => {
   const [showActiveLink, setShowActiveLink] =
     useState<boolean>(false);
@@ -24,7 +23,7 @@ export const Footer = () => {
       </div>
       <div className='flex justify-center mt-12'>
         <ul
-          className={`list-none w-fit py-2 px-6 flex gap-6 flex-row justify-center items-start [&>li]:text-sm border-t-2 border-purple3`}
+          className={`list-none w-fit py-4 px-6 md:px-12 flex gap-8 flex-row justify-center items-start [&>li]:text-sm border-t-[1px] border-purple3`}
         >
           {navLinks.map(link => (
             <NavLink

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { hasCookie, setCookie } from 'cookies-next';
 
@@ -24,13 +25,21 @@ const CookieConsent = () => {
   return (
     <div className='fixed inset-0 bg-slate-700 bg-opacity-70'>
       <div className='fixed bottom-0 left-0 right-0 flex flex-col md:flex-row gap-8 md:gap-0 items-center justify-between px-4 py-8 bg-gray-100'>
-        <span className='text-dark text-base mr-16'>
+        <div>
+          <Image
+            src={'/images/cookie.png'}
+            alt={'cookie'}
+            width={64}
+            height={64}
+          />
+        </div>
+        <span className='text-dark text-base md:mx-16'>
           This website uses cookies to improve user
           experience. By using our website you consent to
           all cookies in accordance with our Cookie Policy.
         </span>
         <button
-          className='bg-green-500 py-2 px-8 rounded text-white'
+          className='bg-purple-600 hover:bg-purple-500 py-2 px-8 rounded text-white'
           onClick={() => acceptCookie()}
         >
           Accept

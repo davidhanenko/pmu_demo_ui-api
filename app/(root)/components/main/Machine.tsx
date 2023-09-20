@@ -1,9 +1,9 @@
 'use client';
 
-import { useFrame, useThree } from '@react-three/fiber';
 import { useLayoutEffect, useRef } from 'react';
-
+import { useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, useScroll } from '@react-three/drei';
+
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';

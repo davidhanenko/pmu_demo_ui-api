@@ -14,7 +14,7 @@ export const Footer = () => {
   }, [showActiveLink]);
 
   return (
-    <footer className='text-white px-4 md:px-12 py-12'>
+    <footer className='bg-black max-width text-white px-4 md:px-12 py-16'>
       <div>
         <p className='tex-md md:text-lg'>
           Thank you for visiting us. We look forward to

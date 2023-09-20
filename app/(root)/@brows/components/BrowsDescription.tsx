@@ -1,4 +1,4 @@
-import { browsDescription } from '../../../../constants';
+import { browsDescription } from '@/constants';
 
 export const BrowsDescription = () => {
   return (

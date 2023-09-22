@@ -9,7 +9,7 @@ export default function DashboardLayout({
 }) {
   return (
     <ClerkProvider>
-      <div className='bg-slate-800'>
+      <div className='bg-slate-800 h-screen'>
         <DashboardNav />
         <div>{children}</div>
       </div>

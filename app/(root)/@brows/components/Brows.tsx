@@ -4,15 +4,15 @@ import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 
-import { useNav } from '../../../../context/navContext';
+import { useNav } from '@/context/navContext';
 import { BrowsTypes } from './BrowsTypes';
 import { BrowsSteps } from './BrowsSteps';
 import { SectionHeader } from '../../components/shared';
 import { BrowsDescription } from './BrowsDescription';
-import ScrollAnimated from '../../../../components/ScrollIndicator';
+import ScrollAnimated from '@/components/ScrollIndicator';
 
 import browImg from 'assets/images/brow_1.png';
-import useScrollPosition from '../../../../lib/useScrollPosition';
+import useScrollPosition from '@/lib/useScrollPosition';
 const videoSrc = process.env.NEXT_PUBLIC_VIDEO_BROWS_SRC;
 
 export const Brows = () => {

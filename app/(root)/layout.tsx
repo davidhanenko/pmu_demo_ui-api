@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Navbar } from './components/navbar';
-import { NavStateProvider } from '../../context/navContext';
+import { NavStateProvider } from '@/context/navContext';
 import { Footer } from './components/footer';
 
 export default function RootLayout(props: {

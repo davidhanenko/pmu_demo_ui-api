@@ -58,8 +58,6 @@ module.exports = {
       },
 
       backgroundImage: {
-        'about-section': "url('../assets/images/ny_1.jpg')",
-
         'about-section_2':
           "url('../assets/images/bg_3.png')",
 
@@ -92,9 +90,25 @@ module.exports = {
           to: { height: 0 },
         },
 
-        move_bg: {
-          from: { 'background-position': '0 0' },
-          to: { 'background-position': '400% 0' },
+        moveBg: {
+          from: { backgroundPosition: '0 0' },
+          to: { backgroundPosition: '400% 0' },
+        },
+
+        moveBg1: {
+          from: { backgroundPosition: '0 0' },
+          to: { backgroundPosition: '200% 0' },
+        },
+
+        animateMouse: {
+          from: {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateY(6px)',
+          },
         },
       },
 
@@ -107,7 +121,10 @@ module.exports = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
 
-        move_bg: 'move_bg 12s linear infinite',
+        moveBg: 'moveBg 12s linear infinite',
+        moveBg1: 'moveBg 8s linear infinite',
+
+        animatedMouse: 'animateMouse 1.2s ease infinite',
       },
     },
   },

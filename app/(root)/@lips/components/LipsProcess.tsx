@@ -11,7 +11,7 @@ import {
 
 export const LipsProcess = () => {
   return (
-    <div className='bg-red-lips_1 bg-local bg-[center_top_15rem] lg:bg-[right_top_5rem] bg-contain bg-no-repeat relative bg-overlay-gradient'>
+    <div className='bg-red-lips_1 bg-local bg-[center_top_15rem] lg:bg-[right_top_5rem] bg-contain bg-no-repeat relative bg-white bg-overlay-gradient'>
       <div className='relative p-4 py-8 md:p-16 h-full'>
         <div className='h-full md:p-8 flex flex-wrap gap-12 items-center md:justify-around flex-col md:flex-row bg-glass'>
           {/* left */}
@@ -22,16 +22,21 @@ export const LipsProcess = () => {
             transition={{ duration: 1.5 }}
             className='max-w-[550px] p-2 py-8 md:p-8 bg-glass'
           >
-            <h4 className='text-red-500 bg-white text-3xl text-center font-semibold mb-8 py-4'>
-              Lips Permanent Makeup Process
-            </h4>
+            <div className='flex justify-center items-center gap-1 text-3xl  mb-8 py-4'>
+              <p className='text-red-500 bg-white p-2 font-bold -skew-y-3'>
+                The
+              </p>
+              <p className=' text-slate-800  text-center font-semibold'>
+                Process
+              </p>
+            </div>
             <ul className='leading-6'>
               {lipsProcess.map(item => (
                 <li
                   className='my-4 text-slate-800'
                   key={item.id}
                 >
-                  <p className='mr-1 text-xl font-bold text-gradient-animated-purple'>
+                  <p className='mr-1 text-xl font-bold text-slate-800 flex justify-end'>
                     {item.title}
                   </p>
                   <p className='inline'>{item.step}</p>
@@ -53,7 +58,7 @@ export const LipsProcess = () => {
                 className='relative w-[250px] h-[250px]'
               >
                 <Image
-                  src={`/../public/images/${item.image}`}
+                  src={`/images/${item.image}`}
                   alt=''
                   fill
                 />

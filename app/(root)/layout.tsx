@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { Navbar } from './components/navbar';
-import { NavStateProvider } from '../../context/navContext';
+import { NavStateProvider } from '@/context/navContext';
+import { Footer } from './components/footer';
 
 export default function RootLayout(props: {
   children: React.ReactNode;
@@ -13,10 +14,11 @@ export default function RootLayout(props: {
   return (
     <NavStateProvider>
       <Navbar />
-      <div>
+      <div className='max-width'>
         {props.children} {props.brows} {props.lips}
         {props.contact}
       </div>
+      <Footer />
     </NavStateProvider>
   );
 }

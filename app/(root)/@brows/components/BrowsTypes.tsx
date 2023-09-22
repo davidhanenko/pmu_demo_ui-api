@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 
 export const BrowsTypes = () => {
   return (
-    <div className='py-20'>
-      <ul className='list-none relative px-8 text-3xl font-bold z-10 tracking-wide'>
+    <div className='py-8 lg:py-20'>
+      <ul className='list-none relative px-8 text-xl lg:text-3xl font-bold z-10 tracking-wide'>
         {' '}
         <motion.li
           initial={{ opacity: 0, y: 50 }}

@@ -5,7 +5,10 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { contactReasons, phoneRegex } from '../../../../constants/index';
+import {
+  contactReasons,
+  phoneRegex,
+} from '../../../../constants/index';
 
 type FormData = {
   name: string;
@@ -91,9 +94,9 @@ export const ContactForm = () => {
         viewport={{ once: false }}
         transition={{ duration: 1.5 }}
         onSubmit={handleSubmit(onSubmitForm)}
-        className='relative bg-glass w-5/6 sm:w-3/4 px-4 lg:px-8 py-16'
+        className='relative bg-glass w-5/6 xl:w-3/4 px-4 lg:px-8 py-16'
       >
-        {statusMessage.message && (
+        {!!statusMessage.message && (
           <div
             className={`absolute top-1 left-4 lg:left-8 right-4 lg:right-8 py-3 text-sm flex justify-between items-center ${
               statusMessage.status === 'success'
@@ -128,7 +131,7 @@ export const ContactForm = () => {
               required: 'Name is required',
             })}
           />
-          {errors.name && (
+          {!!errors.name && (
             <span className='input-error'>
               {`${errors?.name?.message}*`}
             </span>
@@ -163,7 +166,7 @@ export const ContactForm = () => {
               },
             })}
           />
-          {errors.phoneNumber && (
+          {!!errors.phoneNumber && (
             <span className='input-error'>
               {`${errors?.phoneNumber?.message}*`}
             </span>
@@ -190,11 +193,13 @@ export const ContactForm = () => {
             {errors?.email?.message}
           </span>
         </fieldset>
+
         {/* message */}
         <fieldset className='relative mb-6'>
           <textarea
             id='message'
             placeholder='Message'
+            rows={4}
             className={`input-field ${
               dirtyFields.message ? 'border-pink-400' : ''
             }`}
@@ -209,11 +214,11 @@ export const ContactForm = () => {
             {errors?.message?.message}
           </span>
         </fieldset>
-        <div className='grid grid-cols-2 gap-4'>
+        <div className='grid grid-row md:grid-cols-2 gap-4'>
           {/* select reason */}
           <div className='bg-red-50 p-4 rounded-none focus:border-purple-400 focus:outline-none focus:rounded-none shadow-[inset_0_0_2px_1px_#fbcfe8]'>
             <select
-              className='bg-red-50 w-full h-full'
+              className='bg-red-50 w-full h-full focus:outline-none'
               {...register('reason')}
             >
               {contactReasons.map(reason => (

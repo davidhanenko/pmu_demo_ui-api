@@ -1,43 +1,24 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
-
-import { NavLink } from './NavLink';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+
+import useScrollPosition from '../../../../lib/useScrollPosition';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
 
+import { useNav } from '../../../../context/navContext';
+import { NavLink } from './NavLink';
+import { navLinks } from '../../../../constants';
 
 import logo from '../../../../assets/images/logo.svg';
-import { navLinks } from '../../../../constants';
-import { useNav } from '../../../../context/navContext';
-
-type LinkType = {
-  id: string;
-  title: string;
-};
 
 export const Navbar = () => {
-  const [scroll, setScroll] = useState(0);
   const router = useRouter();
   const { setActive, isOpen, setOpen } = useNav();
 
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScroll(position);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, {
-      passive: true,
-    });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const scrollPosition = useScrollPosition();
 
   const handleLogoClick = () => {
     router.push('/');
@@ -48,9 +29,8 @@ export const Navbar = () => {
     setActive('');
   };
 
-
   return (
-    <nav className='bg-slate-950 fixed top-0 py-2 w-full flex items-center z-40 max-w-[1700px]'>
+    <nav className='bg-slate-950 fixed top-0 py-2 flex items-center z-40 w-full'>
       <div className='w-full items-center mx-auto px-4 grid grid-cols-12'>
         <div className='flex items-center col-span-3'>
           <div
@@ -61,10 +41,10 @@ export const Navbar = () => {
               className='transition-all'
               src={logo}
               alt='logo'
-              height={scroll > 100 ? 50 : 80}
-              width={scroll > 100 ? 50 : 80}
+              height={scrollPosition > 100 ? 50 : 80}
+              width={scrollPosition > 100 ? 50 : 80}
             />
-            {scroll < 100 && (
+            {scrollPosition < 100 && (
               <>
                 <p
                   className={`text-white text-center text-xs sm:block hidden `}
@@ -105,8 +85,8 @@ export const Navbar = () => {
         {isOpen && (
           <div
             className={`${
-              scroll > 100 ? 'top-12' : 'top-16'
-            } transition-all absolute right-0 select-none bg-gradient-to-b from-slate-950 to-cyan-800 py-8 min-w-[160px] sm:hidden`}
+              scrollPosition > 100 ? 'top-12' : 'top-16'
+            } transition-all absolute right-0 select-none bg-gradient-to-b from-slate-950 from-60% to-slate-800 py-8 min-w-[160px] sm:hidden`}
           >
             <ul
               className={`list-none px-6 w-full flex flex-col gap-y-2 items-start `}

@@ -1,25 +1,27 @@
 'use client';
 
 import { useEffect } from 'react';
-
 import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
+
+import { useNav } from '@/context/navContext';
 import { BrowsTypes } from './BrowsTypes';
 import { BrowsSteps } from './BrowsSteps';
 import { SectionHeader } from '../../components/shared';
+import { BrowsDescription } from './BrowsDescription';
+import ScrollAnimated from '@/components/ScrollIndicator';
 
 import browImg from 'assets/images/brow_1.png';
-
-import { BrowsDescription } from './BrowsDescription';
-import { useNav } from '../../../../context/navContext';
-
-const videoSrc =
-  'https://res.cloudinary.com/ddqehibx0/video/upload/v1684093291/pmu/brows_v_1_isrehe.mp4';
+import useScrollPosition from '@/lib/useScrollPosition';
+const videoSrc = process.env.NEXT_PUBLIC_VIDEO_BROWS_SRC;
 
 export const Brows = () => {
   const { ref, inView } = useInView({
     threshold: 0.4,
   });
+
   const { setActive } = useNav();
+  const scrollPosition = useScrollPosition();
 
   useEffect(() => {
     inView && setActive('Brows');
@@ -33,10 +35,28 @@ export const Brows = () => {
     >
       <SectionHeader
         title='Brows'
-        textColorClass='text-amber-600'
+        textColorClass='text-rose-500'
         src={browImg}
       />
-      <div className='md:hidden bg-amber-50'>
+      {/* scroll availability tip(mouse) */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity:
+            scrollPosition > 50 && scrollPosition < 600
+              ? 1
+              : 0,
+        }}
+        transition={{ duration: 1 }}
+        className='absolute top-3 right-3'
+      >
+        <ScrollAnimated
+          borderColor={'border-red-500'}
+          bgColor={'bg-red-500'}
+        />
+      </motion.div>
+
+      <div className='md:hidden'>
         <BrowsTypes />
       </div>
 

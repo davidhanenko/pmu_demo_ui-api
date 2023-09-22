@@ -1,23 +1,21 @@
 'use client';
 import { useEffect } from 'react';
-
-import { Scroll } from '@react-three/drei';
 import Image from 'next/image';
+import { Scroll } from '@react-three/drei';
 import { motion } from 'framer-motion';
-
 import { useInView } from 'react-intersection-observer';
 
 import { About } from '../about';
-
-import faceImg from '../../../../assets/images/faceAI1.png';
 import { useNav } from '../../../../context/navContext';
+
+import faceImg from '../../../../assets/images/faceAI2_red.png';
 
 export const MainOverlay = () => {
   const { ref, inView } = useInView({
     threshold: 0.4,
   });
-  const { setActive } = useNav();
 
+  const { setActive } = useNav();
 
   useEffect(() => {
     setActive('About');
@@ -27,10 +25,10 @@ export const MainOverlay = () => {
     <Scroll html>
       <section
         id='about'
-        className='pt-40 h-screen grid grid-cols-12'
+        className='pt-24 md:pt-40 h-screen grid grid-cols-12'
         ref={ref}
       >
-        <div className='col-span-4'>
+        <div className='col-span-8 md:col-span-4'>
           <Image
             src={faceImg}
             alt='face image'
@@ -38,9 +36,9 @@ export const MainOverlay = () => {
             height={800}
           />
         </div>
-        <div className='col-span-4 mt-36 text-center'>
-          <h1 className='text-purple3 text-5xl font-bold'>
-            Hi, I&apos;m Iryna
+        <div className='col-span-12 md:col-span-4 md:mt-36 text-center'>
+          <h1 className='text-purple3 text-5xl font-bold flex justify-end md:justify-center pr-4 md:pr-0'>
+            Hi, I&apos;m [Name]
           </h1>
           <h3 className='text-white text-xl mt-4 tracking-wider '>
             your permanent makeup artist 💋
@@ -50,7 +48,8 @@ export const MainOverlay = () => {
           </p>
         </div>
       </section>
-      <section className='mt-4 grid grid-cols-12'>
+
+      <section className='mt-40 md:mt-4 grid grid-cols-12'>
         <motion.div
           initial={{ opacity: 0, scale: 0.5, y: 100 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -73,7 +72,8 @@ export const MainOverlay = () => {
           </div>
         </motion.div>
       </section>
-      <About ref={ref} />
+
+      <About />
     </Scroll>
   );
 };

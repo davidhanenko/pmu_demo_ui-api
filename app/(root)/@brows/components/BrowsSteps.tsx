@@ -126,7 +126,7 @@ export const BrowsSteps = () => {
   return (
     <div className='relative order-2 lg:order-1 col-span-12 lg:col-span-4 flex flex-col justify-end lg:justify-start h-full w-full px-4 py-8 sm:py-20 lg:py-8 z-20'>
       <h3 className='text-zinc-950 font-semibold text-2xl py-8 text-center'>
-        4 Simple Steps to Perfect Brows
+        4 Simple Steps to <span className='text-rose-600' >Perfect</span> Brows
       </h3>
 
       <div className=' grid gap-8 sm:grid-cols-2 lg:grid-cols-1 w-full'>

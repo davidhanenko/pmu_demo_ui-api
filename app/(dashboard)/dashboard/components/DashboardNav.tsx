@@ -9,53 +9,28 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import Link from 'next/link';
+import { navLinks } from '@/constants';
 
 export default function DashboardNav() {
   return (
     <nav className='flex justify-between p-6 bg-slate-900'>
       <NavigationMenu>
         <NavigationMenuList>
-          <NavigationMenuItem>
-            <Link href='/dashboard/about'>
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
+          {navLinks.map(link => (
+            <NavigationMenuItem key={link.id}>
+              <Link
+                href={`/dashboard/${link.id}`}
+                legacyBehavior
+                passHref
               >
-                About
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href='/dashboard/brows' legacyBehavior passHref>
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
-              >
-                Brows
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <Link
-              href='/dashboard/lips'
-              legacyBehavior
-              passHref
-            >
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
-              >
-                Lips
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href='/dashboard/contacts' legacyBehavior passHref>
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
-              >
-                Contacts
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                >
+                  {link.title}
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          ))}
         </NavigationMenuList>
       </NavigationMenu>
       <div className=' ml-auto '>

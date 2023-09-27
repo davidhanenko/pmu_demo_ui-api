@@ -33,7 +33,10 @@ export default function DashboardNav() {
           ))}
         </NavigationMenuList>
       </NavigationMenu>
-      <div className=' ml-auto '>
+      <div className='flex flex-row items-center'>
+        <Link href='/' className='text-white mr-6'>
+          back
+        </Link>
         <UserButton afterSignOutUrl='/' />
       </div>
     </nav>

@@ -6,16 +6,11 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const { description } = body;
+    const { name } = body;
 
     const brows = await prismadb.brows.create({
       data: {
-        description: {
-          create: {
-            text: description,
-          },
-        },
-        videoBg: 'default-video-bg', // add the missing property
+        name: body.name,
       },
     });
 
@@ -27,4 +22,3 @@ export async function POST(req: Request) {
     });
   }
 }
-

@@ -1,25 +1,34 @@
-'use client';
+import prismadb from '@/lib/prismadb';
+import { Description } from './components';
+import { InitModal } from './components/InitModal';
 
-import axios from 'axios';
-import { useState } from 'react';
+const BrowsPage = async () => {
+  const brows = await prismadb.brows.findUnique({
+    where: {
+      name: 'brows',
+    },
+  });
 
-export default function Page() {
-  const [d, setD] = useState('');
-
-  const handleSubmit = async () => {
-    await axios.post('/api/brows', {
-      description: d,
-      steps: [],
-      videoBg: '',
-    });
-  };
+  console.log( brows );
+  
+  if ( !brows ) { 
+    
+  }
 
   return (
     <div className='text-white'>
-      <form onSubmit={handleSubmit}>
-        <input type='text' name='description' />
-        <button type='submit'>save</button>
-      </form>
+      <header className='text-2xl'>
+        <span className='text-slate-400 font-bold'>
+          Brows
+        </span>{' '}
+        Settings
+      </header>
+
+      <InitModal />
+
+      <Description />
     </div>
   );
-}
+};
+
+export default BrowsPage;

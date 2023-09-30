@@ -8,3 +8,4 @@ export const Heading = ({ name }: { name: string }) => {
     </header>
   );
 };
+ 

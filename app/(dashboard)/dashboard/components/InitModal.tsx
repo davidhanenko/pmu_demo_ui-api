@@ -10,13 +10,11 @@ import { Modal } from '@/components/ui/modal';
 import { useModal } from '@/hooks/useModal';
 import { Button } from '@/components/ui/button';
 
-interface IInitModal {
+interface IInitModalProps {
   name: string;
 }
 
-export const InitModal: React.FC<IInitModal> = ({
-  name,
-}) => {
+export const InitModal: React.FC<IInitModalProps> = ({ name }) => {
   const [loading, setLoading] = useState(false);
   const modalState = useModal();
   const router = useRouter();

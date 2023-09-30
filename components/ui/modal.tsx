@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 
-interface ModalProps {
+interface IModalProps {
   title: string;
   description: string;
   isOpen: boolean;
@@ -18,7 +18,7 @@ interface ModalProps {
   children?: React.ReactNode;
 }
 
-export const Modal: React.FC<ModalProps> = ({
+export const Modal: React.FC<IModalProps> = ({
   title,
   description,
   isOpen,

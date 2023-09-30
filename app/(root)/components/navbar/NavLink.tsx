@@ -8,7 +8,7 @@ type LinkBtnProps = {
   href?: string;
 };
 
-interface LinkProps {
+interface ILinkProps {
   key: string;
   showActiveLink?: boolean;
   link: {
@@ -55,7 +55,7 @@ const LinkBtn = React.forwardRef(
   }
 );
 
-export const NavLink: React.FC<LinkProps> = ({
+export const NavLink: React.FC<ILinkProps> = ({
   link,
   showActiveLink = true,
 }) => {

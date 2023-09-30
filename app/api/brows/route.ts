@@ -10,7 +10,7 @@ export async function POST(req: Request) {
 
     const brows = await prismadb.brows.create({
       data: {
-        name: body.name,
+        name: name,
       },
     });
 

@@ -1,6 +1,9 @@
 import prismadb from '@/lib/prismadb';
 import { Description } from './components';
-import { InitModal } from './components/InitModal';
+import { InitModal } from '../components/InitModal';
+import { InitButton } from '../components/InitButton';
+import { Separator } from '@/components/ui/separator';
+import { Heading } from '../components/Heading';
 
 const BrowsPage = async () => {
   const brows = await prismadb.brows.findUnique({
@@ -9,22 +12,16 @@ const BrowsPage = async () => {
     },
   });
 
-  console.log( brows );
-  
-  if ( !brows ) { 
-    
-  }
+  const name = 'brows';
 
   return (
     <div className='text-white'>
-      <header className='text-2xl'>
-        <span className='text-slate-400 font-bold'>
-          Brows
-        </span>{' '}
-        Settings
-      </header>
+      <Heading name={name} />
+      {!brows && <InitButton name={name} />}
 
-      <InitModal />
+      <InitModal name={name} />
+
+      <Separator className='my-4' />
 
       <Description />
     </div>

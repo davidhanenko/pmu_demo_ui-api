@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+
 import * as z from 'zod';
 import axios from 'axios';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 
 import {
@@ -18,29 +19,25 @@ import {
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Text } from '@prisma/client';
 
-interface IFadeInTypeProps {
+interface ITextInputProps {
   initData?: {
-    text: 'string';
-    apiID: 'string';
-    api: 'string';
+    text: string;
+    api: string;
+    id: string;
   };
 }
 
 const formSchema = z.object({
-  text: z.string().min(10, {
-    message: 'Text must be at least 10 characters.',
-  }),
+  text: z.string(),
 });
 
-export const TextInput: React.FC<IFadeInTypeProps> = ({
+export const TextInput: React.FC<ITextInputProps> = ({
   initData,
 }) => {
+  const [value, setValue] = useState(initData?.text || '');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-
-  const value = initData ? initData?.text : '';
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -50,17 +47,28 @@ export const TextInput: React.FC<IFadeInTypeProps> = ({
   });
 
   const onSubmit = async (
-    values: z.infer<typeof formSchema>
+    data: z.infer<typeof formSchema>
   ) => {
     try {
       setLoading(true);
-      await axios.post('/api/brows/description', values);
+      await axios.patch(
+        `${initData?.api}/${initData?.id}`,
+        { text: value }
+      );
+
+      toast.success('Text paragraph saved');
       router.refresh();
+      setValue('');
     } catch (error) {
       toast.error('Something went wrong');
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleOnChange = (e: any) => {
+    e.preventDefault();
+    setValue(e.target.value);
   };
 
   return (
@@ -80,6 +88,7 @@ export const TextInput: React.FC<IFadeInTypeProps> = ({
                       placeholder='Text Paragraph'
                       {...field}
                       value={value}
+                      onChange={handleOnChange}
                     />
                   </FormControl>
                   <FormMessage />

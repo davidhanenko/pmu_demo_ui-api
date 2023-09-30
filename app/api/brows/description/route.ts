@@ -2,25 +2,38 @@ import { NextResponse } from 'next/server';
 
 import prismadb from '@/lib/prismadb';
 
-export async function POST(req: Request) {
+export async function PATCH(req: Request) {
   try {
     const body = await req.json();
 
-    const { name } = body;
+    const { text } = body;
 
-    if (!name) {
-      return new NextResponse('Name is required', {
+   
+    
+
+    if (!text) {
+      return new NextResponse('Text is required', {
         status: 400,
       });
     }
 
-    const brows = await prismadb.brows.create({
+    const textInput = await prismadb.brows.update({
+      where: {
+        name: 'brows',
+      },
       data: {
-        name: name,
+        description: {
+          create: {
+            text: text,
+          },
+        },
+      },
+      include: {
+        description: true,
       },
     });
 
-    return NextResponse.json(brows);
+    return NextResponse.json(textInput);
   } catch (error) {
     console.log('[BROWS_POST]', error);
     return new NextResponse('Internal error', {

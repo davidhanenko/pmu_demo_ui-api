@@ -39,6 +39,7 @@ export const InitModal: React.FC<IInitModalProps> = ({ name }) => {
       setLoading(false);
     }
   };
+  
 
   if (!name) return null;
 

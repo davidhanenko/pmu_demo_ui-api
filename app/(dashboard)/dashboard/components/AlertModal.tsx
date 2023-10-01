@@ -5,14 +5,14 @@ import { useEffect, useState } from 'react';
 import { Modal } from '@/components/ui/modal';
 import { Button } from '@/components/ui/button';
 
-interface AlertModalProps {
+interface IAlertModalProps {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
   loading: boolean;
 }
 
-export const AlertModal: React.FC<AlertModalProps> = ({
+export const AlertModal: React.FC<IAlertModalProps> = ({
   isOpen,
   onClose,
   onConfirm,

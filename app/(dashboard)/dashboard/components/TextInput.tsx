@@ -22,6 +22,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { useTextInput } from '@/hooks/useTextInput';
+import { AlertModal } from './AlertModal';
 
 interface ITextInputProps {
   initData?: {
@@ -42,6 +43,8 @@ export const TextInput: React.FC<ITextInputProps> = ({
 
   const [value, setValue] = useState(initData?.text || '');
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+
   const router = useRouter();
   const addMoreState = useTextInput();
 
@@ -71,10 +74,10 @@ export const TextInput: React.FC<ITextInputProps> = ({
         });
 
         toast.success('Text paragraph created');
+        setValue('');
       }
 
       router.refresh();
-      setValue('');
       addMoreState.onAddMoreClose();
     } catch (error) {
       console.log(error);
@@ -142,11 +145,15 @@ export const TextInput: React.FC<ITextInputProps> = ({
               />
               <div className='pt-2 flex items-center justify-between w-full'>
                 {!!initData?.id && (
-                  <Button variant='outline' size='icon'>
+                  <Button
+                    type='button'
+                    variant='outline'
+                    size='icon'
+                    onClick={() => setOpen(true)}
+                  >
                     <FontAwesomeIcon
                       icon={faTrash}
                       className='w-4 h-4 text-red-500'
-                      onClick={onDelete}
                     />
                   </Button>
                 )}

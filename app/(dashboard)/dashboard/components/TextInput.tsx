@@ -96,7 +96,10 @@ export const TextInput: React.FC<ITextInputProps> = ({
               )}
             />
             <div className='pt-6 space-x-2 flex items-center justify-end w-full'>
-              <Button disabled={loading} type='submit'>
+              <Button
+                disabled={loading}
+                className='text-green-500'
+              >
                 Save
               </Button>
             </div>

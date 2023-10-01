@@ -1,4 +1,4 @@
-interface FadeInType {
+interface IFadeInTypeProps {
   direction?: string;
   type?: string;
   delay?: number;
@@ -10,7 +10,7 @@ export const fadeIn = ({
   type,
   delay,
   duration,
-}: FadeInType) => {
+}: IFadeInTypeProps) => {
   return {
     hidden: {
       x:

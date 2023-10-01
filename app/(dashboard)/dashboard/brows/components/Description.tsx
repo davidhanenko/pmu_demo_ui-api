@@ -3,10 +3,11 @@
 import { Separator } from '@/components/ui/separator';
 import { TextInput } from '../../components/TextInput';
 import { Text } from '@prisma/client';
-import { useState } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useTextInput } from '@/hooks/useTextInput';
 
 export const Description = ({
   description,
@@ -19,7 +20,7 @@ export const Description = ({
     id: '',
   };
 
-  const [addMore, setAddMore] = useState(false);
+  const addMoreState = useTextInput();
 
   return (
     <section className='col-span-2 md:col-span-1 bg-slate-700 p-4'>
@@ -38,11 +39,11 @@ export const Description = ({
         </ul>
 
         <div className='mx-4 p-2 bg-slate-500 '>
-          {!addMore ? (
+          {!addMoreState.addMore ? (
             <div className='flex justify-center'>
               <Button
                 className='text-blue-500'
-                onClick={() => setAddMore(!addMore)}
+                onClick={addMoreState.onAddMoreOpen}
               >
                 <FontAwesomeIcon icon={faPlus} /> Add More
               </Button>
@@ -52,7 +53,7 @@ export const Description = ({
               <TextInput initData={initData} />
               <Button
                 className='text-blue-500'
-                onClick={() => setAddMore(!addMore)}
+                onClick={addMoreState.onAddMoreClose}
               >
                 Cancel
               </Button>

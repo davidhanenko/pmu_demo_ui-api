@@ -6,8 +6,10 @@ import { useRouter } from 'next/navigation';
 import * as z from 'zod';
 import axios from 'axios';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { set, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import {
   Form,
@@ -19,6 +21,7 @@ import {
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import { useTextInput } from '@/hooks/useTextInput';
 
 interface ITextInputProps {
   initData?: {
@@ -35,9 +38,12 @@ const formSchema = z.object({
 export const TextInput: React.FC<ITextInputProps> = ({
   initData,
 }) => {
+  const action = initData?.text ? 'Save' : 'Create';
+
   const [value, setValue] = useState(initData?.text || '');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const addMoreState = useTextInput();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -51,14 +57,46 @@ export const TextInput: React.FC<ITextInputProps> = ({
   ) => {
     try {
       setLoading(true);
-      await axios.patch(
-        `${initData?.api}/${initData?.id}`,
-        { text: value }
-      );
 
-      toast.success('Text paragraph saved');
+      if (!!initData?.text) {
+        await axios.patch(
+          `${initData?.api}/${initData?.id}`,
+          { text: value }
+        );
+
+        toast.success('Text paragraph updated');
+      } else {
+        await axios.patch(`${initData?.api}`, {
+          text: value,
+        });
+
+        toast.success('Text paragraph created');
+      }
+
       router.refresh();
       setValue('');
+      addMoreState.onAddMoreClose();
+    } catch (error) {
+      console.log(error);
+
+      toast.error('Something went wrong');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const onDelete = async () => {
+    try {
+      setLoading(true);
+
+      await axios.delete(
+        `${initData?.api}/${initData?.id}`
+      );
+
+      router.refresh();
+      toast.success('Text paragraph deleted');
+
+      addMoreState.onAddMoreClose();
     } catch (error) {
       toast.error('Something went wrong');
     } finally {
@@ -72,40 +110,58 @@ export const TextInput: React.FC<ITextInputProps> = ({
   };
 
   return (
-    <div className='space-y-4 py-2 pb-4'>
-      <div className='space-y-2'>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <FormField
-              control={form.control}
-              name='text'
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Text Paragraph</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      disabled={loading}
-                      placeholder='Text Paragraph'
-                      {...field}
-                      value={value}
-                      onChange={handleOnChange}
+    <>
+      <AlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onDelete}
+        loading={loading}
+      />
+      <div className=' py-2'>
+        <div className='space-y-2'>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+              <FormField
+                control={form.control}
+                name='text'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Text Paragraph</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        disabled={loading}
+                        placeholder='Text Paragraph'
+                        {...field}
+                        value={value}
+                        onChange={handleOnChange}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className='pt-2 flex items-center justify-between w-full'>
+                {!!initData?.id && (
+                  <Button variant='outline' size='icon'>
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      className='w-4 h-4 text-red-500'
+                      onClick={onDelete}
                     />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className='pt-6 space-x-2 flex items-center justify-end w-full'>
-              <Button
-                disabled={loading}
-                className='text-green-500'
-              >
-                Save
-              </Button>
-            </div>
-          </form>
-        </Form>
+                  </Button>
+                )}
+                <Button
+                  type='submit'
+                  disabled={loading}
+                  className='text-green-500'
+                >
+                  {action}
+                </Button>
+              </div>
+            </form>
+          </Form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

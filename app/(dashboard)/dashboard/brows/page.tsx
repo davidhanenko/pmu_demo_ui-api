@@ -4,17 +4,19 @@ import { InitModal } from '../components/InitModal';
 import { InitButton } from '../components/InitButton';
 import { Separator } from '@/components/ui/separator';
 import { Heading } from '../components/Heading';
+import { Steps } from './components/Steps';
 
 const NAME = 'brows';
 
 const BrowsPage = async () => {
-  const brows = await prismadb.brows.findUnique({
-    where: {
-      name: NAME,
-    },
-  });
+  const brows = await prismadb.brows.findFirst();
 
   const description = await prismadb.text.findMany({
+    where: {
+      browsId: brows?.id,
+    },
+  });
+  const steps = await prismadb.textWithHeader.findMany({
     where: {
       browsId: brows?.id,
     },
@@ -31,10 +33,10 @@ const BrowsPage = async () => {
 
       <div className='grid grid-cols-2 gap-4'>
         <Description description={description} />
+        <Steps steps={steps} />
       </div>
     </div>
   );
 };
-
 
 export default BrowsPage;

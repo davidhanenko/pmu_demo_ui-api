@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { useTextInput } from '@/hooks/useTextInput';
+
 import { AlertModal } from './AlertModal';
 
 interface ITextInputProps {
@@ -30,28 +30,38 @@ interface ITextInputProps {
     api: string;
     id: string;
   };
+  cb?: (value: boolean) => void;
 }
 
 const formSchema = z.object({
-  text: z.string(),
+  text: z
+    .string()
+    .min(10, {
+      message: 'Text must be at least 10 characters',
+    })
+    .max(500, {
+      message: 'Text must be at most 1000 characters',
+    }),
 });
 
 export const TextInput: React.FC<ITextInputProps> = ({
   initData,
+  cb,
 }) => {
   const action = initData?.text ? 'Save' : 'Create';
+  const toastMessage = initData?.text
+    ? 'Text paragraph updated.'
+    : 'Text paragraph created.';
 
-  const [value, setValue] = useState(initData?.text || '');
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
   const router = useRouter();
-  const addMoreState = useTextInput();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      text: '',
+      text: initData?.text || '',
     },
   });
 
@@ -64,24 +74,20 @@ export const TextInput: React.FC<ITextInputProps> = ({
       if (!!initData?.text) {
         await axios.patch(
           `${initData?.api}/${initData?.id}`,
-          { text: value }
+          { text: data.text }
         );
-
-        toast.success('Text paragraph updated');
       } else {
         await axios.patch(`${initData?.api}`, {
-          text: value,
+          text: data.text,
         });
-
-        toast.success('Text paragraph created');
-        setValue('');
       }
 
+      toast.success(toastMessage);
       router.refresh();
-      addMoreState.onAddMoreClose();
-    } catch (error) {
-      console.log(error);
 
+      // close the input form
+      cb?.(false);
+    } catch (error) {
       toast.error('Something went wrong');
     } finally {
       setLoading(false);
@@ -92,24 +98,21 @@ export const TextInput: React.FC<ITextInputProps> = ({
     try {
       setLoading(true);
 
-      await axios.delete(
-        `${initData?.api}/${initData?.id}`
-      );
+      if (initData?.api && initData?.id) {
+        await axios.delete(
+          `${initData?.api}/${initData?.id}`
+        );
 
-      router.refresh();
-      toast.success('Text paragraph deleted');
-
-      addMoreState.onAddMoreClose();
+        router.refresh();
+        toast.success('Text paragraph deleted');
+        // close the input form
+        cb?.(false);
+      }
     } catch (error) {
       toast.error('Something went wrong');
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleOnChange = (e: any) => {
-    e.preventDefault();
-    setValue(e.target.value);
   };
 
   return (
@@ -120,50 +123,52 @@ export const TextInput: React.FC<ITextInputProps> = ({
         onConfirm={onDelete}
         loading={loading}
       />
-      <div className=' py-2'>
+      <div className='w-full py-2'>
         <div className='space-y-2'>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
-              <FormField
-                control={form.control}
-                name='text'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Text Paragraph</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        disabled={loading}
-                        placeholder='Text Paragraph'
-                        {...field}
-                        value={value}
-                        onChange={handleOnChange}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <div className='pt-2 flex items-center justify-between w-full'>
-                {!!initData?.id && (
+              <div className='flex flex-col lg:flex-row gap-4 w-full'>
+                <FormField
+                  control={form.control}
+                  name='text'
+                  render={({ field }) => (
+                    <FormItem className='w-full'>
+                      <FormLabel>Text paragraph</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          rows={4}
+                          disabled={loading}
+                          placeholder='Text Paragraph'
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <div className='pt-2 flex flex-row justify-between lg:flex-col lg:justify-center items-end gap-2  h-full'>
                   <Button
-                    type='button'
-                    variant='outline'
-                    size='icon'
-                    onClick={() => setOpen(true)}
+                    type='submit'
+                    disabled={loading}
+                    className='text-green-500'
                   >
-                    <FontAwesomeIcon
-                      icon={faTrash}
-                      className='w-4 h-4 text-red-500'
-                    />
+                    {action}
                   </Button>
-                )}
-                <Button
-                  type='submit'
-                  disabled={loading}
-                  className='text-green-500'
-                >
-                  {action}
-                </Button>
+                  {!!initData?.id && (
+                    <Button
+                      type='button'
+                      variant='outline'
+                      size='icon'
+                      onClick={() => setOpen(true)}
+                    >
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        className='w-4 h-4 text-red-500'
+                      />
+                    </Button>
+                  )}
+                </div>
               </div>
             </form>
           </Form>

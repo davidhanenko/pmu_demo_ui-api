@@ -38,23 +38,3 @@ export async function PATCH(req: Request) {
     });
   }
 }
-
-// export async function GET() {
-//   try {
-//     const brows = await prismadb.brows.findUnique({
-//       where: {
-//         name: 'brows',
-//       },
-//       include: {
-//         description: true,
-//       },
-//     });
-
-//     return NextResponse.json(brows);
-//   } catch (error) {
-//     console.log('[BROWS_GET]', error);
-//     return new NextResponse('Internal error', {
-//       status: 500,
-//     });
-//   }
-// }

@@ -8,13 +8,13 @@ datasource db {
 }
 
 model Brows {
-   id String @id @default(auto()) @map("_id") @db.ObjectId
-   name String @default("brows") @unique 
-   description Text[]
-   steps TextWithHeader[]
-   videoBg String?
-   createdAt DateTime @default(now())
-   updatedAt DateTime @updatedAt
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    name String @default("brows") @unique 
+    description Text[]
+    steps TextWithHeader[]
+    videoBg String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model Text {
@@ -27,11 +27,12 @@ model Text {
 }
 
 model TextWithHeader {
-  id String @id @default(auto()) @map("_id") @db.ObjectId 
-  header String
-  text String
-  browsSteps Brows @relation(fields: [browsId], references: [id])
-  browsId String @db.ObjectId
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+    id String @id @default(auto()) @map("_id") @db.ObjectId 
+    header String?
+    text String
+    order Int?
+    browsSteps Brows @relation(fields: [browsId], references: [id])
+    browsId String @db.ObjectId
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }

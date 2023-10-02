@@ -1,13 +1,26 @@
 'use client';
 
+import { useState } from 'react';
+
 import { Separator } from '@/components/ui/separator';
 import { TextInput } from '../../components/TextInput';
 import { Text } from '@prisma/client';
 
 import { Button } from '@/components/ui/button';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useTextInput } from '@/hooks/useTextInput';
+
+const DescriptionItem = ({ desc }: { desc: Text }) => {
+  const initData = {
+    text: desc.text,
+    api: '/api/brows/description',
+    id: desc.id,
+  };
+
+  return (
+    <li className='my-4 p-2 bg-slate-600'>
+      <TextInput initData={initData} />
+    </li>
+  );
+};
 
 export const Description = ({
   description,
@@ -20,7 +33,7 @@ export const Description = ({
     id: '',
   };
 
-  const addMoreState = useTextInput();
+  const [addMore, setAddMore] = useState(false);
 
   return (
     <section className='col-span-2 md:col-span-1 bg-slate-700 p-4'>
@@ -39,21 +52,24 @@ export const Description = ({
         </ul>
 
         <div className='mx-4 p-2 bg-slate-500 '>
-          {!addMoreState.addMore ? (
+          {!addMore ? (
             <div className='flex justify-center'>
               <Button
                 className='text-blue-500'
-                onClick={addMoreState.onAddMoreOpen}
+                onClick={() => setAddMore(true)}
               >
-                <FontAwesomeIcon icon={faPlus} /> Add More
+                Add More
               </Button>
             </div>
           ) : (
             <>
-              <TextInput initData={initData} />
+              <TextInput
+                initData={initData}
+                cb={setAddMore}
+              />
               <Button
                 className='text-blue-500'
-                onClick={addMoreState.onAddMoreClose}
+                onClick={() => setAddMore(false)}
               >
                 Cancel
               </Button>
@@ -62,19 +78,5 @@ export const Description = ({
         </div>
       </div>
     </section>
-  );
-};
-
-const DescriptionItem = ({ desc }: { desc: Text }) => {
-  const initData = {
-    text: desc.text,
-    api: '/api/brows/description',
-    id: desc.id,
-  };
-
-  return (
-    <li className='my-4 p-2 bg-slate-600'>
-      <TextInput initData={initData} />
-    </li>
   );
 };

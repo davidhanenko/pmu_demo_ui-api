@@ -1,5 +1,12 @@
-import { Brows } from "./components";
+// import prismadb from '@/lib/prismadb';
+import { Brows } from './components';
 
-export default function Page() {
+export default async function Page() {
+  // const brows = await prismadb.brows.findFirst({
+  //   include: {
+  //     description: true,
+  //   },
+  // });
+
   return <Brows />;
 }

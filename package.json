@@ -37,7 +37,7 @@
     "eslint-config-next": "^13.4.7",
     "framer-motion": "^10.12.5",
     "gsap": "^3.11.5",
-    "lucide-react": "^0.263.1",
+    "lucide-react": "^0.282.0",
     "maath": "^0.5.3",
     "next": "^13.4.7",
     "next-cloudinary": "^4.13.0",

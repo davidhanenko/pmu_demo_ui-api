@@ -8,8 +8,7 @@ import axios from 'axios';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Trash } from 'lucide-react';
 
 import {
   Form,
@@ -162,10 +161,7 @@ export const TextInput: React.FC<ITextInputProps> = ({
                       size='icon'
                       onClick={() => setOpen(true)}
                     >
-                      <FontAwesomeIcon
-                        icon={faTrash}
-                        className='w-4 h-4 text-red-500'
-                      />
+                      <Trash className='w-4 h-4 text-red-500' />
                     </Button>
                   )}
                 </div>

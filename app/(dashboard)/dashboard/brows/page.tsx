@@ -25,7 +25,7 @@ const BrowsPage = async () => {
   });
 
   return (
-    <div className='text-white'>
+    <div className='text-white pb-12'>
       <Heading name={NAME} />
       {!brows && <InitButton name={NAME} />}
 
@@ -33,11 +33,11 @@ const BrowsPage = async () => {
 
       <Separator className='my-4' />
 
-      <div className='grid grid-cols-2 gap-4'>
+      <div className='grid grid-cols-2 gap-4 mb-4'>
         <Description description={description} />
-        <Steps steps={steps} />
+        <VideoBg videoUrl={brows?.videoBg} />
       </div>
-      <VideoBg />
+      <Steps steps={steps} />
     </div>
   );
 };

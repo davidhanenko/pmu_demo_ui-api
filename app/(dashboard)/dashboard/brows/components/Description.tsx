@@ -45,13 +45,13 @@ export const Description = ({
       </div>
       <Separator className='my-4' />
       <div>
-        <ul className='text-sm px-4'>
+        <ul className='text-sm md:px-4'>
           {description.map(desc => (
             <DescriptionItem key={desc.id} desc={desc} />
           ))}
         </ul>
 
-        <div className='mx-4 p-2 bg-slate-500 '>
+        <div className='md:mx-4 p-2 bg-slate-500 '>
           {!addMore ? (
             <div className='flex justify-center'>
               <Button

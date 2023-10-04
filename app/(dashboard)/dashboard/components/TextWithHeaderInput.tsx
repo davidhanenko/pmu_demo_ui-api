@@ -135,7 +135,7 @@ export const TextWithHeaderInput: React.FC<
                     control={form.control}
                     name='order'
                     render={({ field }) => (
-                      <FormItem className='w-full'>
+                      <FormItem className='w-full my-4'>
                         <FormLabel>
                           Section order number
                         </FormLabel>
@@ -165,7 +165,7 @@ export const TextWithHeaderInput: React.FC<
                     control={form.control}
                     name='header'
                     render={({ field }) => (
-                      <FormItem className='w-full'>
+                      <FormItem className='w-full my-4'>
                         <FormLabel>Text header</FormLabel>
                         <FormControl>
                           <Input
@@ -183,7 +183,7 @@ export const TextWithHeaderInput: React.FC<
                     control={form.control}
                     name='text'
                     render={({ field }) => (
-                      <FormItem className='w-full'>
+                      <FormItem className='w-full my-4'>
                         <FormLabel>
                           Text paragraph
                         </FormLabel>

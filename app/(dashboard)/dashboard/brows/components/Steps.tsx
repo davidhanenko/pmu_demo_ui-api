@@ -17,7 +17,7 @@ const StepItem = ({ step }: { step: TextWithHeader }) => {
   };
 
   return (
-    <li className='my-4 p-2 bg-slate-600'>
+    <li className='p-2 bg-slate-600'>
       <TextWithHeaderInput initData={initData} />
     </li>
   );
@@ -39,7 +39,7 @@ export const Steps = ({
   const [addMore, setAddMore] = useState(false);
 
   return (
-    <section className='col-span-2 md:col-span-1 bg-slate-700 p-4'>
+    <section className='bg-slate-700 p-4'>
       <div>
         <h2 className='text-xl font-bold'>Steps</h2>
         <p className='mt-2 text-muted-foreground'>
@@ -48,37 +48,37 @@ export const Steps = ({
       </div>
       <Separator className='my-4' />
       <div>
-        <ul className='text-sm px-4'>
+        <ul className='text-sm md:p-4 grid md:grid-cols-2 gap-4'>
           {steps.map(step => (
             <StepItem key={step.id} step={step} />
           ))}
-        </ul>
 
-        <div className='mx-4 p-2 bg-slate-500 '>
-          {!addMore ? (
-            <div className='flex justify-center'>
-              <Button
-                className='text-blue-500'
-                onClick={() => setAddMore(true)}
-              >
-                Add More
-              </Button>
-            </div>
-          ) : (
-            <>
-              <TextWithHeaderInput
-                initData={initData}
-                cb={setAddMore}
-              />
-              <Button
-                className='text-blue-500'
-                onClick={() => setAddMore(false)}
-              >
-                Cancel
-              </Button>
-            </>
-          )}
-        </div>
+          <div className='p-2 bg-slate-500 '>
+            {!addMore ? (
+              <div className='flex justify-center'>
+                <Button
+                  className='text-blue-500'
+                  onClick={() => setAddMore(true)}
+                >
+                  Add More
+                </Button>
+              </div>
+            ) : (
+              <div className='relative'>
+                <TextWithHeaderInput
+                  initData={initData}
+                  cb={setAddMore}
+                />
+                <Button
+                  className='text-blue-500 absolute bottom-2 right-0'
+                  onClick={() => setAddMore(false)}
+                >
+                  Cancel
+                </Button>
+              </div>
+            )}
+          </div>
+        </ul>
       </div>
     </section>
   );

@@ -36,14 +36,7 @@ interface ITextWithHeaderInputProps {
 
 const formSchema = z.object({
   order: z.number().int().nullable(),
-  header: z
-    .string()
-    .min(1, {
-      message: 'Header must be at least 1 character',
-    })
-    .max(100, {
-      message: 'Header must be at most 100 characters',
-    }),
+  header: z.string(),
   text: z
     .string()
     .min(10, {

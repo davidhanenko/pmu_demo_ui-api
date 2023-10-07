@@ -6,26 +6,26 @@ import { Separator } from '@/components/ui/separator';
 import { TextWithHeader } from '@prisma/client';
 import { SectionWithHeader } from '../../components/SectionWithHeader';
 
-const API = '/api/brows/steps';
+const API = '/api/lips/process';
 
-export const Steps = ({
-  steps,
+export const Process = ({
+  process,
 }: {
-  steps: TextWithHeader[];
+  process: TextWithHeader[];
 }) => {
   const [addMore, setAddMore] = useState(false);
 
   return (
     <section className='bg-slate-700 p-4'>
       <div>
-        <h2 className='text-xl font-bold'>Steps</h2>
+        <h2 className='text-xl font-bold'>The Process</h2>
         <p className='mt-2 text-muted-foreground'>
-          This is a procedure steps of the brows page.
+          This is the process of the lips page.
         </p>
       </div>
       <Separator className='my-4' />
       <SectionWithHeader
-        data={steps}
+        data={process}
         api={API}
         addMore={addMore}
         cb={setAddMore}

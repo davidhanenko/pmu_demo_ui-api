@@ -5,6 +5,8 @@ import { InitButton } from '../components/InitButton';
 import { Separator } from '@/components/ui/separator';
 import { Heading } from '../components/Heading';
 import { Description } from './components/Description';
+import { Process } from './components/Process';
+import { Tips } from './components/Tips';
 
 const NAME = 'lips';
 
@@ -16,17 +18,18 @@ const Page = async () => {
       lipsId: lips?.id,
     },
   });
-  // const process = await prismadb.textWithHeader.findMany({
-  //   where: {
-  //     lipsProcessId: lips?.id,
-  //   },
-  // });
 
-  // const tips = await prismadb.textWithHeader.findMany({
-  //   where: {
-  //     lipsTipsId: lips?.id,
-  //   },
-  // });
+  const process = await prismadb.textWithHeader.findMany({
+    where: {
+      lipsProcessId: lips?.id,
+    },
+  });
+
+  const tips = await prismadb.textWithHeader.findMany({
+    where: {
+      lipsTipsId: lips?.id,
+    },
+  });
 
   return (
     <div className='text-white pb-12'>
@@ -39,6 +42,8 @@ const Page = async () => {
       <div className='grid grid-cols-2 gap-4 mb-4'>
         <Description description={description} />
       </div>
+      <Process process={process} />
+      <Tips tips={tips} />
     </div>
   );
 };

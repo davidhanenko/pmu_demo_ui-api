@@ -54,10 +54,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
             </div>
             <video
               muted
-              loop
-              autoPlay
-              playsInline
-              className='h-[200px] w-[200px] object-cover'
+              className='h-full w-full object-cover'
             >
               <source src={url} type='video/mp4' />
             </video>

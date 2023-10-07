@@ -115,7 +115,6 @@ module.exports = {
       gridTemplateColumns: {
         'fill-250': 'repeat(auto-fill, minmax(250px, 1fr))',
         'fill-275': 'repeat(auto-fill, minmax(275px, 1fr))',
-        'repeat-2': 'repeat(2, minmax(0, 1fr))',
       },
 
       animation: {

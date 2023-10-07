@@ -1,8 +1,5 @@
 'use client';
 
-
-
-
 import { InitModal } from '@/app/(dashboard)/dashboard/components/InitModal';
 import { useEffect, useState } from 'react';
 
@@ -15,5 +12,5 @@ export const ModalProvider = () => {
 
   if (!isMounted) return null;
 
-  return <InitModal  />;
+  return <InitModal name={''} />;
 };

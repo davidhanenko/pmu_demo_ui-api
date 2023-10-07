@@ -70,7 +70,7 @@ export const Steps = ({
                   cb={setAddMore}
                 />
                 <Button
-                  className='text-blue-500 absolute bottom-2 right-0'
+                  className='text-red-300 absolute bottom-2 right-0'
                   onClick={() => setAddMore(false)}
                 >
                   Cancel

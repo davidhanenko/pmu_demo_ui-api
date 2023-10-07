@@ -76,7 +76,6 @@ export const VideoBg: React.FC<IUploadProps> = ({
           </p>{' '}
         </div>
         <Separator className='my-4' />
-        <div></div>
         <div className='space-y-2'>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>

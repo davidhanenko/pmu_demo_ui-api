@@ -36,7 +36,7 @@ export const Description = ({
   const [addMore, setAddMore] = useState(false);
 
   return (
-    <section className='col-span-2 md:col-span-1 bg-slate-700 p-4'>
+    <section className='col-span-2 md:col-span-1 bg-slate-700 px-4'>
       <div>
         <h2 className='text-xl font-bold'>Description</h2>
         <p className='mt-2 text-muted-foreground'>

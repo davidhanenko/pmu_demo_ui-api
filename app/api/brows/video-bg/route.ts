@@ -2,25 +2,31 @@ import { NextResponse } from 'next/server';
 
 import prismadb from '@/lib/prismadb';
 
-export async function POST(req: Request) {
+export async function PATCH(req: Request) {
   try {
     const body = await req.json();
 
-    const { name } = body;
+    const { videoUrl } = body;
 
-    if (!name) {
-      return new NextResponse('Name is required', {
-        status: 400,
-      });
+    if (!videoUrl) {
+      return new NextResponse(
+        'Video upload url is required',
+        {
+          status: 400,
+        }
+      );
     }
 
-    const brows = await prismadb.brows.create({
+    const videoBg = await prismadb.brows.update({
+      where: {
+        name: 'brows',
+      },
       data: {
-        name: name,
+        videoBg: videoUrl,
       },
     });
 
-    return NextResponse.json(brows);
+    return NextResponse.json(videoBg);
   } catch (error) {
     console.log('[BROWS_POST]', error);
     return new NextResponse('Internal error', {
@@ -34,13 +40,12 @@ export async function GET(req: Request) {
     const brows = await prismadb.brows.findFirst({
       include: {
         description: true,
-        steps: true,
       },
     });
 
     return NextResponse.json(brows);
   } catch (error) {
-    console.log('[BROWS_GET]', error);
+    console.log('[BILLBOARDS_GET]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

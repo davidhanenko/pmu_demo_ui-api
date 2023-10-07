@@ -6,7 +6,8 @@ export async function PATCH(req: Request) {
   try {
     const body = await req.json();
 
-    const { text } = body;
+    const { order, text, header } = body;
+
 
     if (!text) {
       return new NextResponse('Text is required', {
@@ -14,25 +15,27 @@ export async function PATCH(req: Request) {
       });
     }
 
-    const textInput = await prismadb.brows.update({
+    const textWithHeaderInput = await prismadb.lips.update({
       where: {
-        name: 'brows',
+        name: 'lips',
       },
       data: {
-        description: {
+        process: {
           create: {
+            order: order,
+            header: header,
             text: text,
           },
         },
       },
       include: {
-        description: true,
+        process: true,
       },
     });
 
-    return NextResponse.json(textInput);
+    return NextResponse.json(textWithHeaderInput);
   } catch (error) {
-    console.log('[BROWS_DESCRIPTION_PATCH]', error);
+    console.log('[LIPS_PROCESS_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

@@ -4,7 +4,7 @@ import Loader from '@/components/ui/loader';
 
 const Loading = () => {
   return (
-    <div className='flex h-full w-full items-center justify-center'>
+    <div className='absolute flex h-full w-full z-50 items-center justify-center'>
       <Loader />
     </div>
   );

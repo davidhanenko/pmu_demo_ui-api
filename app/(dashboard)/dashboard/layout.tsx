@@ -3,6 +3,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import DashboardNav from './components/DashboardNav';
 import { ModalProvider } from '@/providers/modal-provider';
 import { ToastProvider } from '@/providers/toast-provider';
+import ProgressBarProvider from '@/providers/progress-bar-provider';
 
 export default function DashboardLayout({
   children,
@@ -15,7 +16,9 @@ export default function DashboardLayout({
         <ModalProvider />
         <ToastProvider />
         <DashboardNav />
-        <div>{children}</div>
+        <ProgressBarProvider>
+          {children}
+        </ProgressBarProvider>
       </div>
     </ClerkProvider>
   );

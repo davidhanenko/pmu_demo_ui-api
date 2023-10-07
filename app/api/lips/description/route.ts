@@ -14,9 +14,9 @@ export async function PATCH(req: Request) {
       });
     }
 
-    const textInput = await prismadb.brows.update({
+    const textInput = await prismadb.lips.update({
       where: {
-        name: 'brows',
+        name: 'lips',
       },
       data: {
         description: {

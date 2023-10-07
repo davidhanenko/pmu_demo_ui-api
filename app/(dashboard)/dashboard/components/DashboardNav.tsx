@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { UserButton } from '@clerk/nextjs';
 import {
   NavigationMenu,
@@ -8,7 +9,8 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-import Link from 'next/link';
+import { ArrowBigLeftDash } from 'lucide-react';
+
 import { navLinks } from '@/constants';
 
 export default function DashboardNav() {
@@ -34,8 +36,9 @@ export default function DashboardNav() {
         </NavigationMenuList>
       </NavigationMenu>
       <div className='flex flex-row items-center'>
-        <Link href='/' className='text-white mr-6'>
-          back
+        <Link href='/' className='text-white mr-6 px-2 py-1 flex gap-1 bg-slate-500 hover:bg-slate-600 rounded-sm'>
+          <ArrowBigLeftDash />
+          <span>back</span>
         </Link>
         <UserButton afterSignOutUrl='/' />
       </div>

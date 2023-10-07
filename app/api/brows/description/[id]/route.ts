@@ -20,7 +20,7 @@ export async function DELETE(
 
     return NextResponse.json(descriptionText);
   } catch (error) {
-    console.log('[DESCRIPTION_DELETE]', error);
+    console.log('[BROWS_DESCRIPTION_DELETE]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

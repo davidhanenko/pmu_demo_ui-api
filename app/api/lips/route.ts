@@ -14,15 +14,15 @@ export async function POST(req: Request) {
       });
     }
 
-    const brows = await prismadb.brows.create({
+    const lips = await prismadb.lips.create({
       data: {
         name: name,
       },
     });
 
-    return NextResponse.json(brows);
+    return NextResponse.json(lips);
   } catch (error) {
-    console.log('[BROWS_POST]', error);
+    console.log('[LIPS_POST]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -31,16 +31,17 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
-    const brows = await prismadb.brows.findFirst({
+    const lips = await prismadb.lips.findFirst({
       include: {
         description: true,
-        steps: true,
+        process: true,
+        tips: true,
       },
     });
 
-    return NextResponse.json(brows);
+    return NextResponse.json(lips);
   } catch (error) {
-    console.log('[BROWS_GET]', error);
+    console.log('LIPS_GET]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

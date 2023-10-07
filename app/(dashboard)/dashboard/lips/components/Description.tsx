@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 const DescriptionParagraph = ({ desc }: { desc: Text }) => {
   const initData = {
     text: desc.text,
-    api: '/api/brows/description',
+    api: '/api/lips/description',
     id: desc.id,
   };
 
@@ -29,7 +29,7 @@ export const Description = ({
 }) => {
   const initData = {
     text: '',
-    api: '/api/brows/description',
+    api: '/api/lips/description',
     id: '',
   };
 
@@ -40,7 +40,7 @@ export const Description = ({
       <div>
         <h2 className='text-xl font-bold'>Description</h2>
         <p className='mt-2 text-muted-foreground'>
-          This is a description of the brows page.
+          This is a description of the lips page.
         </p>
       </div>
       <Separator className='my-4' />

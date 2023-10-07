@@ -17,22 +17,40 @@ model Brows {
     updatedAt DateTime @updatedAt
 }
 
+model Lips {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    name String @default("lips") @unique 
+    description Text[]
+    process TextWithHeader[] @relation("process")
+    tips TextWithHeader[] @relation("tips")
+    videoBg String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
 model Text {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     text String
-    browsDescription Brows @relation(fields: [browsId], references: [id])
-    browsId String @db.ObjectId
+    browsDescription Brows? @relation(fields: [browsId], references: [id])
+    browsId String? @db.ObjectId
+    lipsDescription Lips? @relation(fields: [lipsId], references: [id])
+    lipsId String? @db.ObjectId
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
 
 model TextWithHeader {
     id String @id @default(auto()) @map("_id") @db.ObjectId 
+    order Int?
     header String?
     text String
-    order Int?
-    browsSteps Brows @relation(fields: [browsId], references: [id])
-    browsId String @db.ObjectId
+    browsSteps Brows? @relation(fields: [browsId], references: [id])
+    browsId String? @db.ObjectId
+    lipsProcess Lips? @relation(name:"process", fields: [lipsProcessId], references: [id])
+    lipsProcessId String? @db.ObjectId
+    lipsTips Lips? @relation(name:"tips", fields: [lipsTipsId], references: [id])
+    lipsTipsId String? @db.ObjectId
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }

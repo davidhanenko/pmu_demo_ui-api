@@ -10,7 +10,7 @@ import { VideoBg } from './components/VideoBg';
 
 const NAME = 'brows';
 
-const BrowsPage = async () => {
+const Page = async () => {
   const brows = await prismadb.brows.findFirst();
 
   const description = await prismadb.text.findMany({
@@ -42,4 +42,4 @@ const BrowsPage = async () => {
   );
 };
 
-export default BrowsPage;
+export default Page;

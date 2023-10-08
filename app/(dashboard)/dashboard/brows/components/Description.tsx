@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 
-import { Separator } from '@/components/ui/separator';
 import { Text } from '@prisma/client';
 import { TextSection } from '../../components/TextSection';
+import { SubHeading } from '../../components/SubHeading';
 
 const API = '/api/brows/description';
 
@@ -17,13 +17,12 @@ export const Description = ({
 
   return (
     <section className='col-span-2 md:col-span-1 bg-slate-700 p-4'>
-      <div>
-        <h2 className='text-xl font-bold'>Description</h2>
-        <p className='mt-2 text-muted-foreground'>
-          This is a description of the brows page.
-        </p>
-      </div>
-      <Separator className='my-4' />
+      <SubHeading
+        title='Description'
+        description={
+          'his is a description of the brows page.'
+        }
+      />
 
       <TextSection
         data={description}

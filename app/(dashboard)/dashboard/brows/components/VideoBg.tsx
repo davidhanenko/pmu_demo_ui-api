@@ -21,6 +21,7 @@ import { Button } from '@/components/ui/button';
 
 import { ImageUpload } from '../../components/ImageUpload';
 import { Separator } from '@/components/ui/separator';
+import { SubHeading } from '../../components/SubHeading';
 
 interface IUploadProps {
   videoUrl?: string | null;
@@ -66,16 +67,11 @@ export const VideoBg: React.FC<IUploadProps> = ({
   return (
     <>
       <section className='col-span-2 md:col-span-1 bg-slate-700 p-4'>
-        <div>
-          {' '}
-          <h2 className='text-xl font-bold'>
-            Video background{' '}
-          </h2>{' '}
-          <p className='mt-2 text-muted-foreground'>
-            This is a video background of the brows page.{' '}
-          </p>{' '}
-        </div>
-        <Separator className='my-4' />
+        <SubHeading
+          title='Video background'
+          description='This is a video background of the brows page.'
+        />
+
         <div className='space-y-2'>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>

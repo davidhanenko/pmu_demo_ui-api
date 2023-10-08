@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Navbar } from './components/navbar';
+import { Navbar } from './components/navbar/Navbar';
 import { NavStateProvider } from '@/context/navContext';
-import { Footer } from './components/footer';
+import { Footer } from './components/footer/Footer';
 
 export default function RootLayout(props: {
   children: React.ReactNode;

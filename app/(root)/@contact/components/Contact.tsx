@@ -3,9 +3,7 @@
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-
-
-import { SectionHeader } from '../../components/shared';
+import { SectionHeader } from '../../components/shared/SectionHeader';
 import { Contacts } from './Contacts';
 import { ContactForm } from './ContactForm';
 

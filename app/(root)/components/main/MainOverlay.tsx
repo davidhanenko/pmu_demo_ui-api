@@ -5,7 +5,7 @@ import { Scroll } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-import { About } from '../about';
+import { About } from '../about/About';
 import { useNav } from '../../../../context/navContext';
 
 import faceImg from '../../../../assets/images/faceAI2_red.png';

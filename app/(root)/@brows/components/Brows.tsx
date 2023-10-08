@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { useNav } from '@/context/navContext';
 import { BrowsTypes } from './BrowsTypes';
 import { BrowsSteps } from './BrowsSteps';
-import { SectionHeader } from '../../components/shared';
+import { SectionHeader } from '../../components/shared/SectionHeader';
 import { BrowsDescription } from './BrowsDescription';
 import ScrollAnimated from '@/components/ScrollIndicator';
 

@@ -17,9 +17,9 @@ export async function PATCH(req: Request) {
       );
     }
 
-    const videoBg = await prismadb.brows.update({
+    const videoBg = await prismadb.lips.update({
       where: {
-        name: 'brows',
+        name: 'lips',
       },
       data: {
         videoBg: videoUrl,
@@ -28,10 +28,11 @@ export async function PATCH(req: Request) {
 
     return NextResponse.json(videoBg);
   } catch (error) {
-    console.log('[BROWS_POST]', error);
+    console.log('[LIPS_VIDEO_POST]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
   }
 }
+
 

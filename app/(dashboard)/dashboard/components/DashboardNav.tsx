@@ -36,7 +36,10 @@ export default function DashboardNav() {
         </NavigationMenuList>
       </NavigationMenu>
       <div className='flex flex-row items-center'>
-        <Link href='/' className='text-white mr-6 px-2 py-1 flex gap-1 bg-slate-500 hover:bg-slate-600 rounded-sm'>
+        <Link
+          href='/'
+          className='text-white mr-6 px-2 py-1 flex gap-1 bg-slate-500 hover:bg-slate-600 rounded-sm'
+        >
           <ArrowBigLeftDash />
           <span>back</span>
         </Link>

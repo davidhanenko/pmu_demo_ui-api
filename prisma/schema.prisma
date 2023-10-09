@@ -13,6 +13,7 @@ model Brows {
     description Text[]
     steps TextWithHeader[]
     videoBg String?
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
@@ -20,10 +21,12 @@ model Brows {
 model Lips {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     name String @default("lips") @unique 
+    videoBg String?
     description Text[]
     process TextWithHeader[] @relation("process")
     tips TextWithHeader[] @relation("tips")
-    videoBg String?
+    kinds TextWithImage[]
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
@@ -51,6 +54,18 @@ model TextWithHeader {
     lipsProcessId String? @db.ObjectId
     lipsTips Lips? @relation(name:"tips", fields: [lipsTipsId], references: [id])
     lipsTipsId String? @db.ObjectId
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model TextWithImage {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    text String
+    image String
+    lipsKinds Lips? @relation(fields: [lipsId], references: [id])
+    lipsId String? @db.ObjectId
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }

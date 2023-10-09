@@ -8,10 +8,15 @@ export async function PATCH(
   try {
     const body = await req.json();
 
-    const { order, header, text } = body;
+    const { text, imageUrl } = body;
 
     if (!text) {
       return new NextResponse('Text input is required', {
+        status: 400,
+      });
+    }
+    if (!imageUrl) {
+      return new NextResponse('Image URL is required', {
         status: 400,
       });
     }
@@ -22,20 +27,19 @@ export async function PATCH(
       });
     }
 
-    const tipInput = await prismadb.textWithHeader.update({
+    const KindInput = await prismadb.textWithImage.update({
       where: {
         id: params.id,
       },
       data: {
-        order: order,
-        header: header,
         text: text,
+        image: imageUrl,
       },
     });
 
-    return NextResponse.json(tipInput);
+    return NextResponse.json(KindInput);
   } catch (error) {
-    console.log('[LIPS_TIPS_PATCH]', error);
+    console.log('[LIPS_KINDS_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -53,15 +57,15 @@ export async function DELETE(
       });
     }
 
-    const tipInput = await prismadb.textWithHeader.delete({
+    const KindInput = await prismadb.textWithImage.delete({
       where: {
         id: params.id,
       },
     });
 
-    return NextResponse.json(tipInput);
+    return NextResponse.json(KindInput);
   } catch (error) {
-    console.log('[LIPS_TIPS_DELETE]', error);
+    console.log('[LIPS_KINDS_DELETE]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

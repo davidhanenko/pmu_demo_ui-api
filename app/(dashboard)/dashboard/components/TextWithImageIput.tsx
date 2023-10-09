@@ -37,13 +37,13 @@ interface ITextInputProps {
 const formSchema = z.object({
   text: z
     .string()
-    .min(10, {
-      message: 'Text must be at least 10 characters',
+    .min(5, {
+      message: 'Text must be at least 5 characters',
     })
-    .max(500, {
-      message: 'Text must be at most 1000 characters',
+    .max(100, {
+      message: 'Text must be at most 100 characters',
     }),
-  imageUrl: z.string(),
+  imageUrl: z.string().nonempty(),
 });
 
 export const TextWithImageInput: React.FC<
@@ -179,13 +179,6 @@ export const TextWithImageInput: React.FC<
                 />
               </div>
               <div className='mt-2 flex flex-row justify-between gap-2'>
-                <Button
-                  type='submit'
-                  disabled={loading}
-                  className='text-green-500'
-                >
-                  {action}
-                </Button>
                 {!!initData?.id && (
                   <Button
                     type='button'
@@ -196,6 +189,13 @@ export const TextWithImageInput: React.FC<
                     <Trash className='w-4 h-4 text-red-500' />
                   </Button>
                 )}
+                <Button
+                  type='submit'
+                  disabled={loading}
+                  className='text-green-500 ml-auto'
+                >
+                  {action}
+                </Button>
               </div>
             </div>
           </form>

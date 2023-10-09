@@ -35,7 +35,7 @@ interface ITextInputProps {
 const formSchema = z.object({
   text: z
     .string()
-    .min(10, {
+    .min(5, {
       message: 'Text must be at least 10 characters',
     })
     .max(500, {
@@ -132,7 +132,9 @@ export const TextInput: React.FC<ITextInputProps> = ({
                   name='text'
                   render={({ field }) => (
                     <FormItem className='w-full'>
-                      <FormLabel className='text-slate-400'>Text paragraph</FormLabel>
+                      <FormLabel className='text-slate-400'>
+                        Text paragraph
+                      </FormLabel>
                       <FormControl>
                         <Textarea
                           rows={4}
@@ -147,23 +149,24 @@ export const TextInput: React.FC<ITextInputProps> = ({
                 />
 
                 <div className='pt-2 flex flex-row justify-between lg:flex-col lg:justify-center items-end gap-2  h-full'>
-                  <Button
-                    type='submit'
-                    disabled={loading}
-                    className='text-green-500'
-                  >
-                    {action}
-                  </Button>
                   {!!initData?.id && (
                     <Button
                       type='button'
                       variant='outline'
                       size='icon'
                       onClick={() => setOpen(true)}
+                      className='order-1 lg:order-2'
                     >
                       <Trash className='w-4 h-4 text-red-500' />
                     </Button>
                   )}
+                  <Button
+                    type='submit'
+                    disabled={loading}
+                    className='text-green-500 order-2 lg:order-1 ml-auto'
+                  >
+                    {action}
+                  </Button>
                 </div>
               </div>
             </form>

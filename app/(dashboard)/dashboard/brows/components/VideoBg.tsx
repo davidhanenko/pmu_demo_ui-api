@@ -27,7 +27,7 @@ interface IUploadProps {
 }
 
 const formSchema = z.object({
-  videoUrl: z.string(),
+  videoUrl: z.string().nonempty(),
 });
 
 export const VideoBg: React.FC<IUploadProps> = ({

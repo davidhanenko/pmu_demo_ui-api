@@ -17,7 +17,7 @@ export default function DashboardLayout({
         <ToastProvider />
         <DashboardNav />
         <ProgressBarProvider>
-          {children}
+          <div className='pt-24'>{children}</div>
         </ProgressBarProvider>
       </div>
     </ClerkProvider>

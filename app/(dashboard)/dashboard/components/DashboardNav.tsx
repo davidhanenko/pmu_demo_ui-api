@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { UserButton } from '@clerk/nextjs';
+import { signOut, useSession } from 'next-auth/react';
+
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -12,9 +13,6 @@ import {
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
   SheetClose,
   SheetFooter,
@@ -70,7 +68,7 @@ export default function DashboardNav() {
             </NavigationMenuList>
           </NavigationMenu>
           <SheetFooter className='mt-20 w-full flex items-end'>
-            <UserButton afterSignOutUrl='/' />
+            {/* <UserButton afterSignOutUrl='/' /> */}
           </SheetFooter>
         </SheetContent>
       </Sheet>
@@ -83,7 +81,8 @@ export default function DashboardNav() {
           <ArrowBigLeftDash />
           <span>back</span>
         </Link>
-        <UserButton afterSignOutUrl='/' />
+        {/* <UserButton afterSignOutUrl='/' /> */}
+        <p className='text-white' onClick={() => signOut()}>sign out</p>
       </div>
     </nav>
   );

@@ -7,65 +7,76 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Brows {
-    id String @id @default(auto()) @map("_id") @db.ObjectId
-    name String @default("brows") @unique 
-    description Text[]
-    steps TextWithHeader[]
-    videoBg String?
+model User {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  email         String?   @unique
+  password      String?
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+
+model Brows {
+    id           String @id @default(auto()) @map("_id") @db.ObjectId
+    name         String @default("brows") @unique 
+    description  Text[]
+    steps        TextWithHeader[]
+    videoBg      String?
+
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
 }
 
 model Lips {
-    id String @id @default(auto()) @map("_id") @db.ObjectId
-    name String @default("lips") @unique 
-    videoBg String?
-    description Text[]
-    process TextWithHeader[] @relation("process")
-    tips TextWithHeader[] @relation("tips")
-    kinds TextWithImage[]
+    id           String @id @default(auto()) @map("_id") @db.ObjectId
+    name         String @default("lips") @unique 
+    videoBg      String?
+    description  Text[]
+    process      TextWithHeader[] @relation("process")
+    tips         TextWithHeader[] @relation("tips")
+    kinds        TextWithImage[]
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
 }
 
 model Text {
-    id String @id @default(auto()) @map("_id") @db.ObjectId
-    text String
-    browsDescription Brows? @relation(fields: [browsId], references: [id])
-    browsId String? @db.ObjectId
-    lipsDescription Lips? @relation(fields: [lipsId], references: [id])
-    lipsId String? @db.ObjectId
+    id                String @id @default(auto()) @map("_id") @db.ObjectId
+    text              String
+    browsDescription  Brows? @relation(fields: [browsId], references: [id])
+    browsId           String? @db.ObjectId
+    lipsDescription   Lips? @relation(fields: [lipsId], references: [id])
+    lipsId            String? @db.ObjectId
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    createdAt         DateTime @default(now())
+    updatedAt         DateTime @updatedAt
 }
 
 model TextWithHeader {
-    id String @id @default(auto()) @map("_id") @db.ObjectId 
-    order Int?
-    header String?
-    text String
-    browsSteps Brows? @relation(fields: [browsId], references: [id])
-    browsId String? @db.ObjectId
-    lipsProcess Lips? @relation(name:"process", fields: [lipsProcessId], references: [id])
-    lipsProcessId String? @db.ObjectId
-    lipsTips Lips? @relation(name:"tips", fields: [lipsTipsId], references: [id])
-    lipsTipsId String? @db.ObjectId
+    id             String @id @default(auto()) @map("_id") @db.ObjectId 
+    order          Int?
+    header         String?
+    text           String
+    browsSteps     Brows? @relation(fields: [browsId], references: [id])
+    browsId        String? @db.ObjectId
+    lipsProcess    Lips? @relation(name:"process", fields: [lipsProcessId], references: [id])
+    lipsProcessId  String? @db.ObjectId
+    lipsTips       Lips? @relation(name:"tips", fields: [lipsTipsId], references: [id])
+    lipsTipsId     String? @db.ObjectId
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    createdAt      DateTime @default(now())
+    updatedAt      DateTime @updatedAt
 }
 
 model TextWithImage {
-    id String @id @default(auto()) @map("_id") @db.ObjectId
-    text String
-    image String
-    lipsKinds Lips? @relation(fields: [lipsId], references: [id])
-    lipsId String? @db.ObjectId
+    id          String @id @default(auto()) @map("_id") @db.ObjectId
+    text        String
+    image       String
+    lipsKinds   Lips? @relation(fields: [lipsId], references: [id])
+    lipsId      String? @db.ObjectId
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
 }

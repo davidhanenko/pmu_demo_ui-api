@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { signOut, useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 import {
   NavigationMenu,
@@ -18,11 +18,15 @@ import {
   SheetFooter,
 } from '@/components/ui/sheet';
 import { ArrowBigLeftDash } from 'lucide-react';
-import { Menu } from 'lucide-react';
+import { Menu, LogOut, LogIn } from 'lucide-react';
 
 import { navLinks } from '@/constants';
+import { Button } from '@/components/ui/button';
 
 export default function DashboardNav() {
+  const { data: session } = useSession();
+  const user = session?.user;
+
   return (
     <nav className='fixed w-full z-50 flex justify-between p-6 bg-slate-900'>
       <NavigationMenu className='hidden md:block'>
@@ -67,22 +71,41 @@ export default function DashboardNav() {
               ))}
             </NavigationMenuList>
           </NavigationMenu>
-          <SheetFooter className='mt-20 w-full flex items-end'>
-            {/* <UserButton afterSignOutUrl='/' /> */}
-          </SheetFooter>
+          <SheetFooter className='mt-20 w-full flex items-end'></SheetFooter>
         </SheetContent>
       </Sheet>
 
-      <div className='flex flex-row items-center'>
-        <Link
-          href='/'
-          className='text-white mr-6 px-2 py-1 flex gap-1 bg-slate-500 hover:bg-slate-600 rounded-sm'
-        >
-          <ArrowBigLeftDash />
-          <span>back</span>
-        </Link>
-        {/* <UserButton afterSignOutUrl='/' /> */}
-        <p className='text-white' onClick={() => signOut()}>sign out</p>
+      <div className='flex flex-row items-center space-x-2'>
+        <Button variant='outline' className='bg-slate-600 hover:bg-slate-700'>
+          {' '}
+          <Link
+            href='/'
+            className='text-white mr-6 px-2 py-1 flex items-center gap-1'
+          >
+            <ArrowBigLeftDash />
+            <span>back</span>
+          </Link>
+        </Button>
+
+        {!!user ? (
+          <Button
+            variant='outline'
+            className='text-white'
+            onClick={() => signOut()}
+          >
+            sign out &nbsp;
+            <LogOut />
+          </Button>
+        ) : (
+          <Button
+            variant='outline'
+            className='text-white'
+            onClick={() => signIn()}
+          >
+            sign in &nbsp;
+            <LogIn />
+          </Button>
+        )}
       </div>
     </nav>
   );

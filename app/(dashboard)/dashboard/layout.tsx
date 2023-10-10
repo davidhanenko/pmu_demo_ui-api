@@ -13,8 +13,8 @@ export default function DashboardLayout({
     <div className='bg-slate-800 min-h-screen'>
       <ModalProvider />
       <ToastProvider />
-      <DashboardNav />
       <NextAuthProvider>
+      <DashboardNav />
         <ProgressBarProvider>
           <div className='pt-24'>{children}</div>
         </ProgressBarProvider>

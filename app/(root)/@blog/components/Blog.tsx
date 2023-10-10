@@ -1,4 +1,4 @@
-import { SectionHeader } from '../../components/shared';
+import { SectionHeader } from '../../components/shared/SectionHeader';
 
 import blogImg from 'assets/images/blog1.png';
 

@@ -18,7 +18,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
-
 import { VideoUpload } from '../../components/VideoUpload';
 import { SubHeading } from '../../components/SubHeading';
 
@@ -50,7 +49,7 @@ export const VideoBg: React.FC<IUploadProps> = ({
     try {
       setLoading(true);
 
-      await axios.patch(`/api/brows/video-bg`, {
+      await axios.patch(`/api/lips/video-bg`, {
         videoUrl: data.videoUrl,
       });
 
@@ -68,7 +67,7 @@ export const VideoBg: React.FC<IUploadProps> = ({
       <section className='col-span-2 md:col-span-1 bg-slate-700 p-4'>
         <SubHeading
           title='Video background'
-          description='This is a video background of the brows page.'
+          description='This is a video background of the lips page.'
         />
 
         <div className='space-y-2'>

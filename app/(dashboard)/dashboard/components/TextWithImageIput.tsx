@@ -19,13 +19,15 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
 
 import { AlertModal } from './AlertModal';
+import { ImageUpload } from './ImageUpload';
+import { Input } from '@/components/ui/input';
 
 interface ITextInputProps {
   initData?: {
     text: string;
+    imageUrl: string;
     api: string;
     id: string;
   };
@@ -36,21 +38,21 @@ const formSchema = z.object({
   text: z
     .string()
     .min(5, {
-      message: 'Text must be at least 10 characters',
+      message: 'Text must be at least 5 characters',
     })
-    .max(500, {
-      message: 'Text must be at most 1000 characters',
+    .max(100, {
+      message: 'Text must be at most 100 characters',
     }),
+  imageUrl: z.string().nonempty(),
 });
 
-export const TextInput: React.FC<ITextInputProps> = ({
-  initData,
-  cb,
-}) => {
+export const TextWithImageInput: React.FC<
+  ITextInputProps
+> = ({ initData, cb }) => {
   const action = initData?.text ? 'Save' : 'Create';
   const toastMessage = initData?.text
-    ? 'Text paragraph updated.'
-    : 'Text paragraph created.';
+    ? 'Section updated.'
+    : 'Section created.';
 
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -61,6 +63,7 @@ export const TextInput: React.FC<ITextInputProps> = ({
     resolver: zodResolver(formSchema),
     defaultValues: {
       text: initData?.text || '',
+      imageUrl: initData?.imageUrl || '',
     },
   });
 
@@ -73,11 +76,12 @@ export const TextInput: React.FC<ITextInputProps> = ({
       if (!!initData?.text) {
         await axios.patch(
           `${initData?.api}/${initData?.id}`,
-          { text: data.text }
+          { text: data.text, imageUrl: data.imageUrl }
         );
       } else {
         await axios.patch(`${initData?.api}`, {
           text: data.text,
+          imageUrl: data.imageUrl,
         });
       }
 
@@ -103,7 +107,7 @@ export const TextInput: React.FC<ITextInputProps> = ({
         );
 
         router.refresh();
-        toast.success('Text paragraph deleted');
+        toast.success('Section deleted');
         // close the input form
         cb?.(false);
       }
@@ -122,24 +126,23 @@ export const TextInput: React.FC<ITextInputProps> = ({
         onConfirm={onDelete}
         loading={loading}
       />
-      <div className='w-full py-2'>
-        <div className='space-y-2'>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
-              <div className='flex flex-col lg:flex-row gap-4 w-full'>
+      <div className='py-2'>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <div className='flex flex-col gap-4'>
+              <div className='space-y-4'>
                 <FormField
                   control={form.control}
                   name='text'
                   render={({ field }) => (
-                    <FormItem className='w-full'>
+                    <FormItem>
                       <FormLabel className='text-slate-400'>
                         Text paragraph
                       </FormLabel>
                       <FormControl>
-                        <Textarea
-                          rows={4}
+                        <Input
                           disabled={loading}
-                          placeholder='Text Paragraph'
+                          placeholder='Text paragraph'
                           {...field}
                         />
                       </FormControl>
@@ -148,30 +151,55 @@ export const TextInput: React.FC<ITextInputProps> = ({
                   )}
                 />
 
-                <div className='pt-2 flex flex-row justify-between lg:flex-col lg:justify-center items-end gap-2  h-full'>
-                  {!!initData?.id && (
-                    <Button
-                      type='button'
-                      variant='outline'
-                      size='icon'
-                      onClick={() => setOpen(true)}
-                      className='order-1 lg:order-2'
-                    >
-                      <Trash className='w-4 h-4 text-red-500' />
-                    </Button>
+                <FormField
+                  control={form.control}
+                  name='imageUrl'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className='text-slate-400'>
+                        Background video
+                      </FormLabel>
+                      <FormControl>
+                        <ImageUpload
+                          value={
+                            field.value ? [field.value] : []
+                          }
+                          disabled={loading}
+                          onChange={url =>
+                            field.onChange(url)
+                          }
+                          onRemove={() =>
+                            field.onChange('')
+                          }
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
                   )}
-                  <Button
-                    type='submit'
-                    disabled={loading}
-                    className='text-green-500 order-2 lg:order-1 ml-auto'
-                  >
-                    {action}
-                  </Button>
-                </div>
+                />
               </div>
-            </form>
-          </Form>
-        </div>
+              <div className='mt-2 flex flex-row justify-between gap-2'>
+                {!!initData?.id && (
+                  <Button
+                    type='button'
+                    variant='outline'
+                    size='icon'
+                    onClick={() => setOpen(true)}
+                  >
+                    <Trash className='w-4 h-4 text-red-500' />
+                  </Button>
+                )}
+                <Button
+                  type='submit'
+                  disabled={loading}
+                  className='text-green-500 ml-auto'
+                >
+                  {action}
+                </Button>
+              </div>
+            </div>
+          </form>
+        </Form>
       </div>
     </>
   );

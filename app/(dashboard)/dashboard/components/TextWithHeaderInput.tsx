@@ -39,7 +39,7 @@ const formSchema = z.object({
   header: z.string(),
   text: z
     .string()
-    .min(10, {
+    .min(5, {
       message: 'Text must be at least 10 characters',
     })
     .max(500, {
@@ -129,7 +129,7 @@ export const TextWithHeaderInput: React.FC<
                     name='order'
                     render={({ field }) => (
                       <FormItem className='w-full my-4'>
-                        <FormLabel>
+                        <FormLabel className='text-slate-400'>
                           Section order number
                         </FormLabel>
                         <FormControl>
@@ -159,7 +159,9 @@ export const TextWithHeaderInput: React.FC<
                     name='header'
                     render={({ field }) => (
                       <FormItem className='w-full my-4'>
-                        <FormLabel>Text header</FormLabel>
+                        <FormLabel className='text-slate-400'>
+                          Text header
+                        </FormLabel>
                         <FormControl>
                           <Input
                             type='text'
@@ -177,7 +179,7 @@ export const TextWithHeaderInput: React.FC<
                     name='text'
                     render={({ field }) => (
                       <FormItem className='w-full my-4'>
-                        <FormLabel>
+                        <FormLabel className='text-slate-400'>
                           Text paragraph
                         </FormLabel>
                         <FormControl>
@@ -195,23 +197,24 @@ export const TextWithHeaderInput: React.FC<
                 </div>
 
                 <div className='pt-2 flex flex-row justify-between lg:flex-col lg:justify-center items-end gap-2  h-full'>
-                  <Button
-                    type='submit'
-                    disabled={loading}
-                    className='text-green-500'
-                  >
-                    {action}
-                  </Button>
                   {!!initData?.id && (
                     <Button
                       type='button'
                       variant='outline'
                       size='icon'
                       onClick={() => setOpen(true)}
+                      className='order-1 lg:order-2'
                     >
                       <Trash className='w-4 h-4 text-red-500' />
                     </Button>
                   )}
+                  <Button
+                    type='submit'
+                    disabled={loading}
+                    className='text-green-500 order-2 lg:order-1 ml-auto'
+                  >
+                    {action}
+                  </Button>
                 </div>
               </div>
             </form>

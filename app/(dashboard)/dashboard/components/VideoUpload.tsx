@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 import { CldUploadWidget } from 'next-cloudinary';
@@ -8,14 +7,14 @@ import { CldUploadWidget } from 'next-cloudinary';
 import { ImagePlus, Trash } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-interface ImageUploadProps {
+interface VideoUploadProps {
   disabled?: boolean;
   onChange: (value: string) => void;
   onRemove: (value: string) => void;
   value: string[];
 }
 
-export const ImageUpload: React.FC<ImageUploadProps> = ({
+export const VideoUpload: React.FC<VideoUploadProps> = ({
   disabled,
   onChange,
   onRemove,
@@ -43,7 +42,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
 
   return (
     <div>
-      <div className='mb-4 flex items-center gap-4 '>
+      <div className='mb-4 flex items-center gap-4'>
         {value.map(url => (
           <div
             key={url}
@@ -59,12 +58,13 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
                 <Trash className='h-4 w-4' />
               </Button>
             </div>
-            <Image
-              src={url}
-              alt='Image'
-              width={400}
-              height={400}
-            />
+
+            <video
+              muted
+              className='h-full w-full object-cover'
+            >
+              <source src={url} type='video/mp4' />
+            </video>
           </div>
         ))}
       </div>

@@ -1,6 +1,6 @@
 import prismadb from '@/lib/prismadb';
 
-import { Description } from './components';
+import { Description } from './components/Description';
 import { InitModal } from '../components/InitModal';
 import { InitButton } from '../components/InitButton';
 import { Separator } from '@/components/ui/separator';

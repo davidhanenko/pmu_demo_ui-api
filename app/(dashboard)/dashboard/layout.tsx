@@ -1,9 +1,8 @@
-import { ClerkProvider } from '@clerk/nextjs';
-
 import DashboardNav from './components/DashboardNav';
 import { ModalProvider } from '@/providers/modal-provider';
 import { ToastProvider } from '@/providers/toast-provider';
 import ProgressBarProvider from '@/providers/progress-bar-provider';
+import { NextAuthProvider } from '@/providers/auth-provider';
 
 export default function DashboardLayout({
   children,
@@ -11,15 +10,15 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <div className='bg-slate-800 min-h-screen'>
-        <ModalProvider />
-        <ToastProvider />
-        <DashboardNav />
+    <div className='bg-slate-800 min-h-screen'>
+      <ModalProvider />
+      <ToastProvider />
+      <NextAuthProvider>
+      <DashboardNav />
         <ProgressBarProvider>
-          {children}
+          <div className='pt-24'>{children}</div>
         </ProgressBarProvider>
-      </div>
-    </ClerkProvider>
+      </NextAuthProvider>
+    </div>
   );
 }

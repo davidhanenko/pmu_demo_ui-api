@@ -48,7 +48,7 @@ export const TextSection = ({
           <Item key={item.id} item={item} api={api} />
         ))}
 
-        <div className='p-2 bg-slate-500 '>
+        <div className='p-2 bg-slate-500'>
           {!addMore ? (
             <div className='flex justify-center'>
               <Button
@@ -62,7 +62,7 @@ export const TextSection = ({
             <div className='relative'>
               <TextInput initData={initData} cb={cb} />
               <Button
-                className='text-red-300 absolute bottom-2 right-0'
+                className='text-red-300 absolute bottom-2 lg:right-0'
                 onClick={() => cb(false)}
                 variant={'outline'}
               >

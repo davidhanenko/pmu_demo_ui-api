@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import { Separator } from '@/components/ui/separator';
 import { TextWithHeader } from '@prisma/client';
 import { SectionWithHeader } from '../../components/SectionWithHeader';
 import { SubHeading } from '../../components/SubHeading';
@@ -18,8 +17,11 @@ export const Steps = ({
 
   return (
     <section className='bg-slate-700 p-4'>
-      <SubHeading title='Steps' description='This is a procedure steps of the brows page.' />
- 
+      <SubHeading
+        title='Steps'
+        description='This is a procedure steps of the brows page.'
+      />
+
       <SectionWithHeader
         data={steps}
         api={API}

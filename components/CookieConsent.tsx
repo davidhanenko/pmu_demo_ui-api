@@ -8,7 +8,9 @@ const CookieConsent = () => {
   const [showConsent, setShowConsent] = useState(true);
 
   useEffect(() => {
-    setShowConsent(hasCookie('localConsent'));
+    setTimeout(() => {
+      setShowConsent(hasCookie('localConsent'));
+    }, 4000);
   }, []);
 
   const acceptCookie = () => {

@@ -21,8 +21,8 @@ export default async function Page() {
 
       <Separator className='my-4' />
 
-      <div>
-        {contacts && <ContactsForm contacts={contacts} />}
+      <div className='grid grid-cols-2'>
+        {!!contacts && <ContactsForm contacts={contacts} />}
       </div>
     </div>
   );

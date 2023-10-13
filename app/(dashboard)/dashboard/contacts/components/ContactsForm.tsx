@@ -75,26 +75,117 @@ export const ContactsForm = ({
       <div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <FormField
-              control={form.control}
-              name='phone'
-              render={({ field }) => (
-                <FormItem className='w-full'>
-                  <FormLabel className='text-slate-400'>
-                    Phone
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      type='text'
-                      disabled={loading}
-                      placeholder='Phone'
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div className='space-y-2 py-2'>
+              {/* Phone */}
+              <FormField
+                control={form.control}
+                name='phone'
+                render={({ field }) => (
+                  <FormItem className='w-full'>
+                    <FormLabel className='text-slate-400'>
+                      Phone
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type='text'
+                        disabled={loading}
+                        placeholder='Phone number'
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* Instagram */}
+              <FormField
+                control={form.control}
+                name='instagram'
+                render={({ field }) => (
+                  <FormItem className='w-full'>
+                    <FormLabel className='text-slate-400'>
+                      Instagram
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type='text'
+                        disabled={loading}
+                        placeholder='Instagram username'
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* Email */}
+              <FormField
+                control={form.control}
+                name='email'
+                render={({ field }) => (
+                  <FormItem className='w-full'>
+                    <FormLabel className='text-slate-400'>
+                      Email
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type='email'
+                        disabled={loading}
+                        placeholder='Email address'
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* Address 1 */}
+              <FormField
+                control={form.control}
+                name='address1'
+                render={({ field }) => (
+                  <FormItem className='w-full'>
+                    <FormLabel className='text-slate-400'>
+                      Address, line 1
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type='text'
+                        disabled={loading}
+                        placeholder='Address, line 1'
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* Address 2 */}
+              <FormField
+                control={form.control}
+                name='address2'
+                render={({ field }) => (
+                  <FormItem className='w-full'>
+                    <FormLabel className='text-slate-400'>
+                      Address, line 2
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type='text'
+                        disabled={loading}
+                        placeholder='Address, line 2'
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
           </form>
         </Form>
       </div>

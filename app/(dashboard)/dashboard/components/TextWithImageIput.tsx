@@ -40,9 +40,10 @@ const formSchema = z.object({
     .min(5, {
       message: 'Text must be at least 5 characters',
     })
-    .max(100, {
-      message: 'Text must be at most 100 characters',
-    }),
+    .max(150, {
+      message: 'Text must be at most 150 characters',
+    })
+    .trim(),
   imageUrl: z.string().min(1, {
     message: 'Image URL is required',
   }),

@@ -25,7 +25,7 @@ import { Input } from '@/components/ui/input';
 
 const formSchema = z.object({
   phone: z.string(),
-  email: z.string().email(),
+  email: z.string().email().toLowerCase().trim(),
   address1: z.string(),
   address2: z.string(),
   instagram: z.string(),
@@ -56,7 +56,9 @@ export const ContactsForm = ({
     try {
       setLoading(true);
 
-      toast.success('message');
+      await axios.patch('/api/dashboard/contacts', data);
+
+      toast.success('Contacts details updated.');
       router.refresh();
     } catch (error) {
       toast.error('Something went wrong');
@@ -127,7 +129,8 @@ export const ContactsForm = ({
                 render={({ field }) => (
                   <FormItem className='w-full'>
                     <FormLabel className='text-slate-400'>
-                      Email
+                      Email (You will receive emails to this
+                      address)
                     </FormLabel>
                     <FormControl>
                       <Input
@@ -185,6 +188,24 @@ export const ContactsForm = ({
                   </FormItem>
                 )}
               />
+              <div className='flex justify-between pt-4'>
+                <Button
+                  type='button'
+                  variant='outline'
+                  className='text-red-300'
+                  onClick={() => router.refresh()}
+                >
+                  Cancel
+                </Button>
+
+                <Button
+                  type='submit'
+                  disabled={loading}
+                  className='text-green-500 ml-auto'
+                >
+                  Save
+                </Button>
+              </div>
             </div>
           </form>
         </Form>

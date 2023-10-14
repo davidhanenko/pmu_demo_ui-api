@@ -20,8 +20,7 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json( contacts );
-    
+    return NextResponse.json(contacts);
   } catch (error) {
     console.log('[CONTACTS_POST]', error);
     return new NextResponse('Internal error', {
@@ -30,3 +29,36 @@ export async function POST(req: Request) {
   }
 }
 
+export async function PATCH(req: Request) {
+  try {
+    const body = await req.json();
+    const { phone, email, address1, address2, instagram } =
+      body;
+
+    if (!email) {
+      return new NextResponse('Email is required', {
+        status: 400,
+      });
+    }
+
+    const contacts = await prismadb.contacts.update({
+      where: {
+        name: 'contacts',
+      },
+      data: {
+        phone,
+        email,
+        address1,
+        address2,
+        instagram,
+      },
+    });
+
+    return NextResponse.json(contacts);
+  } catch (error) {
+    console.log('CONTACTS_PATCH', error);
+    return new NextResponse('Internal error', {
+      status: 500,
+    });
+  }
+}

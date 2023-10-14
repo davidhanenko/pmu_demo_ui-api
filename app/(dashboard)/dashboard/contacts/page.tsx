@@ -19,9 +19,7 @@ export default async function Page() {
 
       <InitModal name={NAME} />
 
-      <Separator className='my-4' />
-
-      <div className='grid grid-cols-2'>
+      <div className='grid md:grid-cols-2 '>
         {!!contacts && <ContactsForm contacts={contacts} />}
       </div>
     </div>

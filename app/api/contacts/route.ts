@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 export async function PATCH(req: Request) {
   try {
     const body = await req.json();
-    const { phone, email, address1, address2, instagram } =
+    const { phone, email, instagram, address1, address2 } =
       body;
 
     if (!email) {
@@ -48,15 +48,28 @@ export async function PATCH(req: Request) {
       data: {
         phone,
         email,
+        instagram,
         address1,
         address2,
-        instagram,
       },
     });
 
     return NextResponse.json(contacts);
   } catch (error) {
     console.log('CONTACTS_PATCH', error);
+    return new NextResponse('Internal error', {
+      status: 500,
+    });
+  }
+}
+
+export async function GET(req: Request) {
+  try {
+    const contacts = await prismadb.contacts.findFirst();
+
+    return NextResponse.json(contacts);
+  } catch (error) {
+    console.log('CONTACTS_GET]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

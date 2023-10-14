@@ -3,7 +3,6 @@ import prismadb from '@/lib/prismadb';
 import { Heading } from '../components/Heading';
 import { InitModal } from '../components/InitModal';
 import { InitButton } from '../components/InitButton';
-import { Separator } from '@/components/ui/separator';
 import { ContactsForm } from './components/ContactsForm';
 
 const NAME = 'contacts';
@@ -20,7 +19,7 @@ export default async function Page() {
       <InitModal name={NAME} />
 
       <div className='grid md:grid-cols-2 '>
-        {!!contacts && <ContactsForm contacts={contacts} />}
+        <ContactsForm contacts={contacts} />
       </div>
     </div>
   );

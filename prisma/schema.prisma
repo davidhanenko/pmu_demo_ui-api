@@ -46,7 +46,7 @@ model Contacts {
     id           String @id @default(auto()) @map("_id") @db.ObjectId
     name         String @default("contacts") @unique
     phone        String?
-    email        String?
+    email        String
     address1     String?
     address2     String?
     instagram    String?

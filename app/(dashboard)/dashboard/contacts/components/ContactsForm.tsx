@@ -22,6 +22,7 @@ import {
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { AlertModal } from '../../components/AlertModal';
 
 const formSchema = z.object({
   phone: z.string(),
@@ -31,12 +32,16 @@ const formSchema = z.object({
   instagram: z.string(),
 });
 
+const API = '/api/contacts';
+
 export const ContactsForm = ({
   contacts,
 }: {
-  contacts: Contacts;
+  contacts: Contacts | null;
 }) => {
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -56,7 +61,7 @@ export const ContactsForm = ({
     try {
       setLoading(true);
 
-      await axios.patch('/api/dashboard/contacts', data);
+      await axios.patch(API, data);
 
       toast.success('Contacts details updated.');
       router.refresh();
@@ -67,149 +72,172 @@ export const ContactsForm = ({
     }
   };
 
+  const onCancel = async () => {
+    try {
+      setLoading(true);
+
+      toast.success('Changes discarded.');
+      window.location.reload();
+    } catch (error) {
+      toast.error('Something went wrong');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <section className='bg-slate-700 p-4'>
-      <SubHeading
-        title='Contacts'
-        description='This is form to update contacts.'
+    <>
+      {' '}
+      <AlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onCancel}
+        loading={loading}
       />
+      <section className='bg-slate-700 p-4'>
+        <SubHeading
+          title='Contacts'
+          description='This is form to update contacts.'
+        />
 
-      <div>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className='space-y-2 py-2'>
-              {/* Phone */}
-              <FormField
-                control={form.control}
-                name='phone'
-                render={({ field }) => (
-                  <FormItem className='w-full'>
-                    <FormLabel className='text-slate-400'>
-                      Phone
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        type='text'
-                        disabled={loading}
-                        placeholder='Phone number'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+        <div>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+              <div className='space-y-2 py-2'>
+                {/* Phone */}
+                <FormField
+                  control={form.control}
+                  name='phone'
+                  render={({ field }) => (
+                    <FormItem className='w-full'>
+                      <FormLabel className='text-slate-400'>
+                        Phone
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type='text'
+                          disabled={loading}
+                          placeholder='Phone number'
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              {/* Instagram */}
-              <FormField
-                control={form.control}
-                name='instagram'
-                render={({ field }) => (
-                  <FormItem className='w-full'>
-                    <FormLabel className='text-slate-400'>
-                      Instagram
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        type='text'
-                        disabled={loading}
-                        placeholder='Instagram username'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                {/* Instagram */}
+                <FormField
+                  control={form.control}
+                  name='instagram'
+                  render={({ field }) => (
+                    <FormItem className='w-full'>
+                      <FormLabel className='text-slate-400'>
+                        Instagram
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type='text'
+                          disabled={loading}
+                          placeholder='Instagram username'
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              {/* Email */}
-              <FormField
-                control={form.control}
-                name='email'
-                render={({ field }) => (
-                  <FormItem className='w-full'>
-                    <FormLabel className='text-slate-400'>
-                      Email (You will receive emails to this
-                      address)
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        type='email'
-                        disabled={loading}
-                        placeholder='Email address'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                {/* Email */}
+                <FormField
+                  control={form.control}
+                  name='email'
+                  render={({ field }) => (
+                    <FormItem className='w-full'>
+                      <FormLabel className='text-slate-400'>
+                        Email (You will receive emails to
+                        this address)
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type='email'
+                          disabled={loading}
+                          placeholder='Email address'
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              {/* Address 1 */}
-              <FormField
-                control={form.control}
-                name='address1'
-                render={({ field }) => (
-                  <FormItem className='w-full'>
-                    <FormLabel className='text-slate-400'>
-                      Address, line 1
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        type='text'
-                        disabled={loading}
-                        placeholder='Address, line 1'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                {/* Address 1 */}
+                <FormField
+                  control={form.control}
+                  name='address1'
+                  render={({ field }) => (
+                    <FormItem className='w-full'>
+                      <FormLabel className='text-slate-400'>
+                        Address, line 1
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type='text'
+                          disabled={loading}
+                          placeholder='Address, line 1'
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              {/* Address 2 */}
-              <FormField
-                control={form.control}
-                name='address2'
-                render={({ field }) => (
-                  <FormItem className='w-full'>
-                    <FormLabel className='text-slate-400'>
-                      Address, line 2
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        type='text'
-                        disabled={loading}
-                        placeholder='Address, line 2'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <div className='flex justify-between pt-4'>
-                <Button
-                  type='button'
-                  variant='outline'
-                  className='text-red-300'
-                  onClick={() => router.refresh()}
-                >
-                  Cancel
-                </Button>
+                {/* Address 2 */}
+                <FormField
+                  control={form.control}
+                  name='address2'
+                  render={({ field }) => (
+                    <FormItem className='w-full'>
+                      <FormLabel className='text-slate-400'>
+                        Address, line 2
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type='text'
+                          disabled={loading}
+                          placeholder='Address, line 2'
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <div className='flex justify-between pt-4'>
+                  <Button
+                    type='button'
+                    variant='outline'
+                    className='text-red-300'
+                    disabled={loading}
+                    onClick={() => setOpen(true)}
+                  >
+                    Cancel
+                  </Button>
 
-                <Button
-                  type='submit'
-                  disabled={loading}
-                  className='text-green-500 ml-auto'
-                >
-                  Save
-                </Button>
+                  <Button
+                    type='submit'
+                    disabled={loading}
+                    className='text-green-500 ml-auto'
+                  >
+                    Save
+                  </Button>
+                </div>
               </div>
-            </div>
-          </form>
-        </Form>
-      </div>
-    </section>
+            </form>
+          </Form>
+        </div>
+      </section>
+    </>
   );
 };

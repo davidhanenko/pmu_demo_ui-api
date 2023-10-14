@@ -38,9 +38,10 @@ const formSchema = z.object({
     .min(1, {
       message: 'Text input is required',
     })
-    .max(100, {
-      message: 'Text must be at most 100 characters',
-    }),
+    .max(500, {
+      message: 'Text must be at most 500 characters',
+    })
+    .trim(),
 });
 
 export const TextInput: React.FC<ITextInputProps> = ({

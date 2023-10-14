@@ -4,7 +4,7 @@ import { ToastProvider } from '@/providers/toast-provider';
 import ProgressBarProvider from '@/providers/progress-bar-provider';
 import { NextAuthProvider } from '@/providers/auth-provider';
 
-export default function DashboardLayout({
+export default function LipsLayout({
   children,
 }: {
   children: React.ReactNode;

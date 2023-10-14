@@ -17,9 +17,11 @@ export async function PATCH(req: Request) {
       );
     }
 
+    const brows = await prismadb.brows.findFirst();
+
     const videoBg = await prismadb.brows.update({
       where: {
-        name: 'brows',
+        id: brows?.id,
       },
       data: {
         videoBg: videoUrl,
@@ -34,4 +36,3 @@ export async function PATCH(req: Request) {
     });
   }
 }
-

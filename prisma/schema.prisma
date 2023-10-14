@@ -17,6 +17,17 @@ model User {
     updatedAt     DateTime  @updatedAt
 }
 
+model About {
+    id           String @id @default(auto()) @map("_id") @db.ObjectId
+    name         String @default("about") @unique 
+    image        String?
+    welcome      TextWithHeader[]
+    description  Text[] @relation("description")
+    aboutTool    Text[] @relation("aboutTool")
+
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+}
 
 model Brows {
     id           String @id @default(auto()) @map("_id") @db.ObjectId
@@ -59,6 +70,12 @@ model Contacts {
 model Text {
     id                String @id @default(auto()) @map("_id") @db.ObjectId
     text              String
+
+    about             About? @relation(name: "description", fields: [descriptionId], references: [id])
+    descriptionId     String? @db.ObjectId
+    aboutTool         About? @relation(name: "aboutTool", fields: [aboutToolId], references: [id])
+    aboutToolId       String? @db.ObjectId
+
     browsDescription  Brows? @relation(fields: [browsId], references: [id])
     browsId           String? @db.ObjectId
     lipsDescription   Lips? @relation(fields: [lipsId], references: [id])
@@ -75,8 +92,11 @@ model TextWithHeader {
     order          Int?
     header         String?
     text           String
+    aboutWelcome   About? @relation(fields: [aboutId], references: [id])
+    aboutId String? @db.ObjectId
     browsSteps     Brows? @relation(fields: [browsId], references: [id])
     browsId        String? @db.ObjectId
+
     lipsProcess    Lips? @relation(name:"process", fields: [lipsProcessId], references: [id])
     lipsProcessId  String? @db.ObjectId
     lipsTips       Lips? @relation(name:"tips", fields: [lipsTipsId], references: [id])

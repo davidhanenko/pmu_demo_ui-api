@@ -14,9 +14,11 @@ export async function PATCH(req: Request) {
       });
     }
 
+    const brows = await prismadb.brows.findFirst();
+
     const textInput = await prismadb.brows.update({
       where: {
-        name: 'brows',
+        id: brows?.id,
       },
       data: {
         description: {

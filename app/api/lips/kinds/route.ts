@@ -20,9 +20,11 @@ export async function PATCH(req: Request) {
       });
     }
 
+    const lips = await prismadb.lips.findFirst();
+
     const textWithImageInput = await prismadb.lips.update({
       where: {
-        name: 'lips',
+        id: lips?.id,
       },
       data: {
         kinds: {

@@ -14,9 +14,11 @@ export async function PATCH(req: Request) {
       });
     }
 
+    const lips = await prismadb.lips.findFirst();
+
     const textWithHeaderInput = await prismadb.lips.update({
       where: {
-        name: 'lips',
+        id: lips?.id,
       },
       data: {
         tips: {

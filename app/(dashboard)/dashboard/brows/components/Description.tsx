@@ -20,7 +20,7 @@ export const Description = ({
       <SubHeading
         title='Description'
         description={
-          'his is a description of the brows page.'
+          'This is a description of the brows page.'
         }
       />
 

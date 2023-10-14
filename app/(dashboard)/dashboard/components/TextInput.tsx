@@ -35,11 +35,11 @@ interface ITextInputProps {
 const formSchema = z.object({
   text: z
     .string()
-    .min(5, {
-      message: 'Text must be at least 10 characters',
+    .min(1, {
+      message: 'Text input is required',
     })
-    .max(500, {
-      message: 'Text must be at most 1000 characters',
+    .max(100, {
+      message: 'Text must be at most 100 characters',
     }),
 });
 

@@ -72,7 +72,7 @@ export const ContactsForm = ({
     }
   };
 
-  const onCancel = async () => {
+  const onCancel = () => {
     try {
       setLoading(true);
 

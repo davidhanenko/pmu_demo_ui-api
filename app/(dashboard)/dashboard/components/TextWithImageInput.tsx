@@ -140,7 +140,7 @@ export const TextWithImageInput: React.FC<
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className='text-slate-400'>
-                        Text paragraph
+                        Image title
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -160,7 +160,7 @@ export const TextWithImageInput: React.FC<
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className='text-slate-400'>
-                        Background video
+                        Select image
                       </FormLabel>
                       <FormControl>
                         <ImageUpload

@@ -30,7 +30,7 @@ export async function PATCH(req: Request) {
 
     return NextResponse.json(videoBg);
   } catch (error) {
-    console.log('[LIPS_VIDEO_POST]', error);
+    console.log('[LIPS_VIDEO_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

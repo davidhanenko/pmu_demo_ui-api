@@ -5,6 +5,7 @@ import { InitButton } from '../components/InitButton';
 import { Heading } from '../components/Heading';
 import { Description } from './components/Description';
 import { Welcome } from './components/Welcome';
+import { AboutImage } from './components/AboutImage';
 
 const NAME = 'about';
 
@@ -32,6 +33,7 @@ export default async function Page() {
       <Welcome welcome={welcome} />
       <div className='grid grid-cols-2 gap-4'>
         <Description description={description} />
+        <AboutImage imageUrl={about?.image} />
       </div>
     </div>
   );

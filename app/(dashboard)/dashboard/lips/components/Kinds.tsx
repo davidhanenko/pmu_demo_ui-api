@@ -4,7 +4,7 @@ import { TextWithImage } from '@prisma/client';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { SubHeading } from '../../components/SubHeading';
-import { TextWithImageInput } from '../../components/TextWithImageIput';
+import { TextWithImageInput } from '../../components/TextWithImageInput';
 
 const API = '/api/lips/kinds';
 

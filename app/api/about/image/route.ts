@@ -6,31 +6,31 @@ export async function PATCH(req: Request) {
   try {
     const body = await req.json();
 
-    const { videoUrl } = body;
+    const { imageUrl } = body;
 
-    if (!videoUrl) {
+    if (!imageUrl) {
       return new NextResponse(
-        'Video upload url is required',
+        'Image upload url is required',
         {
           status: 400,
         }
       );
     }
 
-    const brows = await prismadb.brows.findFirst();
+    const about = await prismadb.about.findFirst();
 
-    const videoBg = await prismadb.brows.update({
+    const image = await prismadb.about.update({
       where: {
-        id: brows?.id,
+        id: about?.id,
       },
       data: {
-        videoBg: videoUrl,
+        image: imageUrl,
       },
     });
 
-    return NextResponse.json(videoBg);
+    return NextResponse.json(image);
   } catch (error) {
-    console.log('[BROWS_VIDEO_PATCH]', error);
+    console.log('[ABOUT_IMAGE_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

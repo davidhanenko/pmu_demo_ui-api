@@ -1,5 +1,29 @@
+import prismadb from '@/lib/prismadb';
+
 import { Brows } from './components/Brows';
 
 export default async function Page() {
-  return <Brows />;
+  const browsData = await prismadb.brows.findFirst();
+
+  const browsDescription = await prismadb.text.findMany({
+    where: {
+      browsId: browsData?.id,
+    },
+  });
+
+  const browsSteps = await prismadb.textWithHeader.findMany(
+    {
+      where: {
+        browsId: browsData?.id,
+      },
+    }
+  );
+
+  return (
+    <Brows
+      browsDescription={browsDescription}
+      browsSteps={browsSteps}
+      videoUrl={browsData?.videoBg}
+    />
+  );
 }

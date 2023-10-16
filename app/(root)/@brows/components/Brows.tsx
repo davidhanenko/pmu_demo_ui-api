@@ -13,9 +13,19 @@ import ScrollAnimated from '@/components/ScrollIndicator';
 
 import browImg from 'assets/images/brow_1.png';
 import useScrollPosition from '@/lib/useScrollPosition';
-const videoSrc = process.env.NEXT_PUBLIC_VIDEO_BROWS_SRC;
+import { Text, TextWithHeader } from '@prisma/client';
 
-export const Brows = () => {
+interface IBrowsProps {
+  browsDescription: Text[];
+  browsSteps: TextWithHeader[];
+  videoUrl: string;
+}
+
+export const Brows: React.FC<IBrowsProps> = ({
+  browsDescription,
+  browsSteps,
+  videoUrl,
+}) => {
   const { ref, inView } = useInView({
     threshold: 0.4,
   });
@@ -65,7 +75,7 @@ export const Brows = () => {
           <div className='hidden order-1 lg:order-2 relative col-span-12 lg:col-span-7 md:flex lg:justify-end h-full'>
             <BrowsTypes />
           </div>
-          <BrowsSteps />
+          <BrowsSteps browsSteps={browsSteps} />
         </div>
         <div className='relative'>
           <div className='relative md:clip-bg-brows-2 lg:clip-bg-brows-1 h-full w-full'>
@@ -76,11 +86,13 @@ export const Brows = () => {
               playsInline
               className='h-full w-full'
             >
-              <source src={videoSrc} type='video/mp4' />
+              <source src={videoUrl} type='video/mp4' />
             </video>
             <div className='absolute top-0 left-0 h-full w-full bg-[#000] opacity-70' />
 
-            <BrowsDescription />
+            <BrowsDescription
+              browsDescription={browsDescription}
+            />
           </div>
         </div>
       </div>

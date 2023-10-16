@@ -25,7 +25,7 @@ const Page = async () => {
   });
 
   return (
-    <div className='text-white pb-12'>
+    <div className='text-white pb-12 md:px-4'>
       <Heading name={NAME} />
       {!brows && <InitButton name={NAME} />}
 

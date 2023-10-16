@@ -23,7 +23,7 @@ model About {
     image        String?
     welcome      TextWithHeader[]
     description  Text[] @relation("description")
-    aboutTool    Text[] @relation("aboutTool")
+    machine    Text[] @relation("machine")
 
     createdAt    DateTime @default(now())
     updatedAt    DateTime @updatedAt
@@ -73,8 +73,8 @@ model Text {
 
     about             About? @relation(name: "description", fields: [descriptionId], references: [id])
     descriptionId     String? @db.ObjectId
-    aboutTool         About? @relation(name: "aboutTool", fields: [aboutToolId], references: [id])
-    aboutToolId       String? @db.ObjectId
+    machine         About? @relation(name: "machine", fields: [machineId], references: [id])
+    machineId       String? @db.ObjectId
 
     browsDescription  Brows? @relation(fields: [browsId], references: [id])
     browsId           String? @db.ObjectId

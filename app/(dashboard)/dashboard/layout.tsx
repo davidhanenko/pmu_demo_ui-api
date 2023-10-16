@@ -10,11 +10,11 @@ export default function LipsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className='bg-slate-800 min-h-screen'>
+    <div className='bg-slate-800 min-h-screen w-full max-w-[1400px] mx-auto'>
       <ModalProvider />
       <ToastProvider />
       <NextAuthProvider>
-      <DashboardNav />
+        <DashboardNav />
         <ProgressBarProvider>
           <div className='pt-24'>{children}</div>
         </ProgressBarProvider>

@@ -6,6 +6,7 @@ import { Heading } from '../components/Heading';
 import { Description } from './components/Description';
 import { Welcome } from './components/Welcome';
 import { AboutImage } from './components/AboutImage';
+import { Machine } from './components/Machine';
 
 const NAME = 'about';
 
@@ -24,8 +25,14 @@ export default async function Page() {
     },
   });
 
+  const machine = await prismadb.text.findMany({
+    where: {
+      machineId: about?.id,
+    },
+  });
+
   return (
-    <div className='text-white pb-12'>
+    <div className='text-white pb-12 md:px-4'>
       <Heading name={NAME} />
       {!about && <InitButton name={NAME} />}
       <InitModal name={NAME} />
@@ -35,6 +42,7 @@ export default async function Page() {
         <Description description={description} />
         <AboutImage imageUrl={about?.image} />
       </div>
+      <Machine machine={machine} />
     </div>
   );
 }

@@ -43,7 +43,9 @@ const formSchema = z.object({
     .max(100, {
       message: 'Text must be at most 100 characters',
     }),
-  imageUrl: z.string().nonempty(),
+  imageUrl: z.string().min(1, {
+    message: 'Image URL is required',
+  }),
 });
 
 export const TextWithImageInput: React.FC<

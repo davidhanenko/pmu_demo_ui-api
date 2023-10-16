@@ -26,7 +26,9 @@ interface IUploadProps {
 }
 
 const formSchema = z.object({
-  videoUrl: z.string().nonempty(),
+  videoUrl: z.string().min( 1, {
+    message: 'Video URL is required',
+  })
 });
 
 export const VideoBg: React.FC<IUploadProps> = ({

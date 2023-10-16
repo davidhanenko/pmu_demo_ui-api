@@ -22,9 +22,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 const formSchema = z.object({
-  name: z
-    .string()
-    .nonempty({ message: 'Name is required' }),
+  name: z.string().min(1, { message: 'Name is required' }),
   email: z
     .string()
     .email({ message: 'Invalid email address' })
@@ -36,7 +34,9 @@ const formSchema = z.object({
       message: 'Password must be at least 8 characters',
     })
     .trim(),
-  secret: z.string().nonempty(),
+  secret: z
+    .string()
+    .min(1, { message: 'Secret is required' }),
 });
 
 export const RegisterForm = () => {
@@ -83,7 +83,9 @@ export const RegisterForm = () => {
 
       signIn(undefined, { callbackUrl: '/dashboard' });
     } catch (error: any) {
-      toast.error('Something went wrong, please try again.');
+      toast.error(
+        'Something went wrong, please try again.'
+      );
       setLoading(false);
     } finally {
       setLoading(false);

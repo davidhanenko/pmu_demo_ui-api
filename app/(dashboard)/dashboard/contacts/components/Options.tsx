@@ -2,28 +2,28 @@
 
 import { useState } from 'react';
 
-import { TextWithHeader } from '@prisma/client';
-import { SectionWithHeader } from '../../components/SectionWithHeader';
+import { Text } from '@prisma/client';
 import { SubHeading } from '../../components/SubHeading';
+import { TextSection } from '../../components/TextSection';
 
-const API = '/api/brows/steps';
+const API = '/api/contacts/options';
 
-export const Steps = ({
-  steps,
+export const Options = ({
+  options,
 }: {
-  steps: TextWithHeader[];
+  options: Text[];
 }) => {
   const [addMore, setAddMore] = useState(false);
 
   return (
     <section className='bg-slate-700 p-4'>
       <SubHeading
-        title='Steps'
-        description='This is a procedure steps of the brows page.'
+        title='Contact options'
+        description='There are the options for contact message'
       />
 
-      <SectionWithHeader
-        data={steps}
+      <TextSection
+        data={options}
         api={API}
         addMore={addMore}
         cb={setAddMore}

@@ -46,7 +46,6 @@ const Page = async () => {
 
       <InitModal name={NAME} />
 
-      <Separator className='my-4' />
       <div className='grid grid-cols-2 gap-4 mb-4'>
         <Description description={description} />
         <VideoBg videoUrl={lips?.videoBg} />

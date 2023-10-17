@@ -19,11 +19,13 @@ export default async function Page() {
     }
   );
 
+  if (!browsData) return null;
+
   return (
     <Brows
       browsDescription={browsDescription}
       browsSteps={browsSteps}
-      videoUrl={browsData?.videoBg}
+      videoUrl={browsData?.videoBg || ''}
     />
   );
 }

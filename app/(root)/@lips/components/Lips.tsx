@@ -5,11 +5,30 @@ import { useInView } from 'react-intersection-observer';
 import { BgVideo } from './BgVideo';
 import { LipsProcess } from './LipsProcess';
 import { SectionHeader } from '../../components/shared/SectionHeader';
+import { useNav } from '../../../../context/navContext';
+import {
+  Text,
+  TextWithHeader,
+  TextWithImage,
+} from '@prisma/client';
 
 import lipsImg from '../../../../assets/images/pink_lips.png';
-import { useNav } from '../../../../context/navContext';
 
-export const Lips = () => {
+interface ILipsProps {
+  lipsDescription: Text[];
+  lipsProcess: TextWithHeader[];
+  lipsTips: TextWithHeader[];
+  lipsTechniques: TextWithImage[];
+  videoUrl: string;
+}
+
+export const Lips: React.FC<ILipsProps> = ({
+  lipsDescription,
+  lipsProcess,
+  lipsTips,
+  lipsTechniques,
+  videoUrl,
+}) => {
   const { ref, inView } = useInView({
     threshold: 0.2,
   });
@@ -34,8 +53,15 @@ export const Lips = () => {
         src={lipsImg}
       />
 
-      <BgVideo />
-      <LipsProcess />
+      <BgVideo
+        videoUrl={videoUrl}
+        lipsDescription={lipsDescription}
+      />
+      <LipsProcess
+        lipsProcess={lipsProcess}
+        lipsTips={lipsTips}
+        lipsTechniques={lipsTechniques}
+      />
     </section>
   );
 };

@@ -22,20 +22,21 @@ export async function PATCH(
       });
     }
 
-    const step = await prismadb.textWithHeader.update({
-      where: {
-        id: params.id,
-      },
-      data: {
-        order: order,
-        header: header,
-        text: text,
-      },
-    });
+    const welcomeSection =
+      await prismadb.textWithHeader.update({
+        where: {
+          id: params.id,
+        },
+        data: {
+          order: order,
+          header: header,
+          text: text,
+        },
+      });
 
-    return NextResponse.json(step);
+    return NextResponse.json(welcomeSection);
   } catch (error) {
-    console.log('[BROWS_STEPS_PATCH]', error);
+    console.log('[ABOUT_WELCOME_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -53,15 +54,16 @@ export async function DELETE(
       });
     }
 
-    const step = await prismadb.textWithHeader.delete({
-      where: {
-        id: params.id,
-      },
-    });
+    const welcomeSection =
+      await prismadb.textWithHeader.delete({
+        where: {
+          id: params.id,
+        },
+      });
 
-    return NextResponse.json(step);
+    return NextResponse.json(welcomeSection);
   } catch (error) {
-    console.log('[BROWS_STEPS_DELETE]', error);
+    console.log('[ABOUT_WELCOME_DELETE]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

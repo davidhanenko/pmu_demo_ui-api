@@ -4,12 +4,21 @@ import Image from 'next/image';
 import { LipsTips } from './LipsTips';
 
 import { motion } from 'framer-motion';
-import {
-  lipsProcess,
-  lipsTechniques,
-} from '../../../../constants';
 
-export const LipsProcess = () => {
+import {
+  TextWithHeader,
+  TextWithImage,
+} from '@prisma/client';
+
+export const LipsProcess = ({
+  lipsProcess,
+  lipsTips,
+  lipsTechniques,
+}: {
+  lipsProcess: TextWithHeader[];
+  lipsTips: TextWithHeader[];
+  lipsTechniques: TextWithImage[];
+}) => {
   return (
     <div className='bg-red-lips_1 bg-local bg-[center_top_15rem] lg:bg-[right_top_5rem] bg-contain bg-no-repeat relative bg-white bg-overlay-gradient'>
       <div className='relative p-4 py-8 md:p-16 h-full'>
@@ -37,9 +46,9 @@ export const LipsProcess = () => {
                   key={item.id}
                 >
                   <p className='mr-1 text-xl font-bold text-slate-800 flex justify-end'>
-                    {item.title}
+                    {item.header}
                   </p>
-                  <p className='inline'>{item.step}</p>
+                  <p className='inline'>{item.text}</p>
                 </li>
               ))}
             </ul>
@@ -48,29 +57,30 @@ export const LipsProcess = () => {
           {/* right */}
 
           <div className='w-full lg:w-fit py-12 grid gap-4 justify-items-center grid-cols-fill-250 lg:grid-auto-row'>
-            {lipsTechniques.map(item => (
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.75 }}
-                key={item.id}
-                className='relative w-[250px] h-[250px]'
-              >
-                <Image
-                  src={`/images/${item.image}`}
-                  alt=''
-                  fill
-                />
-                <p className='absolute bottom-0 p-1 text-lg text-black bg-red-400 w-full'>
-                  {item.title}
-                </p>
-              </motion.div>
-            ))}
+            {!!lipsTechniques &&
+              lipsTechniques?.map(item => (
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false }}
+                  transition={{ duration: 0.75 }}
+                  key={item.id}
+                  className='relative w-[250px] h-[250px]'
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.text}
+                    fill
+                  />
+                  <p className='absolute bottom-0 p-1 text-lg text-black bg-red-400 w-full'>
+                    {item.text}
+                  </p>
+                </motion.div>
+              ))}
           </div>
         </div>
       </div>
-      <LipsTips />
+      <LipsTips lipsTips={lipsTips} />
     </div>
   );
 };

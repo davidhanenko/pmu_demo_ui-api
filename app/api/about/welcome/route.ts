@@ -14,29 +14,31 @@ export async function PATCH(req: Request) {
       });
     }
 
-    const lips = await prismadb.lips.findFirst();
+    const about = await prismadb.about.findFirst();
 
-    const textWithHeaderInput = await prismadb.lips.update({
-      where: {
-        id: lips?.id,
-      },
-      data: {
-        tips: {
-          create: {
-            order: order,
-            header: header,
-            text: text,
+    const textWithHeaderInput = await prismadb.about.update(
+      {
+        where: {
+          id: about?.id,
+        },
+        data: {
+          welcome: {
+            create: {
+              order: order,
+              header: header,
+              text: text,
+            },
           },
         },
-      },
-      include: {
-        tips: true,
-      },
-    });
+        include: {
+          welcome: true,
+        },
+      }
+    );
 
     return NextResponse.json(textWithHeaderInput);
   } catch (error) {
-    console.log('[LIPS_TIPS_PATCH]', error);
+    console.log('[ABOUT_WELCOME_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

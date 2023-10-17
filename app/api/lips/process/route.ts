@@ -8,16 +8,17 @@ export async function PATCH(req: Request) {
 
     const { order, text, header } = body;
 
-
     if (!text) {
       return new NextResponse('Text is required', {
         status: 400,
       });
     }
 
+    const lips = await prismadb.lips.findFirst();
+
     const textWithHeaderInput = await prismadb.lips.update({
       where: {
-        name: 'lips',
+        id: lips?.id,
       },
       data: {
         process: {

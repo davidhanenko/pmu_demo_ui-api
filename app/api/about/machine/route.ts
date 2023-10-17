@@ -14,27 +14,27 @@ export async function PATCH(req: Request) {
       });
     }
 
-    const lips = await prismadb.lips.findFirst();
+    const about = await prismadb.about.findFirst();
 
-    const textInput = await prismadb.lips.update({
+    const textInput = await prismadb.about.update({
       where: {
-        id: lips?.id,
+        id: about?.id,
       },
       data: {
-        description: {
+        machine: {
           create: {
             text: text,
           },
         },
       },
       include: {
-        description: true,
+        machine: true,
       },
     });
 
     return NextResponse.json(textInput);
   } catch (error) {
-    console.log('[BROWS_DESCRIPTION_PATCH]', error);
+    console.log('[ABOUT_MACHINE_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

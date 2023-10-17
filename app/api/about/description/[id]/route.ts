@@ -8,7 +8,7 @@ export async function PATCH(
   try {
     const body = await req.json();
 
-    const { order, header, text } = body;
+    const { text } = body;
 
     if (!text) {
       return new NextResponse('Text input is required', {
@@ -22,20 +22,18 @@ export async function PATCH(
       });
     }
 
-    const step = await prismadb.textWithHeader.update({
+    const textInput = await prismadb.text.update({
       where: {
         id: params.id,
       },
       data: {
-        order: order,
-        header: header,
         text: text,
       },
     });
 
-    return NextResponse.json(step);
+    return NextResponse.json(textInput);
   } catch (error) {
-    console.log('[BROWS_STEPS_PATCH]', error);
+    console.log('[ABOUT_DESCRIPTION_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -53,15 +51,15 @@ export async function DELETE(
       });
     }
 
-    const step = await prismadb.textWithHeader.delete({
+    const descriptionText = await prismadb.text.delete({
       where: {
         id: params.id,
       },
     });
 
-    return NextResponse.json(step);
+    return NextResponse.json(descriptionText);
   } catch (error) {
-    console.log('[BROWS_STEPS_DELETE]', error);
+    console.log('[BROWS_DESCRIPTION_DELETE]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

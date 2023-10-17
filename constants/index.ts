@@ -38,6 +38,7 @@ export const phoneRegex = new RegExp(
 
 export const browsDescription = [
   `One of the most popular kinds of permanent makeup is the Powder Brows — an eyebrow-boosting method that provides a soft and natural powdered effect. This technique is ideal for individuals with sparse, thin, or uneven brows, or those who desire more defined and symmetrical eyebrows.`,
+  
   `The pigment used is carefully selected to match your natural hair color, ensuring a harmonious and complementary result. It offers a semi-permanent solution, typically lasting 1-2 years, after which touch-up sessions may be required to maintain the desired look. It's a game-changer for those seeking a hassle-free, time-saving solution to achieving a flawless look daily.`,
 ];
 

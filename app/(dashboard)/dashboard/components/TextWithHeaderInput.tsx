@@ -36,7 +36,7 @@ interface ITextWithHeaderInputProps {
 
 const formSchema = z.object({
   order: z.number().int().nullable(),
-  header: z.string(),
+  header: z.string().trim(),
   text: z
     .string()
     .min(5, {
@@ -44,7 +44,8 @@ const formSchema = z.object({
     })
     .max(500, {
       message: 'Text must be at most 500 characters',
-    }),
+    })
+    .trim(),
 });
 
 export const TextWithHeaderInput: React.FC<

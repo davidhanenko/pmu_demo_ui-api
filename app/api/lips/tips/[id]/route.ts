@@ -35,7 +35,6 @@ export async function PATCH(
 
     return NextResponse.json(tipInput);
   } catch (error) {
-    console.log('[LIPS_TIPS_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -61,7 +60,6 @@ export async function DELETE(
 
     return NextResponse.json(tipInput);
   } catch (error) {
-    console.log('[LIPS_TIPS_DELETE]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

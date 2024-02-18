@@ -41,7 +41,6 @@ export async function PATCH(req: Request) {
 
     return NextResponse.json(textWithImageInput);
   } catch (error) {
-    console.log('[LIPS_TIPS_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

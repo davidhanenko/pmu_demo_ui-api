@@ -34,7 +34,6 @@ export async function PATCH(req: Request) {
 
     return NextResponse.json(textInput);
   } catch (error) {
-    console.log('[CONTACTS_OPTIONS_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

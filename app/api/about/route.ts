@@ -22,7 +22,36 @@ export async function POST(req: Request) {
 
     return NextResponse.json(about);
   } catch (error) {
-    console.log('[BROWS_POST]', error);
+    return new NextResponse('Internal error', {
+      status: 500,
+    });
+  }
+}
+export async function PATCH(req: Request) {
+  try {
+    const body = await req.json();
+
+    const { text } = body;
+
+    if (!text) {
+      return new NextResponse('Text is required', {
+        status: 400,
+      });
+    }
+
+    const about = await prismadb.about.findFirst();
+
+    const textInput = await prismadb.about.update({
+      where: {
+        id: about?.id,
+      },
+      data: {
+        heroName: text,
+      },
+    });
+
+    return NextResponse.json(textInput);
+  } catch (error) {
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -31,16 +60,16 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
-    const brows = await prismadb.brows.findFirst({
+    const about = await prismadb.about.findFirst({
       include: {
         description: true,
-        steps: true,
+        welcome: true,
+        machine: true,
       },
     });
 
-    return NextResponse.json(brows);
+    return NextResponse.json(about);
   } catch (error) {
-    console.log('[BROWS_GET]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

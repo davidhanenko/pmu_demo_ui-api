@@ -22,7 +22,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json(lips);
   } catch (error) {
-    console.log('[LIPS_POST]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -36,12 +35,13 @@ export async function GET(req: Request) {
         description: true,
         process: true,
         tips: true,
+        kinds: true,
+        
       },
     });
 
     return NextResponse.json(lips);
   } catch (error) {
-    console.log('LIPS_GET]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

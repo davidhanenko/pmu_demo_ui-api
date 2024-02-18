@@ -1,9 +1,9 @@
 import CookieConsent from '../../components/CookieConsent';
 import { Main } from './components/main/Main';
 
-export default function Page() {
+export default async function Page() {
   return (
-    <main className=''>
+    <main>
       <Main />
       <CookieConsent />
     </main>

@@ -1,6 +1,8 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import axios from 'axios';
+
 import { Scroll } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -9,13 +11,32 @@ import { About } from '../about/About';
 import { useNav } from '../../../../context/navContext';
 
 import faceImg from '../../../../assets/images/faceAI2_red.png';
+import { TextWithHeader } from '@prisma/client';
+
+type AboutProps = {
+  heroName: string;
+  image: string;
+  welcome: TextWithHeader[];
+};
 
 export const MainOverlay = () => {
+  const [about, setAbout] = useState<AboutProps | null>(
+    null
+  );
   const { ref, inView } = useInView({
     threshold: 0.4,
   });
 
   const { setActive } = useNav();
+
+  useEffect(() => {
+    const fetchAbout = async () => {
+      const res = await axios.get('/api/about');
+      const aboutData = res.data;
+      setAbout(aboutData);
+    };
+    fetchAbout();
+  }, []);
 
   useEffect(() => {
     setActive('About');
@@ -38,7 +59,7 @@ export const MainOverlay = () => {
         </div>
         <div className='col-span-12 md:col-span-4 md:mt-36 text-center'>
           <h1 className='text-purple3 text-5xl font-bold flex justify-end md:justify-center pr-4 md:pr-0'>
-            Hi, I&apos;m [Name]
+            {`Hi, I'm ${about?.heroName}!`}
           </h1>
           <h3 className='text-white text-xl mt-4 tracking-wider '>
             your permanent makeup artist 💋
@@ -59,21 +80,19 @@ export const MainOverlay = () => {
         >
           <div>
             <p className='text-purple3 text-2xl mb-4 font-medium'>
-              Wake Up with Beautiful Brows Every Day
+              {about?.welcome[0].header}
             </p>
             <p className='text-white font-light tracking-wider'>
-              Welcome to my permanent makeup studio, where I
-              help you enhance your natural beauty with
-              permanent makeup techniques. Say goodbye to
-              the hassle of filling in your brows, eyeliner,
-              and lips every morning and hello to effortless
-              beauty that lasts all day long.
+              {about?.welcome[0].text}
             </p>
           </div>
         </motion.div>
       </section>
 
-      <About />
+      <About
+        description={about?.description}
+        machine={about?.machine}
+      />
     </Scroll>
   );
 };

@@ -58,9 +58,6 @@ module.exports = {
       },
 
       backgroundImage: {
-        'about-section_2':
-          "url('../assets/images/bg_3.png')",
-
         'red-lips_1':
           "url('../assets/images/red_lips.png')",
 

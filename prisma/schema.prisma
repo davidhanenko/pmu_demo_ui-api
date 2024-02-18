@@ -19,11 +19,12 @@ model User {
 
 model About {
     id           String @id @default(auto()) @map("_id") @db.ObjectId
-    name         String @default("about") @unique 
+    name         String @default("about") @unique
+    heroName     String?
     image        String?
     welcome      TextWithHeader[]
     description  Text[] @relation("description")
-    machine    Text[] @relation("machine")
+    machine      Text[] @relation("machine")
 
     createdAt    DateTime @default(now())
     updatedAt    DateTime @updatedAt
@@ -60,6 +61,7 @@ model Contacts {
     email        String
     address1     String?
     address2     String?
+    location     String?
     instagram    String?
     options      Text[]
 
@@ -73,9 +75,9 @@ model Text {
 
     about             About? @relation(name: "description", fields: [descriptionId], references: [id])
     descriptionId     String? @db.ObjectId
+    
     machine         About? @relation(name: "machine", fields: [machineId], references: [id])
     machineId       String? @db.ObjectId
-
     browsDescription  Brows? @relation(fields: [browsId], references: [id])
     browsId           String? @db.ObjectId
     lipsDescription   Lips? @relation(fields: [lipsId], references: [id])

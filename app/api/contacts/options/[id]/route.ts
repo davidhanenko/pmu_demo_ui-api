@@ -33,7 +33,6 @@ export async function PATCH(
 
     return NextResponse.json(textInput);
   } catch (error) {
-    console.log('[CONTACTS_OPTION_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -59,7 +58,6 @@ export async function DELETE(
 
     return NextResponse.json(option);
   } catch (error) {
-    console.log('[CONTACTS_OPTION_DELETE]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

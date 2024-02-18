@@ -1,4 +1,4 @@
-export default function DashboardLayout({
+export default function LipsLayout({
   children,
 }: {
   children: React.ReactNode;

@@ -30,7 +30,7 @@ export async function PATCH(req: Request) {
 
     return NextResponse.json(image);
   } catch (error) {
-    console.log('[ABOUT_IMAGE_PATCH]', error);
+
     return new NextResponse('Internal error', {
       status: 500,
     });

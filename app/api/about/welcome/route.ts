@@ -38,7 +38,7 @@ export async function PATCH(req: Request) {
 
     return NextResponse.json(textWithHeaderInput);
   } catch (error) {
-    console.log('[ABOUT_WELCOME_PATCH]', error);
+
     return new NextResponse('Internal error', {
       status: 500,
     });

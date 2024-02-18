@@ -8,6 +8,7 @@ import { MainCanvas } from './MainCanvas';
 import { useNav } from '../../../../context/navContext';
 import ScrollAnimated from '../../../../components/ScrollIndicator';
 
+
 export const Main = () => {
   const { ref, inView } = useInView({
     threshold: 0.94,

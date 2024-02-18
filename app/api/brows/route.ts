@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(brows);
   } catch (error) {
-    console.log('[BROWS_POST]', error);
+
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -40,7 +40,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json(brows);
   } catch (error) {
-    console.log('[BROWS_GET]', error);
+
     return new NextResponse('Internal error', {
       status: 500,
     });

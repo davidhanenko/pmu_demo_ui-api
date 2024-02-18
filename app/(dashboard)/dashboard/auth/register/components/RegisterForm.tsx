@@ -81,7 +81,8 @@ export const RegisterForm = () => {
         return;
       }
 
-      signIn(undefined, { callbackUrl: '/dashboard' });
+      signIn( undefined, { callbackUrl: '/dashboard' } );
+      
     } catch (error: any) {
       toast.error(
         'Something went wrong, please try again.'

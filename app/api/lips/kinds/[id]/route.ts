@@ -39,7 +39,6 @@ export async function PATCH(
 
     return NextResponse.json(KindInput);
   } catch (error) {
-    console.log('[LIPS_KINDS_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -65,7 +64,6 @@ export async function DELETE(
 
     return NextResponse.json(KindInput);
   } catch (error) {
-    console.log('[LIPS_KINDS_DELETE]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

@@ -8,10 +8,17 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { Contacts as ContactsProps } from '@prisma/client';
+
 import { instagramIconSVG } from '../../../../assets/icons/Instagram';
 
+type ContactProps = {
+  contactsData: ContactsProps;
+};
 
-export const Contacts = () => {
+export const Contacts = ({
+  contactsData,
+}: ContactProps) => {
   return (
     <div className='text-3xl xs:text-4xl font-semibold flex flex-col items-center justify-center'>
       <div>
@@ -22,14 +29,14 @@ export const Contacts = () => {
           transition={{ duration: 0.5 }}
         >
           <Link
-            href='tel:4641882432'
+            href={`tel:${contactsData.phone}`}
             className='my-12 flex items-end text-pink-500 transition-transform hover:rotate-1'
           >
             <FontAwesomeIcon
               icon={faPhone}
               className='w-16 h-16 mr-4'
             />
-            <p className=''>464 1188 2432</p>
+            <p className=''>{contactsData?.phone}</p>
           </Link>
         </motion.div>
         <motion.div
@@ -41,13 +48,16 @@ export const Contacts = () => {
           <Link
             target='_blank'
             rel='noopener noreferrer'
-            href='https://www.instagram.com/'
+            href={
+              contactsData.instagram ??
+              'https://www.instagram.com'
+            }
             className='my-12 flex items-end text-pink-600 transition-transform hover:rotate-1'
           >
             <div className='h-16 w-16 mr-4 fill-pink-600'>
               {instagramIconSVG}
             </div>
-            <p className=''>@pmu.nyc</p>
+            <p className=''>{contactsData?.instagram}</p>
           </Link>
         </motion.div>
         <motion.div
@@ -59,7 +69,10 @@ export const Contacts = () => {
           <Link
             target='_blank'
             rel='noopener noreferrer'
-            href='https://goo.gl/maps/c3hc7jCF4fwrJtvVA?coh=178571&entry=tt'
+            href={
+              contactsData?.location ??
+              'https://www.google.com/maps'
+            }
             className='my-16 flex items-center text-pink-700 transition-transform hover:rotate-1'
           >
             <FontAwesomeIcon
@@ -67,8 +80,8 @@ export const Contacts = () => {
               className='w-16 h-16 mr-4'
             />
             <div>
-              <p className=''>335 5th Ave, 1st fl</p>
-              <p className=''>New York, 11111</p>
+              <p className=''>{contactsData?.address1}</p>
+              <p className=''>{contactsData?.address2}</p>
             </div>
           </Link>
         </motion.div>

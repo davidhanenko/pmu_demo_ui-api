@@ -33,7 +33,7 @@ export async function PATCH(
 
     return NextResponse.json(textInput);
   } catch (error) {
-    console.log('[ABOUT_MACHINE_PATCH]', error);
+
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -59,7 +59,7 @@ export async function DELETE(
 
     return NextResponse.json(machineText);
   } catch (error) {
-    console.log('[BROWS_DESCRIPTION_DELETE]', error);
+
     return new NextResponse('Internal error', {
       status: 500,
     });

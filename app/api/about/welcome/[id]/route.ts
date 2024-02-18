@@ -36,7 +36,7 @@ export async function PATCH(
 
     return NextResponse.json(welcomeSection);
   } catch (error) {
-    console.log('[ABOUT_WELCOME_PATCH]', error);
+
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -63,7 +63,7 @@ export async function DELETE(
 
     return NextResponse.json(welcomeSection);
   } catch (error) {
-    console.log('[ABOUT_WELCOME_DELETE]', error);
+
     return new NextResponse('Internal error', {
       status: 500,
     });

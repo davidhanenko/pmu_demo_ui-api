@@ -7,11 +7,14 @@ import { Description } from './components/Description';
 import { Welcome } from './components/Welcome';
 import { AboutImage } from './components/AboutImage';
 import { Machine } from './components/Machine';
+import { Hero } from './components/Hero';
 
 const NAME = 'about';
 
 export default async function Page() {
   const about = await prismadb.about.findFirst();
+
+  const heroName = about?.heroName;
 
   const description = await prismadb.text.findMany({
     where: {
@@ -37,6 +40,7 @@ export default async function Page() {
       {!about && <InitButton name={NAME} />}
       <InitModal name={NAME} />
 
+      <Hero heroName={heroName ?? ''} />
       <Welcome welcome={welcome} />
       <div className='grid grid-cols-2 gap-4'>
         <Description description={description} />

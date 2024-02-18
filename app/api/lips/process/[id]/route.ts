@@ -36,7 +36,6 @@ export async function PATCH(
 
     return NextResponse.json(processStep);
   } catch (error) {
-    console.log('[LIPS_PROCESS_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -63,7 +62,6 @@ export async function DELETE(
 
     return NextResponse.json(processStep);
   } catch (error) {
-    console.log('[LIPS_PROCESS_DELETE]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

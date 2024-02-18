@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
+import { revalidatePath } from 'next/cache';
 
 import prismadb from '@/lib/prismadb';
 
@@ -20,10 +21,9 @@ export async function POST(req: Request) {
         name: name,
       },
     });
-
+    revalidatePath('/');
     return NextResponse.json(brows);
   } catch (error) {
-
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -41,7 +41,6 @@ export async function GET(req: Request) {
 
     return NextResponse.json(brows);
   } catch (error) {
-
     return new NextResponse('Internal error', {
       status: 500,
     });

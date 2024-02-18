@@ -2,17 +2,18 @@ import Image from 'next/image';
 
 import { motion } from 'framer-motion';
 
-import me from '../../../../assets/images/me_1_1.png';
 import { Text } from '@prisma/client';
 
 type AboutProps = {
   description: Text[];
   machine: Text[];
+  image: string;
 };
 
 export const About = ({
   description,
   machine,
+  image,
 }: AboutProps) => {
   return (
     <section>
@@ -51,7 +52,7 @@ export const About = ({
             >
               <div className='z-10 shadow-teal-800'>
                 <Image
-                  src={me}
+                  src={image}
                   alt='me'
                   width={300}
                   height={450}

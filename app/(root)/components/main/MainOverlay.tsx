@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import axios from 'axios';
 
 import { Scroll } from '@react-three/drei';
 import { motion } from 'framer-motion';
@@ -11,12 +10,14 @@ import { About } from '../about/About';
 import { useNav } from '../../../../context/navContext';
 
 import faceImg from '../../../../assets/images/faceAI2_red.png';
-import { TextWithHeader } from '@prisma/client';
+import { Text, TextWithHeader } from '@prisma/client';
 
 type AboutProps = {
   heroName: string;
   image: string;
   welcome: TextWithHeader[];
+  description: Text[];
+  machine: Text[];
 };
 
 export const MainOverlay = () => {
@@ -31,8 +32,10 @@ export const MainOverlay = () => {
 
   useEffect(() => {
     const fetchAbout = async () => {
-      const res = await axios.get('/api/about');
-      const aboutData = res.data;
+      const res = await fetch('/api/about', {
+        next: { revalidate: 3600 },
+      });
+      const aboutData = await res.json();
       setAbout(aboutData);
     };
     fetchAbout();
@@ -89,10 +92,13 @@ export const MainOverlay = () => {
         </motion.div>
       </section>
 
-      <About
-        description={about?.description}
-        machine={about?.machine}
-      />
+      {about && (
+        <About
+          description={about.description}
+          machine={about.machine}
+          image={about.image}
+        />
+      )}
     </Scroll>
   );
 };

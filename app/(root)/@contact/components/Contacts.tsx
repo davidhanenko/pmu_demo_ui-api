@@ -49,7 +49,7 @@ export const Contacts = ({
             target='_blank'
             rel='noopener noreferrer'
             href={
-              contactsData.instagram ??
+              `https://www.instagram.com/${contactsData.instagram}` ??
               'https://www.instagram.com'
             }
             className='my-12 flex items-end text-pink-600 transition-transform hover:rotate-1'
@@ -57,7 +57,7 @@ export const Contacts = ({
             <div className='h-16 w-16 mr-4 fill-pink-600'>
               {instagramIconSVG}
             </div>
-            <p className=''>{contactsData?.instagram}</p>
+            <p className=''>@{contactsData?.instagram}</p>
           </Link>
         </motion.div>
         <motion.div

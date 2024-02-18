@@ -5,7 +5,6 @@ import { Brows } from './components/Brows';
 export default async function Page() {
   const browsData = await prismadb.brows.findFirst();
 
-  console.log(browsData);
 
   const browsDescription = await prismadb.text.findMany({
     where: {

@@ -55,8 +55,6 @@ export async function POST(req: Request) {
       message: 'Message has been sent successfully',
     });
   } catch (error) {
-    console.log(error);
-
     NextResponse.json({
       status: 'fail',
       message:

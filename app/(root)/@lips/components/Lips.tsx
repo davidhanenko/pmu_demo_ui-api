@@ -12,7 +12,7 @@ import {
   TextWithImage,
 } from '@prisma/client';
 
-import lipsImg from '../../../../assets/images/pink_lips.png';
+import lipsImg from '../../../../assets/images/pink_lips.webp';
 
 interface ILipsProps {
   lipsDescription: Text[];

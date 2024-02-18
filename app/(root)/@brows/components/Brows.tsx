@@ -11,7 +11,7 @@ import { SectionHeader } from '../../components/shared/SectionHeader';
 import { BrowsDescription } from './BrowsDescription';
 import ScrollAnimated from '@/components/ScrollIndicator';
 
-import browImg from 'assets/images/brow_1.png';
+import browImg from 'assets/images/brow_1.webp';
 import useScrollPosition from '@/lib/useScrollPosition';
 import { Text, TextWithHeader } from '@prisma/client';
 

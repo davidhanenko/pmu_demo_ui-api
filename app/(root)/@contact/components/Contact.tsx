@@ -7,7 +7,7 @@ import { SectionHeader } from '../../components/shared/SectionHeader';
 import { Contacts } from './Contacts';
 import { ContactForm } from './ContactForm';
 
-import contactImg from '../../../../assets/images/pink_email.png';
+import contactImg from '../../../../assets/images/pink_email.webp';
 import { useNav } from '../../../../context/navContext';
 import {
   Contacts as ContactsProps,

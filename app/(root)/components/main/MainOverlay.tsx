@@ -9,7 +9,7 @@ import { useInView } from 'react-intersection-observer';
 import { About } from '../about/About';
 import { useNav } from '../../../../context/navContext';
 
-import faceImg from '../../../../assets/images/faceAI2_red.png';
+import faceImg from '../../../../assets/images/faceAI2_red.webp';
 import { Text, TextWithHeader } from '@prisma/client';
 
 type AboutProps = {

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import prismadb from '@/lib/prismadb';
+import { revalidatePath } from 'next/cache';
 
 export async function DELETE(
   req: Request,
@@ -17,6 +18,8 @@ export async function DELETE(
         id: params.id,
       },
     });
+
+    revalidatePath('/');
 
     return NextResponse.json(descriptionText);
   } catch (error) {
@@ -55,6 +58,7 @@ export async function PATCH(
         text: text,
       },
     });
+    revalidatePath('/');
 
     return NextResponse.json(textInput);
   } catch (error) {

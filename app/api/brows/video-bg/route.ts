@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import prismadb from '@/lib/prismadb';
+import { revalidatePath } from 'next/cache';
 
 export async function PATCH(req: Request) {
   try {
@@ -27,6 +28,8 @@ export async function PATCH(req: Request) {
         videoBg: videoUrl,
       },
     });
+
+    revalidatePath('/');
 
     return NextResponse.json(videoBg);
   } catch (error) {

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import prismadb from '@/lib/prismadb';
+import { revalidatePath } from 'next/cache';
 
 export async function PATCH(
   req: Request,
@@ -31,8 +32,9 @@ export async function PATCH(
         header: header,
         text: text,
       },
-    });
-
+    } );
+    
+    revalidatePath('/');
     return NextResponse.json(step);
   } catch (error) {
     return new NextResponse('Internal error', {
@@ -58,6 +60,7 @@ export async function DELETE(
       },
     });
 
+    revalidatePath('/');
     return NextResponse.json(step);
   } catch (error) {
     return new NextResponse('Internal error', {

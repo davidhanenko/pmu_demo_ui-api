@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import prismadb from '@/lib/prismadb';
+import { revalidatePath } from 'next/cache';
 
 export async function PATCH(req: Request) {
   try {
@@ -31,6 +32,8 @@ export async function PATCH(req: Request) {
         description: true,
       },
     });
+
+    revalidatePath('/');
 
     return NextResponse.json(textInput);
   } catch (error) {

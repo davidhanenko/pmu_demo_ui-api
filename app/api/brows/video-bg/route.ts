@@ -29,7 +29,7 @@ export async function PATCH(req: Request) {
       },
     });
 
-    revalidatePath('/');
+    revalidatePath('/', 'layout');
 
     return NextResponse.json(videoBg);
   } catch (error) {

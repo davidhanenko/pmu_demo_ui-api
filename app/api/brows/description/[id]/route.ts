@@ -19,7 +19,7 @@ export async function DELETE(
       },
     });
 
-    revalidatePath('/');
+    revalidatePath('/', 'layout');
 
     return NextResponse.json(descriptionText);
   } catch (error) {
@@ -58,7 +58,7 @@ export async function PATCH(
         text: text,
       },
     });
-    revalidatePath('/');
+    revalidatePath('/', 'layout');
 
     return NextResponse.json(textInput);
   } catch (error) {

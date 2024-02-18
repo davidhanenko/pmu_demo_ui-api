@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import prismadb from '@/lib/prismadb';
+import { revalidatePath } from 'next/cache';
 
 export async function POST(req: Request) {
   try {
@@ -19,7 +20,7 @@ export async function POST(req: Request) {
         name: name,
       },
     });
-
+    revalidatePath('/', 'layout');
     return NextResponse.json(lips);
   } catch (error) {
     return new NextResponse('Internal error', {
@@ -36,10 +37,9 @@ export async function GET(req: Request) {
         process: true,
         tips: true,
         kinds: true,
-        
       },
     });
-
+    revalidatePath('/', 'layout');
     return NextResponse.json(lips);
   } catch (error) {
     return new NextResponse('Internal error', {

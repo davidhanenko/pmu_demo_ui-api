@@ -32,9 +32,9 @@ export async function PATCH(
         header: header,
         text: text,
       },
-    } );
-    
-    revalidatePath('/@brows');
+    });
+
+    revalidatePath('/', 'layout');
     return NextResponse.json(step);
   } catch (error) {
     return new NextResponse('Internal error', {
@@ -60,7 +60,7 @@ export async function DELETE(
       },
     });
 
-    revalidatePath('/');
+    revalidatePath('/', 'layout');
     return NextResponse.json(step);
   } catch (error) {
     return new NextResponse('Internal error', {

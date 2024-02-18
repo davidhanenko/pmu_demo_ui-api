@@ -37,7 +37,7 @@ export async function PATCH(req: Request) {
       }
     );
 
-     revalidatePath('/');
+    revalidatePath('/', 'layout');
     return NextResponse.json(textWithHeaderInput);
   } catch (error) {
     return new NextResponse('Internal error', {

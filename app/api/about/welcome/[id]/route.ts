@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import prismadb from '@/lib/prismadb';
+import { revalidatePath } from 'next/cache';
 
 export async function PATCH(
   req: Request,
@@ -33,7 +34,7 @@ export async function PATCH(
           text: text,
         },
       });
-
+    revalidatePath('/', 'layout');
     return NextResponse.json(welcomeSection);
   } catch (error) {
 
@@ -56,11 +57,11 @@ export async function DELETE(
 
     const welcomeSection =
       await prismadb.textWithHeader.delete({
-        where: {
+        where: {˚∑
           id: params.id,
         },
       });
-
+    revalidatePath('/', 'layout');
     return NextResponse.json(welcomeSection);
   } catch (error) {
 

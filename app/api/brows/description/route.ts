@@ -33,11 +33,10 @@ export async function PATCH(req: Request) {
       },
     });
 
-    revalidatePath('/');
+    revalidatePath('/', 'layout');
 
     return NextResponse.json(textInput);
   } catch (error) {
-
     return new NextResponse('Internal error', {
       status: 500,
     });

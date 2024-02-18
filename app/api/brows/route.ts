@@ -21,7 +21,7 @@ export async function POST(req: Request) {
         name: name,
       },
     });
-    revalidatePath('/');
+    revalidatePath('/', 'layout');
     return NextResponse.json(brows);
   } catch (error) {
     return new NextResponse('Internal error', {

@@ -30,6 +30,7 @@ export const MainCanvas = () => {
       }}
       gl={{ preserveDrawingBuffer: true }}
     >
+      {/* update values for tablets */}
       <Suspense fallback={<CanvasLoader />}>
         <ScrollControls
           pages={isTablet ? (isMobile ? 3.2 : 2.9) : 2.4}

@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { LipsTips } from './LipsTips';
-
 import { motion } from 'framer-motion';
 
 import {

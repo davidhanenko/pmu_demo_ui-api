@@ -19,7 +19,7 @@ type ModelProps = {
 
 // 3d model
 const Model = ({ isMobile, isTablet }: ModelProps) => {
-  const { scene } = useGLTF('./m1/model.glb');
+  const { scene } = useGLTF('./m1/model1.glb');
 
   return (
     <primitive

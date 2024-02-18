@@ -34,7 +34,7 @@ export async function PATCH(
       },
     } );
     
-    revalidatePath('/');
+    revalidatePath('/@brows');
     return NextResponse.json(step);
   } catch (error) {
     return new NextResponse('Internal error', {

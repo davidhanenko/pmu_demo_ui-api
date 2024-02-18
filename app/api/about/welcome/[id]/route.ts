@@ -37,7 +37,6 @@ export async function PATCH(
     revalidatePath('/', 'layout');
     return NextResponse.json(welcomeSection);
   } catch (error) {
-
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -57,14 +56,13 @@ export async function DELETE(
 
     const welcomeSection =
       await prismadb.textWithHeader.delete({
-        where: {˚∑
+        where: {
           id: params.id,
         },
       });
     revalidatePath('/', 'layout');
     return NextResponse.json(welcomeSection);
   } catch (error) {
-
     return new NextResponse('Internal error', {
       status: 500,
     });

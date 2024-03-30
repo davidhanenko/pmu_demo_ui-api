@@ -4,14 +4,18 @@ import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 
 import { ScrollControls, Preload } from '@react-three/drei';
-
-import { MainOverlay } from './MainOverlay';
 import { useInView } from 'react-intersection-observer';
+
+import useMediaQuery from '../../../../lib/useMediaQuery';
 import { Machine } from './Machine';
 import CanvasLoader from './Loader';
-import useMediaQuery from '../../../../lib/useMediaQuery';
+import { AboutProps, MainOverlay } from './MainOverlay';
 
-export const MainCanvas = () => {
+export const MainCanvas = ({
+  aboutData,
+}: {
+  aboutData: AboutProps;
+}) => {
   const { ref, inView } = useInView({
     threshold: 0.8,
   });
@@ -41,7 +45,7 @@ export const MainCanvas = () => {
             isMobile={isMobile}
             isTablet={isTablet}
           />
-          <MainOverlay />
+          <MainOverlay aboutData={aboutData} />
         </ScrollControls>
       </Suspense>
       <Preload all />

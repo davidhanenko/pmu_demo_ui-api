@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
@@ -12,7 +13,7 @@ import { useNav } from '../../../../context/navContext';
 import faceImg from '../../../../assets/images/faceAI2_red.webp';
 import { Text, TextWithHeader } from '@prisma/client';
 
-type AboutProps = {
+export type AboutProps = {
   heroName: string;
   image: string;
   welcome: TextWithHeader[];
@@ -20,26 +21,16 @@ type AboutProps = {
   machine: Text[];
 };
 
-export const MainOverlay = () => {
-  const [about, setAbout] = useState<AboutProps | null>(
-    null
-  );
+export const MainOverlay = ({
+  aboutData,
+}: {
+  aboutData: AboutProps;
+}) => {
   const { ref, inView } = useInView({
     threshold: 0.4,
   });
 
   const { setActive } = useNav();
-
-  useEffect(() => {
-    const fetchAbout = async () => {
-      const res = await fetch('/api/about', {
-        next: { revalidate: 3600 },
-      });
-      const aboutData = await res.json();
-      setAbout(aboutData);
-    };
-    fetchAbout();
-  }, []);
 
   useEffect(() => {
     setActive('About');
@@ -62,7 +53,7 @@ export const MainOverlay = () => {
         </div>
         <div className='col-span-12 md:col-span-4 md:mt-36 text-center'>
           <h1 className='text-purple3 text-5xl font-bold flex justify-end md:justify-center pr-4 md:pr-0'>
-            {`Hi, I'm ${about?.heroName}!`}
+            {`Hi, I'm ${aboutData && aboutData.heroName}!`}
           </h1>
           <h3 className='text-white text-xl mt-4 tracking-wider '>
             your permanent makeup artist 💋
@@ -83,20 +74,20 @@ export const MainOverlay = () => {
         >
           <div>
             <p className='text-purple3 text-2xl mb-4 font-medium'>
-              {about?.welcome[0].header}
+              {aboutData?.welcome[0].header}
             </p>
             <p className='text-white font-light tracking-wider'>
-              {about?.welcome[0].text}
+              {aboutData?.welcome[0].text}
             </p>
           </div>
         </motion.div>
       </section>
 
-      {about && (
+      {aboutData && (
         <About
-          description={about.description}
-          machine={about.machine}
-          image={about.image}
+          description={aboutData.description}
+          machine={aboutData.machine}
+          image={aboutData.image}
         />
       )}
     </Scroll>

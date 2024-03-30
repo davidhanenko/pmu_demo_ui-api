@@ -8,7 +8,13 @@ import { MainCanvas } from './MainCanvas';
 import { useNav } from '../../../../context/navContext';
 import ScrollAnimated from '../../../../components/ScrollIndicator';
 
-export const Main = () => {
+import { AboutProps } from './MainOverlay';
+
+export const Main = ({
+  aboutData,
+}: {
+  aboutData: AboutProps;
+}) => {
   const { ref, inView } = useInView({
     threshold: 0.94,
   });
@@ -28,7 +34,7 @@ export const Main = () => {
   return (
     <section ref={ref} className='h-screen bg-[#000]'>
       <div ref={refScrollTip} className='w-full h-full'>
-        <MainCanvas />
+        <MainCanvas aboutData={aboutData} />
         {/* scroll availability tip(mouse) */}
         <motion.div
           initial={{ opacity: 0 }}

@@ -52,7 +52,7 @@ export const MainOverlay = ({
           />
         </div>
         <div className='col-span-12 md:col-span-4 md:mt-36 text-center'>
-          <h1 className='text-purple3 text-5xl font-bold flex justify-end md:justify-center pr-4 md:pr-0'>
+          <h1 className='text-purple3 text-5xl font-bold flex justify-center pr-4 md:pr-0'>
             {`Hi, I'm ${aboutData && aboutData.heroName}!`}
           </h1>
           <h3 className='text-white text-xl mt-4 tracking-wider '>

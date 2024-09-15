@@ -13,7 +13,7 @@ export const InitButton = ({ name }: { name: string }) => {
       <Button
         onClick={() =>
           modalState.onOpen(state => state.onOpen)
-        }
+        }s
       >
         <Plus className='w-4 h-4 mr-2 text-green-500' />
         Initialize &nbsp;{' '}

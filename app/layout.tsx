@@ -6,7 +6,7 @@ import { Analytics } from '@vercel/analytics/react';
 export const metadata = {
   title: 'PMU Artist NYC',
   description:
-    'PMU artist, NYC. Permanent makeup artist in New York City & Brooklyn. Brows, lips, eyeliner and more.',
+    'PMU artist in NYC - specializing in brows, lips, and eyeliner. Enhance your natural beauty with expert permanent makeup in New York City & Brooklyn. Book your appointment today.',
 };
 
 export default function Layout(props: {

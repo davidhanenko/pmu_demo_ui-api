@@ -1,31 +1,6 @@
 import { NextResponse } from 'next/server';
 import prismadb from '@/lib/prismadb';
-
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
-  try {
-    if (!params.id) {
-      return new NextResponse('Id is required', {
-        status: 400,
-      });
-    }
-
-    const step = await prismadb.textWithHeader.delete({
-      where: {
-        id: params.id,
-      },
-    });
-
-    return NextResponse.json(step);
-  } catch (error) {
-    console.log('[BROWS_STEPS_DELETE]', error);
-    return new NextResponse('Internal error', {
-      status: 500,
-    });
-  }
-}
+import { revalidatePath } from 'next/cache';
 
 export async function PATCH(
   req: Request,
@@ -59,9 +34,35 @@ export async function PATCH(
       },
     });
 
+    revalidatePath('/', 'layout');
     return NextResponse.json(step);
   } catch (error) {
-    console.log('[BROWS_STEPS_PATCH]', error);
+    return new NextResponse('Internal error', {
+      status: 500,
+    });
+  }
+}
+
+export async function DELETE(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  try {
+    if (!params.id) {
+      return new NextResponse('Id is required', {
+        status: 400,
+      });
+    }
+
+    const step = await prismadb.textWithHeader.delete({
+      where: {
+        id: params.id,
+      },
+    });
+
+    revalidatePath('/', 'layout');
+    return NextResponse.json(step);
+  } catch (error) {
     return new NextResponse('Internal error', {
       status: 500,
     });

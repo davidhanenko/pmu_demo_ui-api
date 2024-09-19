@@ -15,14 +15,14 @@ const CanvasLoader = () => {
       <Bars
         height='60'
         width='60'
-        color='#fff'
+        color='#41dce6'
         ariaLabel='bars-loading'
         wrapperStyle={{}}
         wrapperClass=''
         visible={true}
       />
 
-      <p className='text-white text-sm font-bold mt-4'>
+      <p className='text-teal1 text-sm font-bold mt-4'>
         {progress}%
       </p>
     </Html>

@@ -28,7 +28,7 @@ export default function DashboardNav() {
   const user = session?.user;
 
   return (
-    <nav className='fixed w-full z-50 flex justify-between p-6 bg-slate-900'>
+    <nav className='fixed w-full max-w-[1600px] mx-auto z-50 flex justify-between p-6 bg-slate-900'>
       <NavigationMenu className='hidden md:block'>
         <NavigationMenuList>
           {navLinks.map(link => (

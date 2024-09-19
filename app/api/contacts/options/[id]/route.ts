@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import prismadb from '@/lib/prismadb';
+import { revalidatePath } from 'next/cache';
 
 export async function PATCH(
   req: Request,
@@ -30,10 +31,9 @@ export async function PATCH(
         text: text,
       },
     });
-
+    revalidatePath('/', 'layout');
     return NextResponse.json(textInput);
   } catch (error) {
-    console.log('[CONTACTS_OPTION_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -57,9 +57,9 @@ export async function DELETE(
       },
     });
 
+    revalidatePath('/', 'layout');
     return NextResponse.json(option);
   } catch (error) {
-    console.log('[CONTACTS_OPTION_DELETE]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

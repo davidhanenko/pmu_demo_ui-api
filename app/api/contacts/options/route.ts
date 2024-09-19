@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import prismadb from '@/lib/prismadb';
+import { revalidatePath } from 'next/cache';
 
 export async function PATCH(req: Request) {
   try {
@@ -31,10 +32,9 @@ export async function PATCH(req: Request) {
         options: true,
       },
     });
-
+    revalidatePath('/', 'layout');
     return NextResponse.json(textInput);
   } catch (error) {
-    console.log('[CONTACTS_OPTIONS_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

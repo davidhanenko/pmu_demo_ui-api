@@ -1,25 +1,14 @@
 'use client';
 import { motion } from 'framer-motion';
-import { browsSteps } from '../../../../constants/index';
 import {
   SyntheticEvent,
   useEffect,
   useRef,
   useState,
 } from 'react';
+import { TextWithHeader } from '@prisma/client';
 
-type StepCardProps = {
-  title: string;
-  description: string;
-  id: string;
-  key: number | string;
-};
-
-const StepCard = ({
-  title,
-  description,
-  id,
-}: StepCardProps) => {
+const StepCard = ({ step }: { step: TextWithHeader }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [i, setI] = useState(null);
   const cardRef = useRef(null);
@@ -63,7 +52,7 @@ const StepCard = ({
           : ''
       }`}
       ref={cardRef}
-      data-id={id}
+      data-id={step.order}
       onClick={e => handleClick(e)}
     >
       <motion.div
@@ -78,7 +67,7 @@ const StepCard = ({
           isOpen
             ? 'absolute h-[275px] w-11/12 sm:w-[450px]'
             : 'h-[130px] w-[250px] sm:w-[300px]'
-        } ${isOpen && id == i ? 'z-20' : ''}`}
+        } ${isOpen && step.order == i ? 'z-20' : ''}`}
       >
         <motion.h4
           layout={'position'}
@@ -87,8 +76,10 @@ const StepCard = ({
           }`}
         >
           <span>
-            <span className={`mr-2 text-3xl `}>{id}.</span>
-            {title}
+            <span className={`mr-2 text-3xl `}>
+              {step.order}.
+            </span>
+            {step.header}
           </span>
           {isOpen && (
             <span className='font-light text-white text-4xl'>
@@ -101,7 +92,7 @@ const StepCard = ({
             isOpen ? 'hidden' : 'block'
           }`}
         >
-          {description}
+          {step.text}
         </p>
 
         {isOpen && (
@@ -112,9 +103,7 @@ const StepCard = ({
             transition={{ duration: 0.5 }}
             className={`h-full pt-2 overflow-scroll`}
           >
-            <p className='pb-16 text-white'>
-              {description}
-            </p>
+            <p className='pb-16 text-white'>{step.text}</p>
           </motion.div>
         )}
       </motion.div>
@@ -122,22 +111,23 @@ const StepCard = ({
   );
 };
 
-export const BrowsSteps = () => {
+export const BrowsSteps = ({
+  browsSteps,
+}: {
+  browsSteps: TextWithHeader[];
+}) => {
   return (
     <div className='relative order-2 lg:order-1 col-span-12 lg:col-span-4 flex flex-col justify-end lg:justify-start h-full w-full px-4 py-8 sm:py-20 lg:py-8 z-20'>
       <h3 className='text-zinc-950 font-semibold text-2xl py-8 text-center'>
-        4 Simple Steps to <span className='text-rose-600' >Perfect</span> Brows
+        4 Simple Steps to{' '}
+        <span className='text-rose-600'>Perfect</span> Brows
       </h3>
 
       <div className=' grid gap-8 sm:grid-cols-2 lg:grid-cols-1 w-full'>
-        {browsSteps.map(step => (
-          <StepCard
-            title={step.title}
-            description={step.description}
-            id={step.id}
-            key={step.id}
-          />
-        ))}
+        {!!browsSteps &&
+          browsSteps?.map(step => (
+            <StepCard key={step.id} step={step} />
+          ))}
       </div>
     </div>
   );

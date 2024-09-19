@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import prismadb from '@/lib/prismadb';
+import { revalidatePath } from 'next/cache';
 
 export async function PATCH(req: Request) {
   try {
@@ -17,21 +18,23 @@ export async function PATCH(req: Request) {
       );
     }
 
+    const brows = await prismadb.brows.findFirst();
+
     const videoBg = await prismadb.brows.update({
       where: {
-        name: 'brows',
+        id: brows?.id,
       },
       data: {
         videoBg: videoUrl,
       },
     });
 
+    revalidatePath('/', 'layout');
+
     return NextResponse.json(videoBg);
   } catch (error) {
-    console.log('[BROWS_POST]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
   }
 }
-

@@ -18,7 +18,7 @@ export default async function Page() {
   });
 
   return (
-    <div className='text-white pb-12'>
+    <div className='text-white pb-12 md:px-4'>
       <Heading name={NAME} />
 
       {!contacts && <InitButton name={NAME} />}

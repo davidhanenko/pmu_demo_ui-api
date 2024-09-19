@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import prismadb from '@/lib/prismadb';
+import { revalidatePath } from 'next/cache';
 
 export async function POST(req: Request) {
   try {
@@ -19,10 +20,9 @@ export async function POST(req: Request) {
         name: name,
       },
     });
-
+    revalidatePath('/', 'layout');
     return NextResponse.json(lips);
   } catch (error) {
-    console.log('[LIPS_POST]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -36,12 +36,12 @@ export async function GET(req: Request) {
         description: true,
         process: true,
         tips: true,
+        kinds: true,
       },
     });
-
+    revalidatePath('/', 'layout');
     return NextResponse.json(lips);
   } catch (error) {
-    console.log('LIPS_GET]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

@@ -4,14 +4,18 @@ import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 
 import { ScrollControls, Preload } from '@react-three/drei';
-
-import { MainOverlay } from './MainOverlay';
 import { useInView } from 'react-intersection-observer';
+
+import useMediaQuery from '../../../../lib/useMediaQuery';
 import { Machine } from './Machine';
 import CanvasLoader from './Loader';
-import useMediaQuery from '../../../../lib/useMediaQuery';
+import { AboutProps, MainOverlay } from './MainOverlay';
 
-export const MainCanvas = () => {
+export const MainCanvas = ({
+  aboutData,
+}: {
+  aboutData: AboutProps;
+}) => {
   const { ref, inView } = useInView({
     threshold: 0.8,
   });
@@ -25,14 +29,15 @@ export const MainCanvas = () => {
       ref={ref}
       shadows
       camera={{
-        position: isMobile ? [10, 10, 0] : [10, 3, 0],
+        position: isMobile ? [10, 10, 0] : [12, 3, 0],
         fov: 50,
       }}
       gl={{ preserveDrawingBuffer: true }}
     >
+      {/* update values for tablets */}
       <Suspense fallback={<CanvasLoader />}>
         <ScrollControls
-          pages={isTablet ? (isMobile ? 4.2 : 3.8) : 3.4}
+          pages={isTablet ? (isMobile ? 3.2 : 2.9) : 2.4}
           damping={isMobile ? 0.5 : 0.5}
           enabled={inView ? true : false}
         >
@@ -40,7 +45,7 @@ export const MainCanvas = () => {
             isMobile={isMobile}
             isTablet={isTablet}
           />
-          <MainOverlay />
+          <MainOverlay aboutData={aboutData} />
         </ScrollControls>
       </Suspense>
       <Preload all />

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import prismadb from '@/lib/prismadb';
+import { revalidatePath } from 'next/cache';
 
 export async function PATCH(req: Request) {
   try {
@@ -14,10 +15,12 @@ export async function PATCH(req: Request) {
       });
     }
 
+    const brows = await prismadb.brows.findFirst();
+
     const textWithHeaderInput = await prismadb.brows.update(
       {
         where: {
-          name: 'brows',
+          id: brows?.id,
         },
         data: {
           steps: {
@@ -34,9 +37,9 @@ export async function PATCH(req: Request) {
       }
     );
 
+    revalidatePath('/', 'layout');
     return NextResponse.json(textWithHeaderInput);
   } catch (error) {
-    console.log('[BROWS_STEPS_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

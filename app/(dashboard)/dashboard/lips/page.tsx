@@ -2,7 +2,6 @@ import prismadb from '@/lib/prismadb';
 
 import { InitModal } from '../components/InitModal';
 import { InitButton } from '../components/InitButton';
-import { Separator } from '@/components/ui/separator';
 import { Heading } from '../components/Heading';
 import { Description } from './components/Description';
 import { Process } from './components/Process';
@@ -40,7 +39,7 @@ const Page = async () => {
   });
 
   return (
-    <div className='text-white pb-12'>
+    <div className='text-white pb-12 md:px-4'>
       <Heading name={NAME} />
       {!lips && <InitButton name={NAME} />}
 

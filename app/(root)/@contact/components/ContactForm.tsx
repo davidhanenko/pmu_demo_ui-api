@@ -1,14 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import axios from 'axios';
 
 import { motion } from 'framer-motion';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import {
-  contactReasons,
-  phoneRegex,
-} from '../../../../constants/index';
+import { phoneRegex } from '../../../../constants/index';
+import { Text } from '@prisma/client';
 
 type FormData = {
   name: string;
@@ -18,7 +17,13 @@ type FormData = {
   reason: string;
 };
 
-export const ContactForm = () => {
+type ContactFormProps = {
+  contactOptions: Text[];
+};
+
+export const ContactForm = ({
+  contactOptions,
+}: ContactFormProps) => {
   const [statusMessage, setStatusMessage] = useState({
     status: '',
     message: '',
@@ -43,16 +48,24 @@ export const ContactForm = () => {
     FormData
   > = async values => {
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json, text/plain, */*',
-          'Content-type': 'application/json',
+      const response = await axios.post(
+        '/api/contacts/email',
+        {
+          name: values.name,
+          phoneNumber: values.phoneNumber,
+          email: values.email,
+          message: values.message,
+          reason: values.reason,
         },
-        body: JSON.stringify(values),
-      });
+        {
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-type': 'application/json',
+          },
+        }
+      );
 
-      const messageStatus = await response.json();
+      const messageStatus = response.data;
 
       if (messageStatus.status === 'success') {
         setStatusMessage(messageStatus);
@@ -221,9 +234,9 @@ export const ContactForm = () => {
               className='bg-red-50 w-full h-full focus:outline-none'
               {...register('reason')}
             >
-              {contactReasons.map(reason => (
-                <option key={reason.id}>
-                  {reason.value}
+              {contactOptions.map(option => (
+                <option key={option.id}>
+                  {option.text}
                 </option>
               ))}
             </select>

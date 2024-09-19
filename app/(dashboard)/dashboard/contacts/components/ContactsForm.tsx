@@ -29,6 +29,7 @@ const formSchema = z.object({
   email: z.string().email().toLowerCase().trim(),
   address1: z.string(),
   address2: z.string(),
+  location: z.string(),
   instagram: z.string(),
 });
 
@@ -51,6 +52,7 @@ export const ContactsForm = ({
       email: contacts?.email || '',
       address1: contacts?.address1 || '',
       address2: contacts?.address2 || '',
+      location: contacts?.location || '',
       instagram: contacts?.instagram || '',
     },
   });
@@ -207,6 +209,27 @@ export const ContactsForm = ({
                           type='text'
                           disabled={loading}
                           placeholder='Address, line 2'
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                {/* Location */}
+                <FormField
+                  control={form.control}
+                  name='location'
+                  render={({ field }) => (
+                    <FormItem className='w-full'>
+                      <FormLabel className='text-slate-400'>
+                        Location Link
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type='text'
+                          disabled={loading}
+                          placeholder='Location link'
                           {...field}
                         />
                       </FormControl>

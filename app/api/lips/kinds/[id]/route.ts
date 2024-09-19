@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import prismadb from '@/lib/prismadb';
+import { revalidatePath } from 'next/cache';
 
 export async function PATCH(
   req: Request,
@@ -36,10 +37,9 @@ export async function PATCH(
         image: imageUrl,
       },
     });
-
+    revalidatePath('/', 'layout');
     return NextResponse.json(KindInput);
   } catch (error) {
-    console.log('[LIPS_KINDS_PATCH]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
@@ -62,10 +62,9 @@ export async function DELETE(
         id: params.id,
       },
     });
-
+    revalidatePath('/', 'layout');
     return NextResponse.json(KindInput);
   } catch (error) {
-    console.log('[LIPS_KINDS_DELETE]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });

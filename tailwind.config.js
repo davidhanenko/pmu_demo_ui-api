@@ -58,17 +58,14 @@ module.exports = {
       },
 
       backgroundImage: {
-        'about-section_2':
-          "url('../assets/images/bg_3.png')",
-
         'red-lips_1':
-          "url('../assets/images/red_lips.png')",
+          "url('../assets/images/red_lips.webp')",
 
         'contact-bg':
-          "url('../assets/images/pink_bg_1.png')",
+          "url('../assets/images/pink_bg_1.webp')",
 
         'brows-section':
-          "url('../assets/images/brows_bg_brown_1.png')",
+          "url('../assets/images/brows_bg_brown_1.webp')",
       },
 
       borderRadius: {

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import prismadb from '@/lib/prismadb';
+import { revalidatePath } from 'next/cache';
 
 export async function PATCH(req: Request) {
   try {
@@ -17,22 +18,21 @@ export async function PATCH(req: Request) {
       );
     }
 
+    const lips = await prismadb.lips.findFirst();
+
     const videoBg = await prismadb.lips.update({
       where: {
-        name: 'lips',
+        id: lips?.id,
       },
       data: {
         videoBg: videoUrl,
       },
     });
-
+revalidatePath('/', 'layout');
     return NextResponse.json(videoBg);
   } catch (error) {
-    console.log('[LIPS_VIDEO_POST]', error);
     return new NextResponse('Internal error', {
       status: 500,
     });
   }
 }
-
-

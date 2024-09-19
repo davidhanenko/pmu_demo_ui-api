@@ -7,10 +7,22 @@ import { SectionHeader } from '../../components/shared/SectionHeader';
 import { Contacts } from './Contacts';
 import { ContactForm } from './ContactForm';
 
-import contactImg from '../../../../assets/images/pink_email.png';
+import contactImg from '../../../../assets/images/pink_email.webp';
 import { useNav } from '../../../../context/navContext';
+import {
+  Contacts as ContactsProps,
+  Text,
+} from '@prisma/client';
 
-export const Contact = () => {
+type ContactProps = {
+  contactsData: ContactsProps;
+  contactOptions: Text[];
+};
+
+export const Contact = ({
+  contactsData,
+  contactOptions,
+}: ContactProps) => {
   const { ref, inView } = useInView({
     threshold: 0.4,
   });
@@ -29,8 +41,8 @@ export const Contact = () => {
       />
 
       <div className='bg-contact-bg bg-no-repeat bg-top bg-cover py-12 lg:p-24 pb-[300px] flex flex-col gap-16 lg:gap-4 lg:grid lg:grid-cols-2'>
-        <Contacts />
-        <ContactForm />
+        <Contacts contactsData={contactsData} />
+        <ContactForm contactOptions={contactOptions} />
       </div>
     </section>
   );

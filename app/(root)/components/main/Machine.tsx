@@ -4,7 +4,6 @@ import { useLayoutEffect, useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, useScroll } from '@react-three/drei';
 
-
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -20,7 +19,7 @@ type ModelProps = {
 
 // 3d model
 const Model = ({ isMobile, isTablet }: ModelProps) => {
-  const { scene } = useGLTF('./m1/model.glb');
+  const { scene } = useGLTF('./m1/model1.glb');
 
   return (
     <primitive

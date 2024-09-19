@@ -8,7 +8,6 @@ export default function RootLayout(props: {
   children: React.ReactNode;
   brows: React.ReactNode;
   lips: React.ReactNode;
-  blog: React.ReactNode;
   contact: React.ReactNode;
 }) {
   return (
